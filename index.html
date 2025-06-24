@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>CV - Edson Ventura</title>
+  <title>Edson Ventura - Software Engineer | Full Stack Developer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Curriculum vitae de Edson Fernando Ventura Oropeza">
-  <meta name="author" content="edsonfervo16mx">
-  <meta name="keywords" content="Curriculum vitae, CV, Edson, Edson Fernando, Edsonfer,CV Edson Ventura, Edson Ventura, Curriculum vitae Edson Ventura, Edson Fernando Ventura Oropeza, Tabasco, Caribbean Digital Group, Desarrollador, Tulum, Software Tulum, Innovación, Caribe mexicano it, Gignet, Internet Tulum, Programador Quintana roo, Desarrollador Quintana roo, Odoo Mx, ITSC, Sistemas tulum, Odoo Gignet, Gcashless, CDG, edsonfervo16mx, itsc programador, programador comalcalco, itsc sistemas, Instituto Superior de Comalcalco, startup weekend, GigNet, gignet, comalcalco">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-  <style>
-    .img-profile{
-      margin-top: 2.5%;
-    }
-    .text-period{
-      font-size: 10px
-    }
-    .text-awards{
-      font-size: 12px;
-    }
-    .box-height{
-      height: 150px;
-      align-items: center;
-      display: flex;
-    }
-  </style>
-  <script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+  <meta name="description"
+    content="Edson Fernando Ventura Oropeza - Software Engineer with 10+ years of experience in full-stack development, specializing in Node.js, Vue.js, Python, and Odoo ERP. Based in Mexico with expertise in government systems, hospitality platforms, and fintech applications.">
+  <meta name="author" content="Edson Fernando Ventura Oropeza">
+  <meta name="keywords"
+    content="Software Engineer, Full Stack Developer, Node.js, Vue.js, Python, Odoo ERP, Mexico, Edson Ventura, Edson Fernando Ventura Oropeza, Caribbean Digital Group, GigNet, Tabasco, Tulum, Quintana Roo, Government Systems, Hospitality Platforms, Fintech, API Development, Database Administration">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://edsonfervo16mx.github.io/">
+  <meta property="og:title" content="Edson Ventura - Software Engineer">
+  <meta property="og:description"
+    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://edsonfervo16mx.github.io/">
+  <meta property="twitter:title" content="Edson Ventura - Software Engineer">
+  <meta property="twitter:description"
+    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
+  <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
+
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -34,725 +37,696 @@
   <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="manifest.json">
-  <meta name="msapplication-TileColor" content="#00d1b2">
+  <meta name="msapplication-TileColor" content="#3b82f6">
   <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-  <meta name="theme-color" content="#00d1b2">
+  <meta name="theme-color" content="#3b82f6">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .skill-tag {
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      transform: scale(1.05);
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-<body>
-  <div>
-    <section class="section">
-      <div class="container">
-        <div class="mb-4 pb-3 columns is-multiline">
-          <div class="column is-12 is-6-desktop mx-auto has-text-centered">
-            <h2 class="is-size-1 is-size-3-mobile has-text-weight-bold">Edson Ventura</h2>
-            <h4 class="mb-4 is-size-3 is-size-3-mobile has-text-weight-bold has-text-grey"> Software Engineer </h4>
-            <p class="subtitle has-text-grey mb-2">
-              Graduated in Computer Systems Engineering from the Higher Technological Institute of Comalcalco, specializing in software development.
-            </p>
-            <!--
-            <p class="subtitle has-text-gery mb-2">
-              Constantly growing software developer, open to learning and sharing knowledge.
-            </p>
-            -->
-          </div>
-        </div>
-        <div class="columns is-multiline">
-          <div class="column is-12 is-4-desktop">
-            <div class="column is-4 is-block-desktop has-text-centered img-profile is-hidden-tablet is-hidden-desktop">
-              <figure class="image is-256x256 is-inline-block">
-                <img class="is-rounded mx-auto mt-0-widescreen" src="https://avatars.githubusercontent.com/u/18149491?v=4">
-              </figure>
-          </div>
-          <p class="subtitle has-text-grey text-awards is-hidden-desktop is-hidden-tablet">
-            <span class="icon has-text-dark">
-              <i class="fas fa-trophy" aria-hidden="true"></i>
-            </span>
-            1st place Techstars Startup Weekend Tabasco, 2017.
-            <br/>
-            <span class="icon has-text-dark">
-              <i class="fas fa-trophy" aria-hidden="true"></i>
-            </span>
-            1st place Hacksureste REDUX Sureste Mexico, 2020.
-            <br/>
-            <span class="icon has-text-dark">
-              <i class="fas fa-trophy" aria-hidden="true"></i>
-            </span>
-            1st place Techstars Startup Weekend Yucatán, 2022.
-            <br/>
+
+<body class="bg-gray-50 text-gray-900">
+  <!-- Header Section -->
+  <header class="gradient-bg text-white py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <div class="lg:w-2/3 mb-10 lg:mb-0">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-4 animate-fade-in">
+            Edson Ventura
+          </h1>
+          <h2 class="text-2xl lg:text-3xl font-semibold mb-6 text-blue-100">
+            Software Engineer
+          </h2>
+          <p class="text-lg lg:text-xl text-blue-50 mb-8 leading-relaxed">
+            Full Stack Developer with 10+ years of experience in modern web technologies, enterprise systems, and
+            AI-driven solutions. Founder and visionary behind multiple tech ventures, passionate about building scalable
+            products and leading digital innovation across industries.
           </p>
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-1">Cárdenas Government, Tabasco </h4>
-                <p class="subtitle has-text-grey">
-                  Web developer and database administrator. <small class="has-text-grey text-period">(2013-2014)</small>
-                </p>
-                <div class="field is-grouped is-grouped-multiline">
-                
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">ASP.NET</span>
-                    </div>
-                  </div>
-                  
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-database" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">MySQL</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-1">Comalcalco Government, Tabasco </h4>
-                <p class="subtitle has-text-grey">
-                  Web developer and systems assistant. <small class="has-text-grey text-period">(2014-2015)</small>
-                </p>
-                <div class="field is-grouped is-grouped-multiline">
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">PHP</span>
-                    </div>
-                  </div>
-                  
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-database" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Firebird</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-2">Jean Piaget College</h4>
-                <p class="subtitle has-text-grey">
-                  Professor of Computer Science and Robotics. <small class="has-text-grey text-period">(2015-2019)</small>
-                </p>
-                <div class="field is-grouped is-grouped-multiline">
-                
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">PHP</span>
-                    </div>
-                  </div>
-                  
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-database" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">MySQL</span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-rocket" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Arduino</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column is-4 is-block-desktop is-hidden-touch has-text-centered img-profile">
-            <figure class="image is-256x256 is-inline-block">
-              <img class="is-rounded mx-auto mt-0-widescreen" src="https://avatars.githubusercontent.com/u/18149491?v=4">
-            </figure>
-            <p class="subtitle has-text-grey text-awards is-hidden-touch">
-              <span class="icon has-text-dark">
-                <i class="fas fa-trophy" aria-hidden="true"></i>
-              </span>
-              1st place Techstars Startup Weekend Tabasco, 2017.
-              <br/>
-              <span class="icon has-text-dark">
-                <i class="fas fa-trophy" aria-hidden="true"></i>
-              </span>
-              1st place Hacksureste REDUX Sureste Mexico, 2020.
-              <br/>
-              <span class="icon has-text-dark">
-                <i class="fas fa-trophy" aria-hidden="true"></i>
-              </span>
-              1st place Techstars Startup Weekend Yucatán, 2022.
-              <br/>
-            </p>
-          </div>
-          <div class="column is-12 is-4-desktop">
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-2">Behotels Corporation.</h4>
-                <p class="subtitle has-text-grey">
-                  Backend Developer and Technical Support. <small class="has-text-grey text-period">(2019-2020)</small>
-                  <div class="field is-grouped is-grouped-multiline">
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="far fa-window-restore" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">Vue</span>
-                      </div>
-                    </div>
-                  
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="far fa-file-code" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">Node.js </span>
-                      </div>
-                    </div>
-
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="far fa-file-code" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">Java </span>
-                      </div>
-                    </div>
-
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="far fa-file-code" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">PHP </span>
-                      </div>
-                    </div>
-                    
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="fas fa-database" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">SQL Server </span>
-                      </div>
-                    </div>
-
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="fas fa-database" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">MySQL </span>
-                      </div>
-                    </div>
-                  </div>
-                </p>
-              </div>
-            </div>
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-2">Caribbean Digital Group.</h4>
-                <p class="subtitle has-text-grey">
-                  Co-founder and Software Engineer. <small class="has-text-grey text-period">(2019-2022*)</small>
-                </p>
-                <div class="field is-grouped is-grouped-multiline">
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-window-restore" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Vue </span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Node.js</span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-database" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">MySQL</span>
-                    </div>
-                  </div>
-
-                  <div class="field is-grouped is-grouped-multiline">
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag is-primary">
-                          <i class="far fa-window-restore" aria-hidden="true"></i>
-                        </span>
-                        <span class="tag is-light">Android Studio</span>
-                      </div>
-                    </div>
-              
-                </div>
-              </div>
-              </div>
-            </div>
-            <div class="mb-6 is-flex">
-              <span class="icon has-text-primary">
-                <i class="fas fa-code" aria-hidden="true"></i>
-              </span>
-              <div class="ml-3">
-                <h4 class="is-size-4 has-text-weight-bold mb-2">Gignet S.A. de C.V.</h4>
-                <p class="subtitle has-text-grey">
-                  Software Engineer <small class="has-text-grey text-period">(2019-2022*)</small>
-                </p>
-                <div class="field is-grouped is-grouped-multiline">
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Python</span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-file-code" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Node.js</span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="far fa-window-restore" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">Vue 3</span>
-                    </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-primary">
-                        <i class="fas fa-database" aria-hidden="true"></i>
-                      </span>
-                      <span class="tag is-light">PostgreSQL</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section has-background-primary">
-      <div class="container has-text-centered">
-        <h2 class="has-text-white mt-2 mb-3 is-size-1 is-size-3-mobile has-text-weight-bold">
-          Projects
-        </h2>
-      </div>
-      <div class="container">
-        <div class="columns is-multiline">
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Cárdenas Government Website.
-              </h4>
-              <small class="has-text-grey text-period">(Cárdenas Government)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Citizen Service Platform.
-              </h4>
-              <small class="has-text-grey text-period">(Cárdenas Government)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Transit and Road System.
-              </h4>
-              <small class="has-text-grey text-period">(Comalcalco Government)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                School Control System.
-              </h4>
-              <small class="has-text-grey text-period">(Jean Piaget College)</small>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-multiline">
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                API development for Booking Enginee.
-              </h4>
-              <small class="has-text-grey text-period">(Behotels Corporation)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Human Resources platform.
-              </h4>
-              <small class="has-text-grey text-period">(Behotels Corporation)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Ticket Sales Platform.
-              </h4>
-              <small class="has-text-grey text-period">(Behotels Corporation)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Corporation websites
-              </h4>
-              <small class="has-text-grey text-period">(Behotels Corporation)</small>
-            </div>
-          </div>
-        </div>
-        <div class="columns is-multiline">
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                GCashless NFC App.
-              </h4>
-              <small class="has-text-grey text-period">(Caribbean Digital Group)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                Reservation Platform.
-              </h4>
-              <small class="has-text-grey text-period">(Caribbean Digital Group)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                GigNet Odoo.
-              </h4>
-              <small class="has-text-grey text-period"> (Gignet S.A. de C.V.)</small>
-            </div>
-          </div>
-          <div class="column is-3 ml-auto">
-            <div class="mx-auto box has-background-light has-text-centered box-height">
-              <h4 class="is-size-5 mb-2 has-text-weight-bold">
-                GigNet App.
-              </h4>
-              <small class="has-text-grey text-period"> (Gignet S.A. de C.V.)</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container has-text-centered">
-        <h2 class="has-text-grey mt-2 mb-3 is-size-1 is-size-3-mobile has-text-weight-bold">
-          Other skills
-        </h2>
-      </div>
-      <div class="container">
-        <div class="field is-grouped is-grouped-multiline">
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="far fa-file-code" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Git</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="far fa-file-code" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Github</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Odoo ERP</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light"> Odoo.sh </span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="far fa-file-code" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Flask</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="far fa-file-code" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Django</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="far fa-file-code" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Golang</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-database" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Mongo DB</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-database" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Sequelize</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-database" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Supabase</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-database" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">SQLite</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">RouterOS</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Stripe</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Mercado Pago</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">HSBC RAP</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Wordpress</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Netlify</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Heroku</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Digital Ocean</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Alestra</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">AWS</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Microsoft Office</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Sentry.io</span>
-            </div>
-          </div>
-
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-primary">
-                <i class="fas fa-rocket" aria-hidden="true"></i>
-              </span>
-              <span class="tag is-light">Linux</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <footer class="section">
-      <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
-      <div class="container">
-        <div class="is-flex-tablet is-justify-content-between is-align-items-center">
-          <p>Curriculum vitae - Edson Fernando Ventura Oropeza</p>
-          <div class="py-2 is-hidden-tablet"></div>
-          <div class="ml-auto">
-            <a class="mr-4 is-inline-block" href="https://github.com/edsonfervo16mx" target="_blank">
-              <span class="icon has-text-primary">
-                <i class="fa fa-brands fa-github" aria-hidden="true"></i>
-              </span>
-              edsonfervo16mx
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+              Get in Touch
             </a>
-            <a class="mr-4 is-inline-block" href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_black">
-              <span class="icon has-text-primary">
-                <i class="fa fa-brands fa-linkedin" aria-hidden="true"></i>
-              </span>
-              Edson Ventura
-            </a>
-            <a class="mr-4 is-inline-block" href="https://twitter.com/EdsonFOropeza" target="_blank">
-              <span class="icon has-text-primary">
-                <i class="fa fa-brands fa-twitter" aria-hidden="true"></i>
-              </span>
-              @EdsonFOropeza
+            <a href="#projects"
+              class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              View Projects
             </a>
           </div>
         </div>
+        <div class="lg:w-1/3 flex justify-center">
+          <div class="relative">
+            <img src="https://avatars.githubusercontent.com/u/18149491?v=4" alt="Edson Ventura"
+              class="w-64 h-64 rounded-full border-4 border-white shadow-2xl">
+            <div
+              class="absolute -bottom-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Available to collaborate
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </header>
+
+  <!-- Awards Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Awards & Recognition</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-6 rounded-xl text-center card-hover">
+          <i class="fas fa-trophy text-3xl mb-4"></i>
+          <h4 class="font-bold text-lg mb-2">1st Place</h4>
+          <p class="text-sm">Techstars Startup Weekend Tabasco, 2017</p>
+        </div>
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-6 rounded-xl text-center card-hover">
+          <i class="fas fa-trophy text-3xl mb-4"></i>
+          <h4 class="font-bold text-lg mb-2">1st Place</h4>
+          <p class="text-sm">Hacksureste REDUX Sureste Mexico, 2020</p>
+        </div>
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-6 rounded-xl text-center card-hover">
+          <i class="fas fa-trophy text-3xl mb-4"></i>
+          <h4 class="font-bold text-lg mb-2">1st Place</h4>
+          <p class="text-sm">Techstars Startup Weekend Yucatán, 2022</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-200 h-full"></div>
+
+        <div class="space-y-12">
+          <!-- Cárdenas Government - Oldest (Left) -->
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <i class="fas fa-building text-blue-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">Cárdenas Government, Tabasco</h4>
+                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2013 -
+                        2014</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Web Developer & Database Administrator</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="far fa-file-code mr-1"></i>ASP.NET
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>MySQL
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- Comalcalco Government (Right) -->
+          <div class="flex items-center">
+            <div class="w-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-green-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-green-100 p-3 rounded-lg">
+                    <i class="fas fa-city text-green-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">Comalcalco Government, Tabasco</h4>
+                      <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">2014 -
+                        2015</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Web Developer & Systems Assistant</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="far fa-file-code mr-1"></i>PHP
+                      </span>
+                      <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>Firebird
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jean Piaget College (Left) -->
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-purple-100 p-3 rounded-lg">
+                    <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">Jean Piaget College</h4>
+                      <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">2015 -
+                        2019</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Professor of Computer Science & Robotics</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="far fa-file-code mr-1"></i>PHP
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>MySQL
+                      </span>
+                      <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-rocket mr-1"></i>Arduino
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- Behotels Corporation (Right) -->
+          <div class="flex items-center">
+            <div class="w-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-indigo-100 p-3 rounded-lg">
+                    <i class="fas fa-hotel text-indigo-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">Behotels Corporation</h4>
+                      <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">2019 -
+                        2020</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Backend Developer & Technical Support</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-vuejs mr-1"></i>Vue
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-node-js mr-1"></i>Node.js
+                      </span>
+                      <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-java mr-1"></i>Java
+                      </span>
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="far fa-file-code mr-1"></i>PHP
+                      </span>
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>SQL Server
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GigNet (Left) -->
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <i class="fas fa-wifi text-blue-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">GigNet S.A. de C.V.</h4>
+                      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2019 -
+                        2022*</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Software Engineer</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-python mr-1"></i>Python
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-node-js mr-1"></i>Node.js
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-vuejs mr-1"></i>Vue 3
+                      </span>
+                      <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>PostgreSQL
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+
+          <!-- Caribbean Digital Group (Right) -->
+          <div class="flex items-center">
+            <div class="w-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <div class="bg-white p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-teal-600 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-teal-100 p-3 rounded-lg">
+                    <i class="fas fa-rocket text-teal-600 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-gray-800">Caribbean Digital Group</h4>
+                      <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">2019 -
+                        2023</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Co-founder & Software Engineer</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-vuejs mr-1"></i>Vue
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-node-js mr-1"></i>Node.js
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-database mr-1"></i>MySQL
+                      </span>
+                      <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-android mr-1"></i>Android Studio
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Halsei - Newest (Left) -->
+          <div class="flex items-center">
+            <div class="w-1/2 pr-8">
+              <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover relative">
+                <div
+                  class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-white rounded-full border-4 border-blue-600 shadow-lg">
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-white/20 p-3 rounded-lg">
+                    <i class="fas fa-robot text-white text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="text-xl font-bold text-white">Halsei S.A. de C.V.</h4>
+                      <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">2024 -
+                        Present</span>
+                    </div>
+                    <p class="text-white/90 mb-3">Founder & CEO</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-brain mr-1"></i>Python
+                      </span>
+                      <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-robot mr-1"></i>AI Agents
+                      </span>
+                      <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fab fa-vuejs mr-1"></i>Nuxt 3
+                      </span>
+                      <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-server mr-1"></i>Supabase
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Featured Projects</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Government Projects -->
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl card-hover">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-building text-2xl mr-3"></i>
+            <h4 class="text-lg font-bold">Government Systems</h4>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li>• Cárdenas Government Website</li>
+            <li>• Citizen Service Platform</li>
+            <li>• Transit and Road System</li>
+            <li>• School Control System</li>
+          </ul>
+        </div>
+
+        <!-- Hospitality Projects -->
+        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl card-hover">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-hotel text-2xl mr-3"></i>
+            <h4 class="text-lg font-bold">Hospitality Platforms</h4>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li>• Booking Engine API</li>
+            <li>• Human Resources Platform</li>
+            <li>• Ticket Sales Platform</li>
+            <li>• Corporation Websites</li>
+          </ul>
+        </div>
+
+        <!-- Fintech Projects -->
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl card-hover">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-credit-card text-2xl mr-3"></i>
+            <h4 class="text-lg font-bold">Fintech Solutions</h4>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li>• GCashless NFC App</li>
+            <li>• Reservation Platform</li>
+            <li>• GigNet Odoo ERP</li>
+            <li>• GigNet Mobile App</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Programming Languages -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-code text-blue-600 mr-3"></i>
+            Programming Languages
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">TypeScript</span>
+            <span
+              class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">PHP</span>
+            <span
+              class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+            <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Golang</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">ASP.NET</span>
+          </div>
+        </div>
+
+        <!-- Frontend Technologies -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-palette text-green-600 mr-3"></i>
+            Frontend Technologies
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Vue.js</span>
+            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Vue 3</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">HTML5</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">CSS3</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind
+              CSS</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-database text-purple-600 mr-3"></i>
+            Databases & ORMs
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">SQL
+              Server</span>
+            <span
+              class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Firebird</span>
+            <span
+              class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">MongoDB</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">SQLite</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Sequelize</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Supabase</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Tools -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-tools text-red-600 mr-3"></i>
+            Frameworks & Tools
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
+            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Django</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Express.js</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Odoo ERP</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Odoo.sh</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">WordPress</span>
+          </div>
+        </div>
+
+        <!-- DevOps & Cloud -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-cloud text-indigo-600 mr-3"></i>
+            DevOps & Cloud
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Git</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">GitHub</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">AWS</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Digital
+              Ocean</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Heroku</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Netlify</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Linux</span>
+          </div>
+        </div>
+
+        <!-- Payment & Services -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-credit-card text-green-600 mr-3"></i>
+            Payment & Services
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Stripe</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Mercado
+              Pago</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">HSBC RAP</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">RouterOS</span>
+            <span
+              class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Sentry.io</span>
+            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Alestra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+        <p class="text-gray-600 mt-4">I'm always interested in new opportunities and exciting projects.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="https://github.com/edsonfervo16mx" target="_blank"
+          class="bg-gray-900 text-white p-6 rounded-xl text-center card-hover group">
+          <i class="fab fa-github text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-lg mb-2">GitHub</h4>
+          <p class="text-gray-300">edsonfervo16mx</p>
+        </a>
+
+        <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
+          class="bg-blue-600 text-white p-6 rounded-xl text-center card-hover group">
+          <i class="fab fa-linkedin text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-lg mb-2">LinkedIn</h4>
+          <p class="text-blue-100">Edson Ventura</p>
+        </a>
+
+        <a href="https://twitter.com/EdsonFOropeza" target="_blank"
+          class="bg-blue-400 text-white p-6 rounded-xl text-center card-hover group">
+          <i class="fab fa-twitter text-3xl mb-4 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-lg mb-2">Twitter</h4>
+          <p class="text-blue-50">@EdsonFOropeza</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-300">© 2024 Edson Fernando Ventura Oropeza. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://github.com/edsonfervo16mx" target="_blank"
+            class="text-gray-300 hover:text-white transition-colors">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
+            class="text-gray-300 hover:text-white transition-colors">
+            <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="https://twitter.com/EdsonFOropeza" target="_blank"
+            class="text-gray-300 hover:text-white transition-colors">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smooth scrolling script -->
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.card-hover, section').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </body>
 
 </html>
