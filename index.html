@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description"
-    content="Edson Fernando Ventura Oropeza - Software Engineer with 10+ years of experience in full-stack development, specializing in Node.js, Vue.js, Python, and Odoo ERP. Based in Mexico with expertise in government systems, hospitality platforms, and fintech applications.">
+    content="Edson Fernando Ventura Oropeza - Software Engineer with 15+ years of experience in full-stack development, specializing in Node.js, Vue.js, Python, and Odoo ERP. Based in Mexico with expertise in government systems, hospitality platforms, and fintech applications.">
   <meta name="author" content="Edson Fernando Ventura Oropeza">
   <meta name="keywords"
     content="Software Engineer, Full Stack Developer, Node.js, Vue.js, Python, Odoo ERP, Mexico, Edson Ventura, Edson Fernando Ventura Oropeza, Caribbean Digital Group, GigNet, Tabasco, Tulum, Quintana Roo, Government Systems, Hospitality Platforms, Fintech, API Development, Database Administration">
@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://edsonfervo16mx.github.io/">
   <meta property="og:title" content="Edson Ventura - Software Engineer">
   <meta property="og:description"
-    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
+    content="Full Stack Developer with 15+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
 
   <!-- Twitter -->
@@ -24,7 +24,7 @@
   <meta property="twitter:url" content="https://edsonfervo16mx.github.io/">
   <meta property="twitter:title" content="Edson Ventura - Software Engineer">
   <meta property="twitter:description"
-    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
+    content="Full Stack Developer with 15+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
   <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
 
   <!-- Favicon -->
@@ -46,6 +46,9 @@
   <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
   <meta name="theme-color" content="#3b82f6">
 
+  <!-- Vue 3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -59,6 +62,10 @@
     rel="stylesheet">
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
     }
@@ -89,725 +96,319 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile-specific improvements */
     @media (max-width: 640px) {
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .skill-tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-      }
-
-      .card-hover:hover {
-        transform: none;
-      }
+      .container { padding-left: 1rem; padding-right: 1rem; }
+      .skill-tag { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+      .card-hover:hover { transform: none; }
     }
 
-    /* Tablet improvements */
     @media (min-width: 641px) and (max-width: 1024px) {
-      .container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
+      .container { padding-left: 1.5rem; padding-right: 1.5rem; }
     }
 
-    /* Ensure proper spacing on very small screens */
     @media (max-width: 480px) {
-      .py-12 {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      .py-16 {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-
-      .mb-8 {
-        margin-bottom: 1.5rem;
-      }
-
-      .mb-12 {
-        margin-bottom: 2rem;
-      }
+      .py-12 { padding-top: 2rem;  padding-bottom: 2rem; }
+      .py-16 { padding-top: 3rem;  padding-bottom: 3rem; }
+      .mb-8  { margin-bottom: 1.5rem; }
+      .mb-12 { margin-bottom: 2rem; }
     }
   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
-  <!-- Header Section -->
-  <header class="gradient-bg text-white py-12 lg:py-20">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="w-full lg:w-2/3 mb-8 lg:mb-0 text-center lg:text-left">
-          <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 animate-fade-in">
-            Edson Ventura
-          </h1>
-          <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 lg:mb-6 text-blue-100">
-            Software Engineer
-          </h2>
-          <p class="text-base sm:text-lg lg:text-xl text-blue-50 mb-6 lg:mb-8 leading-relaxed">
-            Full Stack Developer with 15+ years of experience in modern web technologies, enterprise systems, and
-            AI-driven solutions. Founder and visionary behind multiple tech ventures, passionate about building scalable
-            products and leading digital innovation across industries.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <a href="#contact"
-              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center">
-              Get in Touch
+  <div id="app">
+
+    <!-- Loading state -->
+    <div v-if="!loaded" class="min-h-screen flex items-center justify-center bg-gray-50">
+      <i class="fas fa-circle-notch fa-spin text-blue-600 text-4xl"></i>
+    </div>
+
+    <template v-else>
+
+      <!-- ── Header ─────────────────────────────────────────────── -->
+      <header class="gradient-bg text-white py-12 lg:py-20">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="flex flex-col lg:flex-row items-center justify-between">
+
+            <div class="w-full lg:w-2/3 mb-8 lg:mb-0 text-center lg:text-left">
+              <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 animate-fade-in">
+                {{ profile.name }}
+              </h1>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 lg:mb-6 text-blue-100">
+                {{ profile.title }}
+              </h2>
+              <p class="text-base sm:text-lg lg:text-xl text-blue-50 mb-6 lg:mb-8 leading-relaxed">
+                {{ profile.description }}
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                <a v-for="cta in profile.cta" :key="cta.href"
+                   :href="cta.href"
+                   :class="cta.variant === 'primary'
+                     ? 'bg-white text-blue-600 hover:bg-blue-50'
+                     : 'border-2 border-white text-white hover:bg-white hover:text-blue-600'"
+                   class="px-6 py-3 rounded-lg font-semibold transition-colors text-center">
+                  {{ cta.label }}
+                </a>
+              </div>
+            </div>
+
+            <div class="w-full lg:w-1/3 flex justify-center">
+              <div class="relative">
+                <img :src="profile.avatar" :alt="profile.name"
+                  class="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-white shadow-2xl">
+                <div class="absolute -bottom-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  {{ profile.status }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </header>
+
+      <!-- ── Awards ─────────────────────────────────────────────── -->
+      <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="text-center mb-12">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Awards & Recognition</h3>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
+            <div v-for="award in awards" :key="award.description"
+                 :class="'bg-gradient-to-r ' + award.gradient"
+                 class="text-white p-4 lg:p-6 rounded-xl text-center card-hover">
+              <i :class="award.icon" class="text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
+              <h4 class="font-bold text-base lg:text-lg mb-2">{{ award.title }}</h4>
+              <p class="text-xs lg:text-sm">{{ award.description }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Experience ─────────────────────────────────────────── -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h3>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+          <div class="space-y-6 lg:space-y-8">
+            <template v-for="job in experience" :key="job.company">
+
+              <!-- Gradient variant (Halsei, GigNet) -->
+              <div v-if="job.variant === 'gradient'"
+                   class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                  <div class="flex items-start space-x-4 mb-4 lg:mb-0">
+                    <div class="bg-white/20 p-3 rounded-lg flex-shrink-0">
+                      <i :class="job.icon" class="text-white text-xl"></i>
+                    </div>
+                    <div>
+                      <h4 class="text-xl font-bold text-white">{{ job.company }}</h4>
+                      <p class="text-white/90">{{ job.role }}</p>
+                    </div>
+                  </div>
+                  <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium self-start">
+                    {{ job.period }}
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span v-for="skill in job.skills" :key="skill.label"
+                        class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <i :class="skill.icon" class="mr-1"></i>{{ skill.label }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card variant (remaining jobs) -->
+              <div v-else class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                  <div class="flex items-start space-x-4 mb-4 lg:mb-0">
+                    <div :class="color(job.theme).bg" class="p-3 rounded-lg flex-shrink-0">
+                      <i :class="[job.icon, color(job.theme).icon]" class="text-xl"></i>
+                    </div>
+                    <div>
+                      <h4 class="text-xl font-bold text-gray-800">{{ job.company }}</h4>
+                      <p class="text-gray-600">{{ job.role }}</p>
+                    </div>
+                  </div>
+                  <span :class="[color(job.theme).bg, color(job.theme).text]"
+                        class="px-3 py-1 rounded-full text-sm font-medium self-start">
+                    {{ job.period }}
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span v-for="skill in job.skills" :key="skill.label"
+                        :class="[color(skill.theme).bg, color(skill.theme).text]"
+                        class="skill-tag px-3 py-1 rounded-full text-sm font-medium">
+                    <i :class="skill.icon" class="mr-1"></i>{{ skill.label }}
+                  </span>
+                </div>
+              </div>
+
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Projects ───────────────────────────────────────────── -->
+      <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Featured Projects</h3>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+            <div v-for="project in projects" :key="project.title"
+                 :class="'bg-gradient-to-br ' + project.gradient"
+                 class="text-white p-4 lg:p-6 rounded-xl card-hover">
+              <div class="flex items-center mb-3 lg:mb-4">
+                <i :class="project.icon" class="text-xl lg:text-2xl mr-3"></i>
+                <h4 class="text-base lg:text-lg font-bold">{{ project.title }}</h4>
+              </div>
+              <p v-if="project.description" class="text-xs lg:text-sm mb-3">{{ project.description }}</p>
+              <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
+                <li v-for="item in project.items" :key="item">• {{ item }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Skills ─────────────────────────────────────────────── -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h3>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div v-for="group in skills" :key="group.category"
+                 class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
+              <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
+                <i :class="[group.icon, group.iconColor]" class="mr-3"></i>{{ group.category }}
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span v-for="item in group.items" :key="item.label"
+                      :class="[color(item.theme).bg, color(item.theme).text]"
+                      class="skill-tag px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">
+                  {{ item.label }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Contact ────────────────────────────────────────────── -->
+      <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+          <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h3>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            <p class="text-gray-600 mt-4">I'm always interested in new opportunities and exciting projects.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <a v-for="link in contact" :key="link.platform"
+               :href="link.url" target="_blank"
+               :class="[link.cardClass, link.spanClass || '']"
+               class="text-white p-4 lg:p-6 rounded-xl text-center card-hover group">
+              <i :class="link.icon"
+                 class="text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
+              <h4 class="font-bold text-base lg:text-lg mb-2">{{ link.platform }}</h4>
+              <p :class="link.textClass" class="text-sm lg:text-base">{{ link.handle }}</p>
             </a>
-            <a href="#projects"
-              class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors text-center">
-              View Projects
-            </a>
           </div>
         </div>
-        <div class="w-full lg:w-1/3 flex justify-center">
-          <div class="relative">
-            <img src="https://avatars.githubusercontent.com/u/18149491?v=4" alt="Edson Ventura"
-              class="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-white shadow-2xl">
-            <div
-              class="absolute -bottom-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-              Available to collaborate
+      </section>
+
+      <!-- ── Footer ─────────────────────────────────────────────── -->
+      <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <p class="text-gray-300">
+                © {{ currentYear }} Edson Fernando Ventura Oropeza. All rights reserved.
+              </p>
+            </div>
+            <div class="flex space-x-6">
+              <a v-for="link in contact" :key="link.platform"
+                 :href="link.url" target="_blank"
+                 class="text-gray-300 hover:text-white transition-colors">
+                <i :class="link.icon" class="text-xl"></i>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </header>
+      </footer>
 
-  <!-- Awards Section -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">Awards & Recognition</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Tabasco, 2017</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Hacksureste REDUX Sureste Mexico, 2020</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Yucatán, 2022</p>
-        </div>
-        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-chalkboard-teacher text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Mentor</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Yucatán, 2023</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-green-400 to-green-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Finalist</h4>
-          <p class="text-xs lg:text-sm">Startup World Cup Latinoamerica, Cancún, 2024</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </template>
+  </div>
 
-  <!-- Experience Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-      </div>
-
-      <div class="space-y-6 lg:space-y-8">
-        <!-- Halsei - Newest -->
-        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-white/20 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-robot text-white text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-white">Halsei S.A. de C.V.</h4>
-                <p class="text-white/90">Founder & CEO</p>
-              </div>
-            </div>
-            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium self-start">2024 -
-              Present</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-brain mr-1"></i>Python
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-robot mr-1"></i>AI
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Nuxt 3
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-server mr-1"></i>Supabase
-            </span>
-          </div>
-        </div>
-
-        <!-- GigNet -->
-        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-white/20 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-wifi text-white text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-white">GigNet S.A. de C.V.</h4>
-                <p class="text-white/90">Development Lead</p>
-              </div>
-            </div>
-            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              Present</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-python mr-1"></i>Python
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue 3
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>PostgreSQL
-            </span>
-          </div>
-        </div>
-
-        <!-- Caribbean Digital Group -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-teal-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-rocket text-teal-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Caribbean Digital Group</h4>
-                <p class="text-gray-600">Co-founder & Software Engineer</p>
-              </div>
-            </div>
-            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              2023</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-android mr-1"></i>Android Studio
-            </span>
-          </div>
-        </div>
-
-        <!-- Behotels Corporation -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-indigo-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-hotel text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Behotels Corporation</h4>
-                <p class="text-gray-600">Backend Developer & Technical Support</p>
-              </div>
-            </div>
-            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              2020</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-java mr-1"></i>Java
-            </span>
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>SQL Server
-            </span>
-          </div>
-        </div>
-
-        <!-- Jean Piaget College -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-purple-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Jean Piaget College</h4>
-                <p class="text-gray-600">Professor of Computer Science & Robotics</p>
-              </div>
-            </div>
-            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium self-start">2015 -
-              2019</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-            <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-rocket mr-1"></i>Arduino
-            </span>
-          </div>
-        </div>
-
-        <!-- Tabasco Government -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-green-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-city text-green-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Tabasco Government</h4>
-                <p class="text-gray-600">Web Developer & Systems Assistant</p>
-              </div>
-            </div>
-            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium self-start">2014 -
-              2015</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>Firebird
-            </span>
-          </div>
-        </div>
-
-        <!-- Cárdenas Government - Oldest -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-blue-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-building text-blue-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Cárdenas Government, Tabasco</h4>
-                <p class="text-gray-600">Web Developer & Database Administrator</p>
-              </div>
-            </div>
-            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium self-start">2013 -
-              2014</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>ASP.NET
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Featured Projects</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        <!-- Government Projects -->
-        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-building text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Government Systems and Corporations</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Cárdenas Government Website</li>
-            <li>• Citizen Service Platform</li>
-            <li>• Transit and Road System</li>
-            <li>• School Control System</li>
-          </ul>
-        </div>
-
-        <!-- Hospitality Projects -->
-        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-hotel text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Hospitality Platforms</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Booking Engine API</li>
-            <li>• Human Resources Platform</li>
-            <li>• Ticket Sales Platform</li>
-            <li>• Corporation Websites</li>
-          </ul>
-        </div>
-
-        <!-- Fintech Projects -->
-        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-credit-card text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Fintech Solutions</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• GCashless NFC App</li>
-            <li>• Reservation Platform</li>
-            <li>• Bank Integration System</li>
-            <li>• Stripe Integration</li>
-          </ul>
-        </div>
-
-        <!-- Telecommunications Software -->
-        <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-wifi text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Telecommunications Software</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Guest Portal Management</li>
-            <li>• Network Administration</li>
-            <li>• WISP Management System</li>
-            <li>• GigNet Odoo ERP</li>
-            <li>• GigNet Mobile App</li>
-          </ul>
-        </div>
-
-        <!-- Open Source Software -->
-        <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fab fa-github text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Open Source Software</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Odoo Community Contributions</li>
-            <li>• Chrome Extensions</li>
-            <li>• Payment Integration Libraries</li>
-            <li>• Project Boilerplate Libraries</li>
-          </ul>
-        </div>
-
-        <!-- AI Platform -->
-        <div class="bg-gradient-to-br from-pink-500 to-pink-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-brain text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Halsei - AI Platform</h4>
-          </div>
-          <p class="text-xs lg:text-sm mb-3">AI-powered data analysis platform that transforms spreadsheets into clear
-            insights and
-            strategic decisions—easily and efficiently.</p>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Data Analysis & Insights</li>
-            <li>• Strategic Decision Support</li>
-            <li>• Spreadsheet Transformation</li>
-            <li>• AI-Powered Analytics</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <!-- Programming Languages -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-code text-blue-600 mr-3"></i>
-            Programming Languages
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">JavaScript</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">TypeScript</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Node.js</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">PHP</span>
-            <span
-              class="skill-tag bg-yellow-100 text-yellow-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Python</span>
-            <span
-              class="skill-tag bg-orange-100 text-orange-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Java</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Golang</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">ASP.NET</span>
-          </div>
-        </div>
-
-        <!-- Frontend Technologies -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-palette text-green-600 mr-3"></i>
-            Frontend Technologies
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Vue.js</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Vue
-              3</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">React</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">HTML5</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">CSS3</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Tailwind
-              CSS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Bootstrap</span>
-          </div>
-        </div>
-
-        <!-- Databases -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-database text-purple-600 mr-3"></i>
-            Databases & ORMs
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">MySQL</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">PostgreSQL</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">SQL
-              Server</span>
-            <span
-              class="skill-tag bg-orange-100 text-orange-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Firebird</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">MongoDB</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">SQLite</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Sequelize</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Supabase</span>
-          </div>
-        </div>
-
-        <!-- Frameworks & Tools -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-tools text-red-600 mr-3"></i>
-            Frameworks & Tools
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Flask</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Django</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Express.js</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Odoo
-              ERP</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Odoo.sh</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">WordPress</span>
-          </div>
-        </div>
-
-        <!-- DevOps & Cloud -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-cloud text-indigo-600 mr-3"></i>
-            DevOps & Cloud
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Git</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">GitHub</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">AWS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Digital
-              Ocean</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Heroku</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Netlify</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Linux</span>
-          </div>
-        </div>
-
-        <!-- Payment & Services -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-credit-card text-green-600 mr-3"></i>
-            Payment & Services
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Stripe</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Mercado
-              Pago</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">HSBC
-              RAP</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">RouterOS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Sentry.io</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Alestra</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-        <p class="text-gray-600 mt-4">I'm always interested in new opportunities and exciting projects.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <a href="https://github.com/edsonfervo16mx" target="_blank"
-          class="bg-gray-900 text-white p-4 lg:p-6 rounded-xl text-center card-hover group">
-          <i class="fab fa-github text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">GitHub</h4>
-          <p class="text-gray-300 text-sm lg:text-base">edsonfervo16mx</p>
-        </a>
-
-        <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
-          class="bg-blue-600 text-white p-4 lg:p-6 rounded-xl text-center card-hover group">
-          <i class="fab fa-linkedin text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">LinkedIn</h4>
-          <p class="text-blue-100 text-sm lg:text-base">Edson Ventura</p>
-        </a>
-
-        <a href="https://twitter.com/EdsonFOropeza" target="_blank"
-          class="bg-blue-400 text-white p-4 lg:p-6 rounded-xl text-center card-hover group sm:col-span-2 lg:col-span-1">
-          <i class="fab fa-twitter text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Twitter</h4>
-          <p class="text-blue-50 text-sm lg:text-base">@EdsonFOropeza</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-gray-300">©
-            <script>document.write(new Date().getFullYear())</script> Edson Fernando Ventura Oropeza. All rights
-            reserved.
-          </p>
-        </div>
-        <div class="flex space-x-6">
-          <a href="https://github.com/edsonfervo16mx" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-github text-xl"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-linkedin text-xl"></i>
-          </a>
-          <a href="https://twitter.com/EdsonFOropeza" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-twitter text-xl"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Smooth scrolling script -->
   <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+    const { createApp, ref, onMounted, nextTick } = Vue;
+
+    createApp({
+      setup() {
+        const loaded = ref(false);
+        const profile = ref(null);
+        const awards = ref([]);
+        const experience = ref([]);
+        const projects = ref([]);
+        const skills = ref([]);
+        const contact = ref([]);
+        const currentYear = new Date().getFullYear();
+
+        const COLOR = {
+          blue:   { bg: 'bg-blue-100',   text: 'text-blue-800',   icon: 'text-blue-600' },
+          green:  { bg: 'bg-green-100',  text: 'text-green-800',  icon: 'text-green-600' },
+          yellow: { bg: 'bg-yellow-100', text: 'text-yellow-800', icon: 'text-yellow-600' },
+          orange: { bg: 'bg-orange-100', text: 'text-orange-800', icon: 'text-orange-600' },
+          red:    { bg: 'bg-red-100',    text: 'text-red-800',    icon: 'text-red-600' },
+          purple: { bg: 'bg-purple-100', text: 'text-purple-800', icon: 'text-purple-600' },
+          teal:   { bg: 'bg-teal-100',   text: 'text-teal-800',   icon: 'text-teal-600' },
+          indigo: { bg: 'bg-indigo-100', text: 'text-indigo-800', icon: 'text-indigo-600' },
+        };
+
+        function color(theme) {
+          return COLOR[theme] || COLOR.blue;
         }
-      });
-    });
 
-    // Add scroll animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+        function initObserver() {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+          document.querySelectorAll('.card-hover, section').forEach(el => observer.observe(el));
         }
-      });
-    }, observerOptions);
 
-    // Observe all cards and sections
-    document.querySelectorAll('.card-hover, section').forEach(el => {
-      observer.observe(el);
-    });
+        onMounted(async () => {
+          try {
+            const data = await fetch('data.json').then(r => r.json());
+            profile.value   = data.profile;
+            awards.value    = data.awards;
+            experience.value = data.experience;
+            projects.value  = data.projects;
+            skills.value    = data.skills;
+            contact.value   = data.contact;
+            loaded.value    = true;
+            await nextTick();
+            initObserver();
+          } catch (err) {
+            console.error('Failed to load portfolio data:', err);
+          }
+        });
+
+        return { loaded, profile, awards, experience, projects, skills, contact, currentYear, color };
+      }
+    }).mount('#app');
   </script>
-</body>
 
+</body>
 </html>
