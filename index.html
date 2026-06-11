@@ -512,36 +512,33 @@ createApp({
       const sp = scrollY.value / winH.value;
       const diff = sp - i * DWELL;
 
-      // ── opacity: single continuous window, no discontinuities ──
-      // Full opacity from diff 0.1→0.9; 0.12-unit fades at each edge; invisible outside.
-      const FADE = 0.12;
-      const dist = Math.abs(diff - 0.5); // distance from center of dwell (0.5)
+      // ── opacity: tight window — sections invisible outside their dwell ──
+      // Adjacent sections (DWELL=1.35 apart) can never be simultaneously visible.
+      const FADE = 0.10;
+      const dist = Math.abs(diff - 0.5);
       let opacity;
-      if(dist >= 0.5 + FADE)       opacity = 0;
-      else if(dist >= 0.5)         opacity = 1 - (dist - 0.5) / FADE;
-      else                         opacity = 1;
+      if(dist >= 0.5 + FADE)  opacity = 0;
+      else if(dist >= 0.5)    opacity = 1 - (dist - 0.5) / FADE;
+      else                    opacity = 1;
 
-      // ── transform: 3D journey through tunnel ──
+      // ── transform: single continuous formula — no scale jump at diff=0 ──
+      // Before dwell (diff<0) reuses the dwell equation extrapolated backward,
+      // so scale/tz are identical at the boundary and there is no visual pop.
       let scale, tz;
-      if(diff < 0){
-        const d = Math.min(-diff, 3.5);
-        scale = Math.max(0.07, 1 - d * 0.26);
-        tz    = -d * 720;
-      } else if(diff < 1){
-        scale = 0.22 + diff * 0.78;
-        tz    = (1 - diff) * -660;
-        if(diff > 0.45) activeIdx.value = i;
+      if(diff < 1){
+        scale = Math.max(0.06, 0.22 + diff * 0.78);
+        tz    = (1 - diff) * -680;
       } else {
         const d = Math.min(diff - 1, 2.2);
         scale = 1 + d * 0.85;
-        tz    = d * 580;
+        tz    = d * 600;
       }
 
-      const hidden = opacity <= 0.01;
+      const hidden = opacity <= 0.005;
       return {
         transform:     `translateZ(${tz}px) scale(${scale})`,
         opacity,
-        zIndex:        Math.round((1 - Math.abs(diff - 0.5)) * 100),
+        zIndex:        Math.round((1 - dist) * 100),
         pointerEvents: hidden ? 'none' : '',
         visibility:    hidden ? 'hidden' : 'visible',
       };
