@@ -1,806 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Edson Ventura — Software Engineer & CTO</title>
+<meta name="description" content="Full Stack Developer with 20+ years of experience in modern web technologies, enterprise systems, and AI-driven solutions. Founder and CTO based in Quintana Roo, Mexico."/>
+<meta name="keywords" content="Edson Ventura, Software Engineer, CTO, Full Stack Developer, Vue.js, Node.js, Python, Mexico"/>
+<meta name="author" content="Edson Fernando Ventura Oropeza"/>
+<meta property="og:title" content="Edson Ventura — Software Engineer & CTO"/>
+<meta property="og:description" content="Full Stack Developer with 20+ years building scalable products and leading digital innovation."/>
+<meta property="og:url" content="https://edsonfervo16mx.github.io/"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:creator" content="@EdsonFOropeza"/>
+<link rel="canonical" href="https://edsonfervo16mx.github.io/"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Edson Fernando Ventura Oropeza","jobTitle":"Software Engineer & CTO","url":"https://edsonfervo16mx.github.io/","sameAs":["https://github.com/edsonfervo16mx","https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/","https://twitter.com/EdsonFOropeza"],"address":{"@type":"PostalAddress","addressRegion":"Quintana Roo","addressCountry":"MX"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cyan:#22d3ee;--sky:#38bdf8;--indigo:#818cf8;--emerald:#34d399;
+  --bg:#00040e;--glass:rgba(255,255,255,0.04);--border:rgba(34,211,238,0.15);
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+#tunnel-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#scroll-space{height:1000vh;position:relative;z-index:1;pointer-events:none}
+#app{position:fixed;inset:0;z-index:2;pointer-events:none;perspective:1400px;perspective-origin:50% 50%}
 
-  <!-- ── SEO ────────────────────────────────────────────────────── -->
-  <title>Edson Ventura — Software Engineer & CTO | Full Stack Developer | Mexico</title>
-  <meta name="description"
-    content="Edson Fernando Ventura Oropeza — Software Engineer & CTO with 20+ years of experience in full-stack development. Expert in Node.js, Vue.js, Python, and Odoo ERP. Founder of multiple tech ventures. Based in Quintana Roo, Mexico.">
-  <meta name="keywords"
-    content="Edson Ventura, Edson Fernando Ventura Oropeza, Software Engineer, Full Stack Developer, CTO, Node.js, Vue.js, Nuxt 3, Python, Odoo ERP, Flowbit Software, GigNet, Quintana Roo, Mexico, Tulum, API Development, Web Developer, AI Platform, Halsei">
-  <meta name="author" content="Edson Fernando Ventura Oropeza">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://edsonfervo16mx.github.io/">
+/* ── section shells ── */
+.journey-section{
+  position:absolute;inset:0;
+  transform-style:preserve-3d;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.journey-section.is-active{pointer-events:auto}
 
-  <!-- ── Open Graph ─────────────────────────────────────────────── -->
-  <meta property="og:type"        content="website">
-  <meta property="og:locale"      content="en_US">
-  <meta property="og:url"         content="https://edsonfervo16mx.github.io/">
-  <meta property="og:title"       content="Edson Ventura — Software Engineer & CTO">
-  <meta property="og:description" content="Full Stack Developer with 20+ years of experience. Expert in Node.js, Vue.js, Python, and Odoo ERP. CTO at Flowbit Software, Development Lead at GigNet.">
-  <meta property="og:image"       content="https://avatars.githubusercontent.com/u/18149491?v=4">
-  <meta property="og:image:width"  content="400">
-  <meta property="og:image:height" content="400">
-  <meta property="og:site_name"   content="Edson Ventura Portfolio">
+/* ── scattered node ── */
+.s-node{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  pointer-events:auto;
+}
 
-  <!-- ── Twitter Card ──────────────────────────────────────────── -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:site"        content="@EdsonFOropeza">
-  <meta name="twitter:creator"     content="@EdsonFOropeza">
-  <meta name="twitter:url"         content="https://edsonfervo16mx.github.io/">
-  <meta name="twitter:title"       content="Edson Ventura — Software Engineer & CTO">
-  <meta name="twitter:description" content="Full Stack Developer with 20+ years of experience. Node.js, Vue.js, Python, Odoo ERP. Based in Mexico.">
-  <meta name="twitter:image"       content="https://avatars.githubusercontent.com/u/18149491?v=4">
+/* ── neural SVG overlay ── */
+.neural-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+@keyframes netPulse{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+.n-line{stroke-dasharray:6 18;animation:netPulse 2.4s linear infinite;stroke:rgba(34,211,238,0.18);stroke-width:1}
+.n-line-warm{stroke:rgba(251,191,36,0.18)}
 
-  <!-- ── Schema.org JSON-LD ────────────────────────────────────── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Edson Fernando Ventura Oropeza",
-    "alternateName": "Edson Ventura",
-    "description": "Software Engineer & CTO with 20+ years of experience in full-stack development, enterprise systems, and AI-driven solutions.",
-    "url": "https://edsonfervo16mx.github.io/",
-    "image": "https://avatars.githubusercontent.com/u/18149491?v=4",
-    "jobTitle": "Software Engineer & CTO",
-    "worksFor": [
-      { "@type": "Organization", "name": "Flowbit Software" },
-      { "@type": "Organization", "name": "GigNet S.A. de C.V." }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "Quintana Roo",
-      "addressCountry": "MX"
-    },
-    "sameAs": [
-      "https://github.com/edsonfervo16mx",
-      "https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/",
-      "https://twitter.com/EdsonFOropeza"
-    ],
-    "knowsAbout": [
-      "JavaScript", "TypeScript", "Node.js", "Vue.js", "Nuxt 3",
-      "Python", "Odoo ERP", "Software Architecture", "AI Development",
-      "Full Stack Development", "PostgreSQL", "Supabase"
-    ]
-  }
-  </script>
+/* ── chamfer panel ── */
+.chamfer{
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.chamfer-sm{
+  clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+}
 
-  <!-- ── Favicon ───────────────────────────────────────────────── -->
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="theme-color" content="#0f172a">
+/* ── home hero ── */
+.hero-ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(34,211,238,0.1);
+  animation:ring-pulse 4s ease-in-out infinite;
+}
+@keyframes ring-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.04);opacity:.9}}
 
-  <!-- ── Vue 3 ─────────────────────────────────────────────────── -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+/* ── glow text ── */
+.glow{text-shadow:0 0 20px rgba(34,211,238,0.5),0 0 40px rgba(34,211,238,0.25)}
+.grad{background:linear-gradient(135deg,#38bdf8,#22d3ee,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  <!-- ── Tailwind CSS ──────────────────────────────────────────── -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+/* ── chips ── */
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:20px;font-size:10px;font-weight:500;
+  background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.18);color:var(--cyan);
+  white-space:nowrap;
+}
+.chip-amber{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.2);color:#fbbf24}
+.chip-emerald{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.2);color:var(--emerald)}
+.chip-cyan{background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.2);color:var(--cyan)}
 
-  <!-- ── Font Awesome ──────────────────────────────────────────── -->
-  <script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+/* ── dot nav ── */
+#dot-nav{
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  z-index:100;display:flex;flex-direction:column;gap:10px;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(34,211,238,0.2);border:1px solid rgba(34,211,238,0.35);
+  cursor:pointer;transition:all .3s;
+}
+.dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan);transform:scale(1.4)}
 
-  <!-- ── Google Fonts ──────────────────────────────────────────── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+/* ── progress bar ── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;z-index:200;
+  background:linear-gradient(90deg,var(--cyan),var(--emerald));
+  width:0%;
+}
 
-  <style>
-    /* ── Base ──────────────────────────────────────────────────── */
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; }
+/* ── logo ── */
+#logo{
+  position:fixed;top:20px;left:24px;z-index:100;
+  font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;
+  color:var(--cyan);letter-spacing:.05em;
+  text-shadow:0 0 15px rgba(34,211,238,0.4);
+  pointer-events:none;
+}
 
-    /* ── Hero background ────────────────────────────────────────── */
-    .hero-bg {
-      background-color: #0f172a;
-      background-image:
-        radial-gradient(ellipse 80% 50% at 10% 40%, rgba(37,99,235,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(6,182,212,0.12) 0%, transparent 60%);
-    }
+/* ── mobile pill nav ── */
+#mob-nav{
+  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+  z-index:100;
+  background:rgba(0,4,14,0.85);border:1px solid var(--border);
+  border-radius:40px;padding:8px 16px;gap:16px;backdrop-filter:blur(16px);
+  display:none;
+}
+.mob-dot{width:7px;height:7px;border-radius:50%;background:rgba(34,211,238,0.25);cursor:pointer;transition:all .3s}
+.mob-dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 
-    /* ── SVG grid overlay ───────────────────────────────────────── */
-    .grid-pattern {
-      background-image:
-        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
+/* ── scroll hint ── */
+@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.scroll-hint{display:inline-flex;flex-direction:column;align-items:center;gap:4px;animation:bounce-y 2s ease-in-out infinite;opacity:.5;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-top:22px}
 
-    /* ── Gradient text ──────────────────────────────────────────── */
-    .text-gradient {
-      background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ── Scroll-reveal animations ───────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
-                  transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left  { opacity: 0; transform: translateX(-36px);
-      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(36px);
-      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
-    .delay-6 { transition-delay: 0.6s; }
-
-    /* ── Hero fade-in ───────────────────────────────────────────── */
-    @keyframes heroFade {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-animate      { animation: heroFade 0.8s ease both; }
-    .hero-animate-d1   { animation: heroFade 0.8s 0.15s ease both; }
-    .hero-animate-d2   { animation: heroFade 0.8s 0.3s ease both; }
-    .hero-animate-d3   { animation: heroFade 0.8s 0.45s ease both; }
-    .hero-animate-d4   { animation: heroFade 0.8s 0.6s ease both; }
-
-    /* ── Floating glow orbs ─────────────────────────────────────── */
-    @keyframes float {
-      0%,100% { transform: translateY(0) scale(1); }
-      50%      { transform: translateY(-30px) scale(1.05); }
-    }
-    .orb { animation: float 8s ease-in-out infinite; border-radius: 50%; filter: blur(60px); }
-    .orb-2 { animation-delay: -4s; }
-
-    /* ── Card hover ─────────────────────────────────────────────── */
-    .card {
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
-    }
-
-    /* ── Skill tag ──────────────────────────────────────────────── */
-    .skill-tag { transition: transform 0.15s ease; }
-    .skill-tag:hover { transform: scale(1.06); }
-
-    /* ── Timeline ───────────────────────────────────────────────── */
-    .timeline-line {
-      position: absolute;
-      left: 19px;
-      top: 8px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #3b82f6, #22d3ee 70%, transparent);
-    }
-
-    /* ── Navbar ─────────────────────────────────────────────────── */
-    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-
-    /* ── Section divider ────────────────────────────────────────── */
-    .divider-wave {
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      overflow: hidden; line-height: 0;
-    }
-
-    /* ── Project accent colors ──────────────────────────────────── */
-    .accent-blue   { border-color: #3b82f6; }
-    .accent-emerald{ border-color: #10b981; }
-    .accent-rose   { border-color: #f43f5e; }
-    .accent-indigo { border-color: #6366f1; }
-    .accent-orange { border-color: #f97316; }
-    .accent-cyan   { border-color: #06b6d4; }
-    .icon-blue     { background: #eff6ff; color: #3b82f6; }
-    .icon-emerald  { background: #ecfdf5; color: #10b981; }
-    .icon-rose     { background: #fff1f2; color: #f43f5e; }
-    .icon-indigo   { background: #eef2ff; color: #6366f1; }
-    .icon-orange   { background: #fff7ed; color: #f97316; }
-    .icon-cyan     { background: #ecfeff; color: #06b6d4; }
-    .icon-amber    { background: #fffbeb; color: #f59e0b; }
-
-    /* ── Award card colors ──────────────────────────────────────── */
-    .award-amber  { background: linear-gradient(135deg,#f59e0b,#d97706); }
-    .award-cyan   { background: linear-gradient(135deg,#06b6d4,#0891b2); }
-    .award-emerald{ background: linear-gradient(135deg,#10b981,#059669); }
-
-    /* ── Scrollbar ──────────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 3px; }
-
-    /* ── Mobile ─────────────────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .skill-tag { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
-      .card:hover { transform: none; }
-    }
-  </style>
+/* ── mobile linear fallback ── */
+@media(max-width:767px){
+  #app{position:static;perspective:none;pointer-events:auto}
+  .journey-section{position:static;transform:none!important;opacity:1!important;pointer-events:auto!important;padding:48px 20px 32px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .s-node{position:static!important;transform:none!important;margin:0!important;left:auto!important;top:auto!important;width:100%!important;max-width:400px}
+  .neural-svg{display:none}
+  #dot-nav{display:none!important}
+  #scroll-space{display:none}
+  #tunnel-canvas{opacity:.6}
+  body{background:var(--bg)}
+  h2{text-align:center;margin-bottom:8px}
+}
+@media(min-width:768px){
+  #mob-nav{display:flex!important}
+}
+</style>
 </head>
-
 <body>
+
+<canvas id="tunnel-canvas"></canvas>
+<div id="progress-bar"></div>
+<div id="logo">EV</div>
+<nav id="dot-nav"></nav>
+<nav id="mob-nav"></nav>
+<div id="scroll-space"></div>
+
 <div id="app">
+  <div v-if="loaded">
 
-  <!-- ── Loading ─────────────────────────────────────────────────── -->
-  <div v-if="!loaded" class="min-h-screen flex items-center justify-center bg-slate-950">
-    <div class="text-center">
-      <i class="fas fa-circle-notch fa-spin text-blue-500 text-3xl mb-3 block"></i>
-      <p class="text-slate-400 text-sm">Loading portfolio…</p>
-    </div>
-  </div>
+    <!-- ════ 0  HOME ════ -->
+    <section class="journey-section" :style="sxf(0)" :class="{'is-active':activeIdx===0}">
+      <div class="hero-ring" style="width:300px;height:300px;left:50%;top:50%"></div>
+      <div class="hero-ring" style="width:500px;height:500px;left:50%;top:50%;animation-delay:1.2s;opacity:.35"></div>
+      <div class="hero-ring" style="width:700px;height:700px;left:50%;top:50%;animation-delay:2.4s;opacity:.18"></div>
 
-  <template v-else>
-
-    <!-- ── Scroll progress bar ─────────────────────────────────── -->
-    <div class="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 z-[70] transition-all duration-100"
-         :style="{ width: scrollProgress + '%' }"></div>
-
-    <!-- ════════════════════════════════════════════════════════════
-         NAVIGATION
-    ═══════════════════════════════════════════════════════════════ -->
-    <nav class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300"
-         :class="scrolled
-           ? 'bg-white/90 nav-blur shadow-sm border-b border-slate-100'
-           : 'bg-transparent'">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="flex items-center justify-between h-16">
-
-          <!-- Logo -->
-          <a href="#home" class="flex items-center gap-2 font-extrabold text-lg"
-             :class="scrolled ? 'text-slate-900' : 'text-white'">
-            <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-sm">EV</span>
-            <span class="hidden sm:inline">Edson Ventura</span>
-          </a>
-
-          <!-- Desktop links -->
-          <div class="hidden md:flex items-center gap-1">
-            <a v-for="link in navLinks" :key="link.id"
-               :href="'#' + link.id"
-               class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
-               :class="activeSection === link.id
-                 ? (scrolled ? 'bg-blue-50 text-blue-600' : 'bg-white/15 text-white')
-                 : (scrolled ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' : 'text-white/70 hover:text-white hover:bg-white/10')">
-              {{ link.label }}
+      <div class="s-node" style="left:50%;top:46%">
+        <div style="text-align:center">
+          <div style="width:92px;height:92px;border-radius:50%;overflow:hidden;border:2px solid var(--cyan);box-shadow:0 0 28px rgba(34,211,238,0.4);margin:0 auto 14px">
+            <img :src="data.profile.avatar" style="width:100%;height:100%;object-fit:cover" :alt="data.profile.name"/>
+          </div>
+          <h1 class="glow" style="font-size:clamp(24px,3vw,40px);font-weight:700;margin-bottom:6px">{{ data.profile.name }}</h1>
+          <p class="grad" style="font-size:clamp(13px,1.4vw,18px);font-weight:600;margin-bottom:10px">{{ data.profile.title }}</p>
+          <p style="font-size:12px;color:#94a3b8;max-width:400px;line-height:1.65;margin:0 auto">{{ data.profile.description }}</p>
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <span class="chip"><i class="fas fa-map-marker-alt"></i>{{ data.profile.location }}</span>
+            <span class="chip chip-emerald"><i class="fas fa-circle" style="font-size:7px"></i>{{ data.profile.status }}</span>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <a v-for="c in data.profile.cta" :key="c.label" :href="c.href" @click.prevent="navToHref(c.href)"
+               style="padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer"
+               :style="c.variant==='primary'?'background:var(--cyan);color:#00040e':'border:1px solid var(--cyan);color:var(--cyan);background:transparent'">
+              {{ c.label }}
             </a>
           </div>
-
-          <!-- CTA + Mobile toggle -->
-          <div class="flex items-center gap-3">
-            <a href="#contact"
-               class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-all"
-               :class="scrolled
-                 ? 'bg-blue-600 text-white hover:bg-blue-700'
-                 : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'">
-              <i class="fas fa-paper-plane text-xs"></i> Hire me
-            </a>
-            <button @click="mobileOpen = !mobileOpen"
-                    class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-colors"
-                    :class="scrolled ? 'hover:bg-slate-100' : 'hover:bg-white/10'">
-              <span class="w-5 h-0.5 transition-all duration-300 rounded"
-                    :class="[mobileOpen ? 'rotate-45 translate-y-2' : '', scrolled ? 'bg-slate-700' : 'bg-white']"></span>
-              <span class="w-5 h-0.5 rounded transition-all duration-300"
-                    :class="[mobileOpen ? 'opacity-0' : '', scrolled ? 'bg-slate-700' : 'bg-white']"></span>
-              <span class="w-5 h-0.5 transition-all duration-300 rounded"
-                    :class="[mobileOpen ? '-rotate-45 -translate-y-2' : '', scrolled ? 'bg-slate-700' : 'bg-white']"></span>
-            </button>
+          <div class="scroll-hint">
+            <i class="fas fa-chevron-down"></i>scroll to explore
           </div>
-        </div>
-
-        <!-- Mobile menu -->
-        <div v-if="mobileOpen" class="md:hidden border-t py-3 flex flex-col gap-1"
-             :class="scrolled ? 'border-slate-100' : 'border-white/10'">
-          <a v-for="link in navLinks" :key="link.id"
-             :href="'#' + link.id"
-             @click="mobileOpen = false"
-             class="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
-             :class="scrolled ? 'text-slate-700 hover:bg-slate-50' : 'text-white/80 hover:bg-white/10'">
-            {{ link.label }}
-          </a>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="home" class="relative min-h-screen flex flex-col hero-bg overflow-hidden">
-
-      <!-- Background grid -->
-      <div class="absolute inset-0 grid-pattern"></div>
-
-      <!-- Glow orbs -->
-      <div class="orb absolute top-[-120px] right-[-80px] w-[480px] h-[480px] opacity-25"
-           style="background: radial-gradient(circle, #3b82f6 0%, transparent 70%);"></div>
-      <div class="orb orb-2 absolute bottom-[-60px] left-[-60px] w-[320px] h-[320px] opacity-15"
-           style="background: radial-gradient(circle, #06b6d4 0%, transparent 70%);"></div>
-
-      <!-- SVG decorative lines -->
-      <svg class="absolute right-0 top-0 h-full opacity-[0.04] pointer-events-none"
-           viewBox="0 0 400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <line x1="80"  y1="0" x2="400" y2="900" stroke="white" stroke-width="1"/>
-        <line x1="160" y1="0" x2="480" y2="900" stroke="white" stroke-width="1"/>
-        <line x1="240" y1="0" x2="560" y2="900" stroke="white" stroke-width="0.5"/>
-        <circle cx="80"  cy="200" r="4" fill="white"/>
-        <circle cx="200" cy="450" r="3" fill="white"/>
-        <circle cx="320" cy="700" r="4" fill="white"/>
+    <!-- ════ 1  STATS ════ -->
+    <section class="journey-section" :style="sxf(1)" :class="{'is-active':activeIdx===1}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.stats.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.stats.pos[c[0]][0]+'%'" :y1="SCATTER.stats.pos[c[0]][1]+'%'"
+          :x2="SCATTER.stats.pos[c[1]][0]+'%'" :y2="SCATTER.stats.pos[c[1]][1]+'%'"/>
       </svg>
-
-      <!-- Content -->
-      <div class="relative z-10 flex-1 flex items-center">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full py-32 lg:py-0">
-          <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-
-            <!-- Text side -->
-            <div class="flex-1 text-center lg:text-left">
-              <p class="hero-animate inline-flex items-center gap-2 text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">
-                <span class="w-8 h-px bg-blue-400"></span>
-                Available for new opportunities
-              </p>
-              <h1 class="hero-animate-d1 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05] mb-4">
-                Hi, I'm<br>
-                <span class="text-gradient">{{ profile.name }}</span>
-              </h1>
-              <h2 class="hero-animate-d2 text-xl sm:text-2xl font-semibold text-slate-300 mb-5">
-                {{ profile.title }}
-              </h2>
-              <p class="hero-animate-d2 text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
-                {{ profile.description }}
-              </p>
-
-              <!-- CTAs -->
-              <div class="hero-animate-d3 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
-                <a v-for="cta in profile.cta" :key="cta.href" :href="cta.href"
-                   :class="cta.variant === 'primary'
-                     ? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white shadow-lg shadow-blue-900/30'
-                     : 'border border-white/20 text-white hover:bg-white/10'"
-                   class="px-6 py-3 rounded-xl font-semibold text-sm transition-all text-center">
-                  {{ cta.label }}
-                </a>
-              </div>
-
-              <!-- Social icons -->
-              <div class="hero-animate-d4 flex items-center gap-3 justify-center lg:justify-start">
-                <span class="text-slate-500 text-xs font-medium uppercase tracking-wider">Find me on</span>
-                <a v-for="link in contact" :key="link.platform"
-                   :href="link.url" target="_blank"
-                   class="w-9 h-9 rounded-lg bg-white/8 hover:bg-white/16 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-all hover:scale-110">
-                  <i :class="link.icon" class="text-sm"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Photo side -->
-            <div class="hero-animate-d3 flex-shrink-0">
-              <div class="relative">
-                <!-- Glow ring -->
-                <div class="absolute -inset-1.5 rounded-full bg-gradient-to-br from-blue-500 via-cyan-400 to-blue-600 opacity-60 blur-md"></div>
-                <!-- Photo -->
-                <img :src="profile.avatar" :alt="profile.name"
-                  class="relative w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full border-4 border-slate-900 object-cover">
-                <!-- Badge -->
-                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap shadow-lg">
-                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                  {{ profile.status }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="s-node" style="left:50%;top:14%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(34,211,238,0.7);letter-spacing:.2em;text-transform:uppercase">At a Glance</h2>
       </div>
-
-      <!-- Diagonal divider -->
-      <div class="divider-wave">
-        <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" class="w-full block" style="fill:#f8fafc">
-          <path d="M0,64 L1440,0 L1440,64 Z"/>
-        </svg>
+      <div v-for="(stat,i) in data.profile.stats" :key="stat.label"
+           class="s-node chamfer"
+           :style="{left:SCATTER.stats.pos[i][0]+'%',top:SCATTER.stats.pos[i][1]+'%',width:'154px',padding:'18px 14px',textAlign:'center'}">
+        <i :class="stat.icon" style="font-size:20px;color:var(--cyan);margin-bottom:6px;display:block"></i>
+        <div style="font-size:30px;font-weight:700;color:#f1f5f9;font-family:'Space Grotesk',sans-serif;line-height:1">{{ stat.value }}</div>
+        <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:.08em">{{ stat.label }}</div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         STATS STRIP
-    ═══════════════════════════════════════════════════════════════ -->
-    <section class="bg-slate-900 py-10">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-slate-700">
-          <div v-for="(stat, i) in profile.stats" :key="stat.label"
-               class="reveal text-center lg:px-8"
-               :class="'delay-' + (i + 1)">
-            <div class="flex justify-center mb-2">
-              <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center">
-                <i :class="stat.icon" class="text-blue-400 text-sm"></i>
-              </div>
-            </div>
-            <div class="text-3xl font-black text-white mb-1">{{ stat.value }}</div>
-            <div class="text-slate-400 text-xs font-medium uppercase tracking-wider">{{ stat.label }}</div>
-          </div>
+    <!-- ════ 2  AWARDS ════ -->
+    <section class="journey-section" :style="sxf(2)" :class="{'is-active':activeIdx===2}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.awards.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
+          :x1="SCATTER.awards.pos[c[0]][0]+'%'" :y1="SCATTER.awards.pos[c[0]][1]+'%'"
+          :x2="SCATTER.awards.pos[c[1]][0]+'%'" :y2="SCATTER.awards.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:9%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(251,191,36,0.8);letter-spacing:.2em;text-transform:uppercase">Awards & Recognition</h2>
+      </div>
+      <div v-for="(aw,i) in data.awards" :key="aw.description"
+           class="s-node chamfer"
+           :style="{left:SCATTER.awards.pos[i][0]+'%',top:SCATTER.awards.pos[i][1]+'%',width:'175px',padding:'14px'}">
+        <i :class="[aw.icon,'chip-'+aw.color]" style="font-size:16px;margin-bottom:7px;display:block"></i>
+        <div style="font-size:13px;font-weight:700;color:#f1f5f9;margin-bottom:3px">{{ aw.title }}</div>
+        <div style="font-size:10px;color:#94a3b8;line-height:1.45">{{ aw.description }}</div>
+      </div>
+    </section>
+
+    <!-- ════ 3  EXPERIENCE ════ -->
+    <section class="journey-section" :style="sxf(3)" :class="{'is-active':activeIdx===3}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.experience.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.experience.pos[c[0]][0]+'%'" :y1="SCATTER.experience.pos[c[0]][1]+'%'"
+          :x2="SCATTER.experience.pos[c[1]][0]+'%'" :y2="SCATTER.experience.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(56,189,248,0.8);letter-spacing:.2em;text-transform:uppercase">Experience</h2>
+      </div>
+      <div v-for="(ex,i) in data.experience" :key="ex.company"
+           class="s-node chamfer"
+           :style="{left:SCATTER.experience.pos[i][0]+'%',top:SCATTER.experience.pos[i][1]+'%',width:'205px',padding:'12px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px">
+          <i :class="ex.icon" style="font-size:12px;color:var(--cyan);flex-shrink:0"></i>
+          <span style="font-size:11px;font-weight:700;color:#f1f5f9;line-height:1.3">{{ ex.company }}</span>
+        </div>
+        <div style="font-size:10px;color:var(--sky);margin-bottom:3px">{{ ex.role }}</div>
+        <div style="font-size:9px;color:#475569;margin-bottom:7px;font-variant-numeric:tabular-nums">{{ ex.period }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px">
+          <span v-for="sk in ex.skills" :key="sk.label" class="chip" style="font-size:8px;padding:2px 6px">
+            <i :class="sk.icon" style="font-size:7px"></i>{{ sk.label }}
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         AWARDS
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="awards" class="py-20 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-        <div class="reveal text-center mb-14">
-          <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Recognition</p>
-          <h3 class="text-3xl lg:text-4xl font-extrabold text-slate-900">Awards & Honors</h3>
-          <div class="mt-3 w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+    <!-- ════ 4  PROJECTS ════ -->
+    <section class="journey-section" :style="sxf(4)" :class="{'is-active':activeIdx===4}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.projects.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.projects.pos[c[0]][0]+'%'" :y1="SCATTER.projects.pos[c[0]][1]+'%'"
+          :x2="SCATTER.projects.pos[c[1]][0]+'%'" :y2="SCATTER.projects.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(52,211,153,0.8);letter-spacing:.2em;text-transform:uppercase">Projects</h2>
+      </div>
+      <div v-for="(proj,i) in data.projects" :key="proj.title"
+           class="s-node chamfer"
+           :style="{left:SCATTER.projects.pos[i][0]+'%',top:SCATTER.projects.pos[i][1]+'%',width:'185px',padding:'13px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+          <i :class="proj.icon" style="font-size:13px;color:var(--emerald)"></i>
+          <span style="font-size:11px;font-weight:700;color:#f1f5f9">{{ proj.title }}</span>
         </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:3px">
+          <li v-for="it in proj.items" :key="it" style="font-size:9px;color:#94a3b8;display:flex;align-items:center;gap:5px">
+            <span style="width:3px;height:3px;border-radius:50%;background:var(--emerald);flex-shrink:0;display:inline-block"></span>{{ it }}
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div v-for="(award, i) in awards" :key="award.description"
-               class="reveal card bg-white rounded-2xl p-6 flex items-start gap-4 border border-slate-100 shadow-sm"
-               :class="'delay-' + ((i % 3) + 1)">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white"
-                 :class="'award-' + award.color">
-              <i :class="award.icon" class="text-lg"></i>
-            </div>
-            <div>
-              <div class="font-bold text-slate-900 text-base">{{ award.title }}</div>
-              <div class="text-slate-500 text-sm leading-snug mt-0.5">{{ award.description }}</div>
-            </div>
-          </div>
+    <!-- ════ 5  SKILLS ════ -->
+    <section class="journey-section" :style="sxf(5)" :class="{'is-active':activeIdx===5}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.skills.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.skills.pos[c[0]][0]+'%'" :y1="SCATTER.skills.pos[c[0]][1]+'%'"
+          :x2="SCATTER.skills.pos[c[1]][0]+'%'" :y2="SCATTER.skills.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(129,140,248,0.8);letter-spacing:.2em;text-transform:uppercase">Skills</h2>
+      </div>
+      <div v-for="(cat,i) in data.skills" :key="cat.category"
+           class="s-node chamfer"
+           :style="{left:SCATTER.skills.pos[i][0]+'%',top:SCATTER.skills.pos[i][1]+'%',width:'182px',padding:'13px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+          <i :class="[cat.icon,cat.iconColor]" style="font-size:12px"></i>
+          <span style="font-size:10px;font-weight:600;color:#e2e8f0">{{ cat.category }}</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px">
+          <span v-for="sk in cat.items" :key="sk.label" class="chip chamfer-sm" style="font-size:8px;padding:2px 6px">{{ sk.label }}</span>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         EXPERIENCE
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="experience" class="py-20 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-        <div class="reveal text-center mb-14">
-          <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Career</p>
-          <h3 class="text-3xl lg:text-4xl font-extrabold text-slate-900">Professional Experience</h3>
-          <div class="mt-3 w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
+    <!-- ════ 6  CONTACT ════ -->
+    <section class="journey-section" id="contact" :style="sxf(6)" :class="{'is-active':activeIdx===6}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.contact.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
+          :x1="SCATTER.contact.pos[c[0]][0]+'%'" :y1="SCATTER.contact.pos[c[0]][1]+'%'"
+          :x2="SCATTER.contact.pos[c[1]][0]+'%'" :y2="SCATTER.contact.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:24%">
+        <div style="text-align:center">
+          <h2 class="glow" style="font-size:clamp(20px,2.5vw,34px);font-weight:700;margin-bottom:8px">Let's Connect</h2>
+          <p style="font-size:12px;color:#64748b;max-width:340px">Open to new collaborations, ventures, and conversations.</p>
         </div>
-
-        <!-- Timeline -->
-        <div class="relative pl-10 sm:pl-12">
-          <!-- Vertical line -->
-          <div class="timeline-line"></div>
-
-          <div v-for="(job, i) in experience" :key="job.company"
-               class="relative mb-8 last:mb-0">
-
-            <!-- Timeline dot -->
-            <div class="absolute -left-10 sm:-left-12 top-5 w-6 h-6 rounded-full flex items-center justify-center z-10 border-2"
-                 :class="job.variant === 'gradient'
-                   ? 'bg-blue-600 border-blue-400'
-                   : ['bg-white border-slate-300', 'icon-' + (job.theme || 'blue')]">
-              <i :class="job.icon"
-                 :class="job.variant === 'gradient' ? 'text-white' : 'text-' + (job.theme || 'blue') + '-500'"
-                 class="text-[9px]"></i>
-            </div>
-
-            <!-- Card -->
-            <div class="reveal card rounded-2xl overflow-hidden border shadow-sm"
-                 :class="job.variant === 'gradient'
-                   ? 'bg-gradient-to-r from-slate-900 to-blue-950 border-blue-900/50'
-                   : 'bg-white border-slate-100'"
-                 :style="'transition-delay: ' + (i * 0.07) + 's'">
-
-              <!-- Gradient card content -->
-              <template v-if="job.variant === 'gradient'">
-                <div class="p-6">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                    <div>
-                      <h4 class="text-lg font-bold text-white">{{ job.company }}</h4>
-                      <p class="text-blue-300 text-sm font-medium">{{ job.role }}</p>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-500/30 whitespace-nowrap self-start">
-                      <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                      {{ job.period }}
-                    </span>
-                  </div>
-                  <div class="flex flex-wrap gap-2">
-                    <span v-for="skill in job.skills" :key="skill.label"
-                          class="skill-tag flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white border border-white/10 text-xs font-medium px-3 py-1 rounded-full">
-                      <i :class="skill.icon" class="text-[10px]"></i>{{ skill.label }}
-                    </span>
-                  </div>
-                </div>
-              </template>
-
-              <!-- White card content -->
-              <template v-else>
-                <div class="p-6">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                           :class="'icon-' + (job.theme || 'blue')">
-                        <i :class="job.icon" class="text-base"></i>
-                      </div>
-                      <div>
-                        <h4 class="text-base font-bold text-slate-900">{{ job.company }}</h4>
-                        <p class="text-slate-500 text-sm">{{ job.role }}</p>
-                      </div>
-                    </div>
-                    <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full self-start whitespace-nowrap">
-                      {{ job.period }}
-                    </span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <span v-for="skill in job.skills" :key="skill.label"
-                          :class="tagClass(skill.theme)"
-                          class="skill-tag text-xs font-medium px-2.5 py-1 rounded-full">
-                      <i :class="skill.icon" class="mr-1 text-[10px]"></i>{{ skill.label }}
-                    </span>
-                  </div>
-                </div>
-              </template>
-
-            </div>
+      </div>
+      <div v-for="(ct,i) in data.contact" :key="ct.platform"
+           class="s-node chamfer"
+           :style="{left:SCATTER.contact.pos[i][0]+'%',top:SCATTER.contact.pos[i][1]+'%',minWidth:'175px',padding:'14px 18px'}">
+        <a :href="ct.url" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#e2e8f0">
+          <i :class="ct.icon" style="font-size:18px;color:var(--cyan)"></i>
+          <div>
+            <div style="font-size:12px;font-weight:600">{{ ct.platform }}</div>
+            <div style="font-size:9px;color:#475569">{{ ct.handle }}</div>
           </div>
-        </div>
+          <i class="fas fa-arrow-up-right-from-square" style="font-size:8px;margin-left:auto;opacity:.35"></i>
+        </a>
+      </div>
+      <div class="s-node" style="left:50%;top:90%">
+        <p style="font-size:9px;color:#1e293b;text-align:center">© 2026 Edson Ventura · Quintana Roo, Mexico</p>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         PROJECTS
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="projects" class="py-20 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-        <div class="reveal text-center mb-14">
-          <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Work</p>
-          <h3 class="text-3xl lg:text-4xl font-extrabold text-slate-900">Featured Projects</h3>
-          <div class="mt-3 w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div v-for="(project, i) in projects" :key="project.title"
-               class="reveal card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm flex flex-col"
-               :class="'delay-' + ((i % 3) + 1)">
-
-            <!-- Accent top bar -->
-            <div class="h-1.5" :class="'accent-' + project.accent" style="border-top-width:0;border-bottom-width:0;background:currentColor;opacity:0.9;">
-              <div class="h-full" :class="'bg-' + project.accent + '-500'"></div>
-            </div>
-
-            <div class="p-6 flex flex-col flex-1">
-              <!-- Header -->
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-base"
-                     :class="'icon-' + project.accent">
-                  <i :class="project.icon"></i>
-                </div>
-                <h4 class="font-bold text-slate-900 text-base leading-tight">{{ project.title }}</h4>
-              </div>
-
-              <!-- Optional description -->
-              <p v-if="project.description" class="text-slate-500 text-sm mb-3 leading-relaxed">
-                {{ project.description }}
-              </p>
-
-              <!-- Items -->
-              <ul class="space-y-1.5 mt-auto">
-                <li v-for="item in project.items" :key="item"
-                    class="flex items-center gap-2 text-slate-600 text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        :class="'bg-' + project.accent + '-500'"></span>
-                  {{ item }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════════
-         SKILLS
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="skills" class="py-20 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-        <div class="reveal text-center mb-14">
-          <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-2">Stack</p>
-          <h3 class="text-3xl lg:text-4xl font-extrabold text-slate-900">Technical Skills</h3>
-          <div class="mt-3 w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div v-for="(group, i) in skills" :key="group.category"
-               class="reveal card bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-100"
-               :class="'delay-' + ((i % 3) + 1)">
-            <div class="flex items-center gap-2 mb-4">
-              <i :class="[group.icon, group.iconColor]" class="text-lg"></i>
-              <h4 class="font-bold text-slate-800 text-sm">{{ group.category }}</h4>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span v-for="item in group.items" :key="item.label"
-                    :class="tagClass(item.theme)"
-                    class="skill-tag text-xs font-medium px-2.5 py-1 rounded-full">
-                {{ item.label }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════════
-         CONTACT
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="contact" class="py-20 bg-slate-900 relative overflow-hidden">
-
-      <!-- Background decorations -->
-      <div class="absolute inset-0 grid-pattern opacity-50"></div>
-      <div class="absolute top-0 right-0 w-72 h-72 rounded-full opacity-10"
-           style="background: radial-gradient(circle, #3b82f6, transparent 70%); transform: translate(30%, -30%);"></div>
-
-      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <div class="reveal mb-12">
-          <p class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3">Let's work together</p>
-          <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">Get In Touch</h3>
-          <div class="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto rounded-full mb-5"></div>
-          <p class="text-slate-400 text-base max-w-lg mx-auto leading-relaxed">
-            I'm always open to new opportunities, exciting projects, and interesting conversations.
-            Don't hesitate to reach out.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <a v-for="(link, i) in contact" :key="link.platform"
-             :href="link.url" target="_blank"
-             class="reveal card group flex flex-col items-center gap-3 p-6 rounded-2xl border border-white/8 transition-all"
-             :class="[link.bg, 'delay-' + (i + 1)]">
-            <div class="w-12 h-12 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-              <i :class="link.icon" class="text-white text-xl"></i>
-            </div>
-            <div>
-              <div class="font-bold text-white text-sm">{{ link.platform }}</div>
-              <div :class="link.text" class="text-xs mt-0.5">{{ link.handle }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════════════════════════════ -->
-    <footer class="bg-slate-950 py-8 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xs font-bold">EV</span>
-            <p class="text-slate-500 text-sm">
-              © {{ currentYear }} Edson Fernando Ventura Oropeza
-            </p>
-          </div>
-          <div class="flex items-center gap-1">
-            <a v-for="link in contact" :key="link.platform"
-               :href="link.url" target="_blank"
-               class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-800 transition-all text-sm">
-              <i :class="link.icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-  </template>
+  </div>
 </div>
 
 <script>
-  const { createApp, ref, onMounted, onUnmounted, nextTick } = Vue;
+/* ─────────────────────────────────────────
+   CANVAS — scroll-driven spiral tunnel
+───────────────────────────────────────── */
+(function(){
+  const cv = document.getElementById('tunnel-canvas');
+  const ctx = cv.getContext('2d');
+  const RINGS = 30, STARS = 260, STREAKS = 18;
+  let W, H, cx, cy;
+  let currentScrollY = 0;
 
-  createApp({
-    setup() {
-      // ── State ──────────────────────────────────────────────────
-      const loaded        = ref(false);
-      const scrolled      = ref(false);
-      const scrollProgress= ref(0);
-      const activeSection = ref('home');
-      const mobileOpen    = ref(false);
-      const profile       = ref(null);
-      const awards        = ref([]);
-      const experience    = ref([]);
-      const projects      = ref([]);
-      const skills        = ref([]);
-      const contact       = ref([]);
-      const currentYear   = new Date().getFullYear();
+  const stars = [];
+  const streaks = [];
 
-      const navLinks = [
-        { id: 'awards',     label: 'Awards' },
-        { id: 'experience', label: 'Experience' },
-        { id: 'projects',   label: 'Projects' },
-        { id: 'skills',     label: 'Skills' },
-        { id: 'contact',    label: 'Contact' },
-      ];
+  function resize(){
+    W = cv.width = window.innerWidth;
+    H = cv.height = window.innerHeight;
+    cx = W / 2; cy = H / 2;
+    stars.length = 0;
+    for(let i = 0; i < STARS; i++) stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.3 + 0.3,
+      alpha: Math.random() * 0.6 + 0.3,
+      twinkle: Math.random() * Math.PI * 2,
+    });
+    streaks.length = 0;
+    for(let i = 0; i < STREAKS; i++) streaks.push({
+      angle: Math.random() * Math.PI * 2,
+      speed: Math.random() * 1.4 + 0.5,
+      len: Math.random() * 70 + 30,
+      phase: Math.random() * 120,
+    });
+  }
 
-      // ── Color theme map ────────────────────────────────────────
-      const TAG = {
-        blue:   'bg-blue-50 text-blue-700',
-        green:  'bg-emerald-50 text-emerald-700',
-        cyan:   'bg-cyan-50 text-cyan-700',
-        yellow: 'bg-amber-50 text-amber-700',
-        orange: 'bg-orange-50 text-orange-700',
-        red:    'bg-rose-50 text-rose-700',
-        teal:   'bg-teal-50 text-teal-700',
-        indigo: 'bg-indigo-50 text-indigo-700',
-      };
+  window.addEventListener('resize', resize);
+  resize();
+  window.addEventListener('scroll', () => { currentScrollY = window.scrollY; }, { passive: true });
 
-      function tagClass(theme) {
-        return TAG[theme] || TAG.blue;
+  function draw(){
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, W, H);
+
+    const ss = document.getElementById('scroll-space');
+    const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
+    const rawScroll = Math.max(0, Math.min(currentScrollY, maxScroll));
+    const cameraZ = rawScroll * 0.55;
+    const cameraRoll = rawScroll * 0.0018;
+    const scrollFrac = rawScroll / maxScroll;
+
+    /* stars */
+    for(const s of stars){
+      s.twinkle += 0.007;
+      const a = s.alpha * (0.45 + 0.55 * Math.sin(s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(148,163,184,${a})`;
+      ctx.fill();
+    }
+
+    /* tunnel rings */
+    const TDEPTH = 2600;
+    const RSEP = TDEPTH / RINGS;
+    const hueBase = 190 + scrollFrac * 55;
+
+    for(let i = 0; i < RINGS; i++){
+      const baseZ = i * RSEP;
+      let relZ = ((baseZ - cameraZ % TDEPTH) + TDEPTH) % TDEPTH;
+      if(relZ < 40) continue;
+
+      const pf = TDEPTH / (relZ + 80);
+      const rX = pf * W * 0.42;
+      const rY = pf * H * 0.42;
+
+      const spiralA = i * (Math.PI * 0.44) + cameraRoll;
+      const spiralAmt = Math.min(rX * 0.10, 32);
+      const ringCX = cx + Math.cos(spiralA) * spiralAmt;
+      const ringCY = cy + Math.sin(spiralA) * spiralAmt * 0.52;
+
+      const hue = (hueBase + i * 16) % 360;
+      const alpha = Math.max(0, Math.min(0.6, pf * 0.85));
+
+      ctx.beginPath();
+      ctx.ellipse(ringCX, ringCY, Math.max(1, rX), Math.max(1, rY), cameraRoll * 0.25, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${hue},78%,62%,${alpha})`;
+      ctx.lineWidth = Math.max(0.5, pf * 1.1);
+      ctx.stroke();
+
+      /* faint inner ring */
+      ctx.beginPath();
+      ctx.ellipse(ringCX, ringCY, Math.max(1, rX * 0.48), Math.max(1, rY * 0.48), cameraRoll * 0.25, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${hue},90%,70%,${alpha * 0.22})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    /* vortex glow */
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.30);
+    g.addColorStop(0, `rgba(34,211,238,${0.07 + scrollFrac * 0.05})`);
+    g.addColorStop(0.6, `rgba(56,189,248,0.02)`);
+    g.addColorStop(1, `rgba(0,4,14,0)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    /* hyperspace streaks */
+    const sm = 1 + scrollFrac * 3.5;
+    ctx.save();
+    ctx.translate(cx, cy);
+    for(const s of streaks){
+      s.phase += s.speed * sm * 0.35;
+      const t = (s.phase % 120) / 120;
+      const d0 = t * Math.min(W, H) * 0.5 * 0.45;
+      const d1 = d0 + s.len * t;
+      const angle = s.angle + cameraRoll * 0.18;
+      const a = Math.sin(t * Math.PI) * 0.4;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(angle) * d0, Math.sin(angle) * d0);
+      ctx.lineTo(Math.cos(angle) * d1, Math.sin(angle) * d1);
+      ctx.strokeStyle = `rgba(34,211,238,${a})`;
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  draw();
+})();
+
+/* ─────────────────────────────────────────
+   VUE APP
+───────────────────────────────────────── */
+const { createApp, ref, onMounted, onUnmounted } = Vue;
+
+createApp({
+  setup(){
+    const data = ref(null);
+    const loaded = ref(false);
+    const scrollY = ref(0);
+    const winH = ref(window.innerHeight);
+    const activeIdx = ref(0);
+    const TOTAL = 7;
+    const DWELL = 1.35;
+
+    const SCATTER = {
+      stats:      { pos:[[20,36],[76,32],[18,70],[78,68]], conn:[[0,1],[0,2],[1,3],[2,3],[0,3],[1,2]] },
+      awards:     { pos:[[18,24],[72,20],[12,56],[85,53],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
+      experience: { pos:[[42,16],[80,26],[14,32],[70,52],[20,58],[45,74],[22,86],[75,82]], conn:[[0,1],[0,2],[1,3],[2,3],[3,4],[4,5],[5,6],[5,7],[6,7]] },
+      projects:   { pos:[[17,22],[76,20],[11,54],[85,51],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5]] },
+      skills:     { pos:[[15,26],[78,22],[11,58],[85,55],[29,84],[67,84]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
+      contact:    { pos:[[28,54],[50,38],[72,54]], conn:[[0,1],[1,2],[0,2]] }
+    };
+
+    function sxf(i){
+      if(window.innerWidth < 768) return {};
+      const sp = scrollY.value / winH.value;
+      const diff = sp - i * DWELL;
+      let scale, tz, opacity;
+
+      if(diff < 0){
+        const d = Math.min(-diff, 3.5);
+        scale = Math.max(0.07, 1 - d * 0.26);
+        tz = -d * 720;
+        opacity = Math.max(0, Math.min(1, 1 + diff * 0.75));
+      } else if(diff < 1){
+        const t = diff;
+        scale = 0.22 + t * 0.78;
+        tz = (1 - t) * -660;
+        opacity = Math.min(1, t * 1.8);
+        if(diff > 0.45) activeIdx.value = i;
+      } else {
+        const d = Math.min(diff - 1, 2.2);
+        scale = 1 + d * 0.85;
+        tz = d * 580;
+        opacity = Math.max(0, 1 - d * 1.1);
       }
-
-      // ── Scroll handler ─────────────────────────────────────────
-      function onScroll() {
-        const y = window.scrollY;
-        scrolled.value = y > 60;
-        const docH = document.body.scrollHeight - window.innerHeight;
-        scrollProgress.value = docH > 0 ? (y / docH) * 100 : 0;
-
-        const sectionIds = ['home', 'awards', 'experience', 'projects', 'skills', 'contact'];
-        for (let i = sectionIds.length - 1; i >= 0; i--) {
-          const el = document.getElementById(sectionIds[i]);
-          if (el && el.getBoundingClientRect().top <= 100) {
-            activeSection.value = sectionIds[i];
-            break;
-          }
-        }
-      }
-
-      // ── Reveal on scroll ──────────────────────────────────────
-      function initReveal() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
-          .forEach(el => observer.observe(el));
-      }
-
-      // ── Lifecycle ─────────────────────────────────────────────
-      onMounted(async () => {
-        window.addEventListener('scroll', onScroll, { passive: true });
-        try {
-          const data  = await fetch('data.json').then(r => r.json());
-          profile.value    = data.profile;
-          awards.value     = data.awards;
-          experience.value = data.experience;
-          projects.value   = data.projects;
-          skills.value     = data.skills;
-          contact.value    = data.contact;
-          loaded.value     = true;
-          await nextTick();
-          initReveal();
-        } catch (err) {
-          console.error('Failed to load portfolio data:', err);
-        }
-      });
-
-      onUnmounted(() => {
-        window.removeEventListener('scroll', onScroll);
-      });
 
       return {
-        loaded, scrolled, scrollProgress, activeSection, mobileOpen,
-        profile, awards, experience, projects, skills, contact,
-        currentYear, navLinks, tagClass,
+        transform: `translateZ(${tz}px) scale(${scale})`,
+        opacity,
+        zIndex: Math.round((1 - Math.abs(diff - 0.5)) * 100)
       };
     }
-  }).mount('#app');
-</script>
 
+    function onScroll(){
+      scrollY.value = window.scrollY;
+      const ss = document.getElementById('scroll-space');
+      const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
+      const pct = Math.min(100, (window.scrollY / maxScroll) * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+
+      const sp = window.scrollY / window.innerHeight;
+      const ai = Math.max(0, Math.min(TOTAL - 1, Math.round(sp / DWELL)));
+      activeIdx.value = ai;
+      document.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
+      document.querySelectorAll('.mob-dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
+    }
+
+    function onResize(){ winH.value = window.innerHeight; }
+
+    function scrollToSection(i){
+      window.scrollTo({ top: i * DWELL * winH.value, behavior: 'smooth' });
+    }
+
+    function navToHref(href){
+      const map = { '#contact': 6, '#projects': 4 };
+      if(map[href] !== undefined) scrollToSection(map[href]);
+    }
+
+    function buildNav(){
+      const LABELS = ['Home','Stats','Awards','Experience','Projects','Skills','Contact'];
+      ['dot-nav','mob-nav'].forEach((id, navIdx) => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        for(let i = 0; i < TOTAL; i++){
+          const d = document.createElement('div');
+          d.className = (navIdx === 0 ? 'dot' : 'mob-dot') + (i === 0 ? ' active' : '');
+          if(navIdx === 0) d.title = LABELS[i];
+          d.addEventListener('click', () => scrollToSection(i));
+          el.appendChild(d);
+        }
+      });
+    }
+
+    onMounted(async () => {
+      const res = await fetch('./data.json');
+      data.value = await res.json();
+      loaded.value = true;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize);
+      buildNav();
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    });
+
+    return { data, loaded, scrollY, activeIdx, SCATTER, sxf, navToHref };
+  }
+}).mount('#app');
+</script>
 </body>
 </html>
