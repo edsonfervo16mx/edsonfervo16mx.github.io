@@ -1,0 +1,349 @@
+{
+  "profile": {
+    "name": "Edson Ventura",
+    "title": "Software Engineer & CTO",
+    "description": "Full Stack Developer with 20+ years of experience in modern web technologies, enterprise systems, and AI-driven solutions. Founder and visionary behind multiple tech ventures, passionate about building scalable products and leading digital innovation across industries.",
+    "avatar": "https://avatars.githubusercontent.com/u/18149491?v=4",
+    "status": "Available to collaborate",
+    "location": "Quintana Roo, Mexico",
+    "stats": [
+      { "value": "20+", "label": "Years Experience", "icon": "fas fa-calendar-alt" },
+      { "value": "50+", "label": "Projects Delivered", "icon": "fas fa-rocket" },
+      { "value": "3",   "label": "Ventures Founded",  "icon": "fas fa-building" },
+      { "value": "6",   "label": "Awards & Honors",   "icon": "fas fa-trophy" }
+    ],
+    "cta": [
+      { "label": "Get in Touch",  "href": "#contact",  "variant": "primary" },
+      { "label": "View Projects", "href": "#projects", "variant": "secondary" }
+    ]
+  },
+  "awards": [
+    {
+      "icon": "fas fa-trophy",
+      "title": "1st Place",
+      "description": "Techstars Startup Weekend Tabasco, 2017",
+      "color": "amber"
+    },
+    {
+      "icon": "fas fa-trophy",
+      "title": "1st Place",
+      "description": "Hacksureste REDUX Sureste Mexico, 2020",
+      "color": "amber"
+    },
+    {
+      "icon": "fas fa-trophy",
+      "title": "1st Place",
+      "description": "Techstars Startup Weekend Yucatán, 2022",
+      "color": "amber"
+    },
+    {
+      "icon": "fas fa-chalkboard-teacher",
+      "title": "Mentor",
+      "description": "Techstars Startup Weekend Yucatán, 2023",
+      "color": "cyan"
+    },
+    {
+      "icon": "fas fa-trophy",
+      "title": "Finalist",
+      "description": "Startup World Cup Latinoamerica, Cancún, 2024",
+      "color": "emerald"
+    },
+    {
+      "icon": "fas fa-chalkboard-teacher",
+      "title": "Mentor",
+      "description": "Techstars Startup Weekend Yucatán, 2026",
+      "color": "cyan"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Flowbit Software",
+      "role": "CTO",
+      "period": "2026 - Present",
+      "icon": "fas fa-code",
+      "variant": "gradient",
+      "skills": [
+        { "icon": "fab fa-node-js", "label": "Node.js" },
+        { "icon": "fab fa-vuejs",   "label": "Nuxt 3" },
+        { "icon": "fas fa-database","label": "Supabase" }
+      ]
+    },
+    {
+      "company": "GigNet S.A. de C.V.",
+      "role": "Development Lead",
+      "period": "2019 - Present",
+      "icon": "fas fa-wifi",
+      "variant": "gradient",
+      "skills": [
+        { "icon": "fab fa-python",  "label": "Python" },
+        { "icon": "fab fa-node-js", "label": "Node.js" },
+        { "icon": "fab fa-vuejs",   "label": "Vue 3" },
+        { "icon": "fas fa-database","label": "PostgreSQL" }
+      ]
+    },
+    {
+      "company": "Halsei S.A. de C.V.",
+      "role": "Founder & CEO",
+      "period": "2024 - 2025",
+      "icon": "fas fa-robot",
+      "variant": "card",
+      "theme": "teal",
+      "skills": [
+        { "icon": "fas fa-brain",   "label": "Python",   "theme": "blue" },
+        { "icon": "fas fa-robot",   "label": "AI",       "theme": "cyan" },
+        { "icon": "fab fa-vuejs",   "label": "Nuxt 3",   "theme": "green" },
+        { "icon": "fas fa-server",  "label": "Supabase", "theme": "blue" }
+      ]
+    },
+    {
+      "company": "Caribbean Digital Group",
+      "role": "Co-founder & Software Engineer",
+      "period": "2019 - 2023",
+      "icon": "fas fa-rocket",
+      "variant": "card",
+      "theme": "teal",
+      "skills": [
+        { "icon": "fab fa-vuejs",   "label": "Vue",            "theme": "green" },
+        { "icon": "fab fa-node-js", "label": "Node.js",        "theme": "green" },
+        { "icon": "fas fa-database","label": "MySQL",          "theme": "green" },
+        { "icon": "fab fa-android", "label": "Android Studio", "theme": "blue" }
+      ]
+    },
+    {
+      "company": "Behotels Corporation",
+      "role": "Backend Developer & Technical Support",
+      "period": "2019 - 2020",
+      "icon": "fas fa-hotel",
+      "variant": "card",
+      "theme": "indigo",
+      "skills": [
+        { "icon": "fab fa-vuejs",      "label": "Vue",        "theme": "green" },
+        { "icon": "fab fa-node-js",    "label": "Node.js",    "theme": "green" },
+        { "icon": "fab fa-java",       "label": "Java",       "theme": "orange" },
+        { "icon": "far fa-file-code",  "label": "PHP",        "theme": "blue" },
+        { "icon": "fas fa-database",   "label": "SQL Server", "theme": "blue" }
+      ]
+    },
+    {
+      "company": "Jean Piaget College",
+      "role": "Professor of Computer Science & Robotics",
+      "period": "2015 - 2019",
+      "icon": "fas fa-graduation-cap",
+      "variant": "card",
+      "theme": "blue",
+      "skills": [
+        { "icon": "far fa-file-code", "label": "PHP",    "theme": "blue" },
+        { "icon": "fas fa-database",  "label": "MySQL",  "theme": "green" },
+        { "icon": "fas fa-rocket",    "label": "Arduino","theme": "orange" }
+      ]
+    },
+    {
+      "company": "Tabasco Government",
+      "role": "Web Developer & Systems Assistant",
+      "period": "2014 - 2015",
+      "icon": "fas fa-city",
+      "variant": "card",
+      "theme": "green",
+      "skills": [
+        { "icon": "far fa-file-code", "label": "PHP",     "theme": "blue" },
+        { "icon": "fas fa-database",  "label": "Firebird","theme": "orange" }
+      ]
+    },
+    {
+      "company": "Cárdenas Government, Tabasco",
+      "role": "Web Developer & Database Administrator",
+      "period": "2013 - 2014",
+      "icon": "fas fa-building",
+      "variant": "card",
+      "theme": "blue",
+      "skills": [
+        { "icon": "far fa-file-code", "label": "ASP.NET","theme": "blue" },
+        { "icon": "fas fa-database",  "label": "MySQL",  "theme": "green" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Government Systems",
+      "icon": "fas fa-building",
+      "accent": "blue",
+      "items": [
+        "Cárdenas Government Website",
+        "Citizen Service Platform",
+        "Transit and Road System",
+        "School Control System"
+      ]
+    },
+    {
+      "title": "Hospitality Platforms",
+      "icon": "fas fa-hotel",
+      "accent": "emerald",
+      "items": [
+        "Booking Engine API",
+        "Human Resources Platform",
+        "Ticket Sales Platform",
+        "Corporation Websites"
+      ]
+    },
+    {
+      "title": "Fintech Solutions",
+      "icon": "fas fa-credit-card",
+      "accent": "rose",
+      "items": [
+        "GCashless NFC App",
+        "Reservation Platform",
+        "Bank Integration System",
+        "Stripe Integration"
+      ]
+    },
+    {
+      "title": "Telecommunications",
+      "icon": "fas fa-wifi",
+      "accent": "indigo",
+      "items": [
+        "Guest Portal Management",
+        "Network Administration",
+        "WISP Management System",
+        "GigNet Odoo ERP",
+        "GigNet Mobile App"
+      ]
+    },
+    {
+      "title": "Open Source",
+      "icon": "fab fa-github",
+      "accent": "orange",
+      "items": [
+        "Odoo Community Contributions",
+        "Chrome Extensions",
+        "Payment Integration Libraries",
+        "Project Boilerplate Libraries",
+        "Flowbit ERP System"
+      ]
+    },
+    {
+      "title": "Halsei — AI Platform",
+      "icon": "fas fa-brain",
+      "accent": "cyan",
+      "description": "AI-powered data analysis platform that transforms spreadsheets into clear insights and strategic decisions—easily and efficiently.",
+      "items": [
+        "Data Analysis & Insights",
+        "Strategic Decision Support",
+        "Spreadsheet Transformation",
+        "AI-Powered Analytics"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "icon": "fas fa-code",
+      "iconColor": "text-blue-500",
+      "items": [
+        { "label": "JavaScript", "theme": "blue" },
+        { "label": "TypeScript", "theme": "blue" },
+        { "label": "Node.js",    "theme": "green" },
+        { "label": "PHP",        "theme": "blue" },
+        { "label": "Python",     "theme": "yellow" },
+        { "label": "Java",       "theme": "orange" },
+        { "label": "Golang",     "theme": "blue" },
+        { "label": "ASP.NET",    "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Frontend Technologies",
+      "icon": "fas fa-palette",
+      "iconColor": "text-emerald-500",
+      "items": [
+        { "label": "Vue.js",       "theme": "green" },
+        { "label": "Vue 3",        "theme": "green" },
+        { "label": "Nuxt 3",       "theme": "green" },
+        { "label": "React",        "theme": "blue" },
+        { "label": "HTML5",        "theme": "blue" },
+        { "label": "CSS3",         "theme": "blue" },
+        { "label": "Tailwind CSS", "theme": "blue" },
+        { "label": "Bootstrap",    "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Databases & ORMs",
+      "icon": "fas fa-database",
+      "iconColor": "text-indigo-500",
+      "items": [
+        { "label": "MySQL",      "theme": "green" },
+        { "label": "PostgreSQL", "theme": "blue" },
+        { "label": "SQL Server", "theme": "blue" },
+        { "label": "Firebird",   "theme": "orange" },
+        { "label": "MongoDB",    "theme": "green" },
+        { "label": "SQLite",     "theme": "blue" },
+        { "label": "Sequelize",  "theme": "blue" },
+        { "label": "Supabase",   "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Frameworks & Tools",
+      "icon": "fas fa-tools",
+      "iconColor": "text-rose-500",
+      "items": [
+        { "label": "Flask",      "theme": "blue" },
+        { "label": "Django",     "theme": "green" },
+        { "label": "Express.js", "theme": "blue" },
+        { "label": "Odoo ERP",   "theme": "blue" },
+        { "label": "Odoo.sh",    "theme": "blue" },
+        { "label": "WordPress",  "theme": "blue" }
+      ]
+    },
+    {
+      "category": "DevOps & Cloud",
+      "icon": "fas fa-cloud",
+      "iconColor": "text-sky-500",
+      "items": [
+        { "label": "Git",          "theme": "blue" },
+        { "label": "GitHub",       "theme": "blue" },
+        { "label": "AWS",          "theme": "orange" },
+        { "label": "Digital Ocean","theme": "blue" },
+        { "label": "Heroku",       "theme": "blue" },
+        { "label": "Netlify",      "theme": "blue" },
+        { "label": "Linux",        "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Payment & Services",
+      "icon": "fas fa-credit-card",
+      "iconColor": "text-emerald-500",
+      "items": [
+        { "label": "Stripe",      "theme": "blue" },
+        { "label": "Mercado Pago","theme": "blue" },
+        { "label": "HSBC RAP",    "theme": "blue" },
+        { "label": "RouterOS",    "theme": "blue" },
+        { "label": "Sentry.io",   "theme": "blue" },
+        { "label": "Alestra",     "theme": "blue" }
+      ]
+    }
+  ],
+  "contact": [
+    {
+      "platform": "GitHub",
+      "handle": "edsonfervo16mx",
+      "url": "https://github.com/edsonfervo16mx",
+      "icon": "fab fa-github",
+      "bg": "bg-slate-800 hover:bg-slate-700",
+      "text": "text-slate-300"
+    },
+    {
+      "platform": "LinkedIn",
+      "handle": "Edson Ventura",
+      "url": "https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/",
+      "icon": "fab fa-linkedin",
+      "bg": "bg-blue-700 hover:bg-blue-600",
+      "text": "text-blue-200"
+    },
+    {
+      "platform": "Twitter / X",
+      "handle": "@EdsonFOropeza",
+      "url": "https://twitter.com/EdsonFOropeza",
+      "icon": "fab fa-twitter",
+      "bg": "bg-sky-600 hover:bg-sky-500",
+      "text": "text-sky-100"
+    }
+  ]
+}

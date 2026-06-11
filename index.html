@@ -1,813 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Edson Ventura - Software Engineer | Full Stack Developer</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description"
-    content="Edson Fernando Ventura Oropeza - Software Engineer with 10+ years of experience in full-stack development, specializing in Node.js, Vue.js, Python, and Odoo ERP. Based in Mexico with expertise in government systems, hospitality platforms, and fintech applications.">
-  <meta name="author" content="Edson Fernando Ventura Oropeza">
-  <meta name="keywords"
-    content="Software Engineer, Full Stack Developer, Node.js, Vue.js, Python, Odoo ERP, Mexico, Edson Ventura, Edson Fernando Ventura Oropeza, Caribbean Digital Group, GigNet, Tabasco, Tulum, Quintana Roo, Government Systems, Hospitality Platforms, Fintech, API Development, Database Administration">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Edson Ventura — Software Engineer & CTO</title>
+<meta name="description" content="Full Stack Developer with 20+ years of experience in modern web technologies, enterprise systems, and AI-driven solutions. Founder and CTO based in Quintana Roo, Mexico."/>
+<meta name="keywords" content="Edson Ventura, Software Engineer, CTO, Full Stack Developer, Vue.js, Node.js, Python, Mexico"/>
+<meta name="author" content="Edson Fernando Ventura Oropeza"/>
+<meta property="og:title" content="Edson Ventura — Software Engineer & CTO"/>
+<meta property="og:description" content="Full Stack Developer with 20+ years building scalable products and leading digital innovation."/>
+<meta property="og:url" content="https://edsonfervo16mx.github.io/"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:creator" content="@EdsonFOropeza"/>
+<link rel="canonical" href="https://edsonfervo16mx.github.io/"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Edson Fernando Ventura Oropeza","jobTitle":"Software Engineer & CTO","url":"https://edsonfervo16mx.github.io/","sameAs":["https://github.com/edsonfervo16mx","https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/","https://twitter.com/EdsonFOropeza"],"address":{"@type":"PostalAddress","addressRegion":"Quintana Roo","addressCountry":"MX"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cyan:#22d3ee;--sky:#38bdf8;--indigo:#818cf8;--emerald:#34d399;
+  --bg:#00040e;--glass:rgba(255,255,255,0.04);--border:rgba(34,211,238,0.15);
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+#tunnel-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#scroll-space{height:1000vh;position:relative;z-index:1;pointer-events:none}
+#app{position:fixed;inset:0;z-index:2;pointer-events:none;perspective:1400px;perspective-origin:50% 50%}
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://edsonfervo16mx.github.io/">
-  <meta property="og:title" content="Edson Ventura - Software Engineer">
-  <meta property="og:description"
-    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
+/* ── section shells ── */
+.journey-section{
+  position:absolute;inset:0;
+  transform-style:preserve-3d;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.journey-section.is-active{pointer-events:auto}
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://edsonfervo16mx.github.io/">
-  <meta property="twitter:title" content="Edson Ventura - Software Engineer">
-  <meta property="twitter:description"
-    content="Full Stack Developer with 10+ years of experience in software development, specializing in modern web technologies and enterprise solutions.">
-  <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/18149491?v=4">
+/* ── scattered node ── */
+.s-node{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  pointer-events:auto;
+}
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="msapplication-TileColor" content="#3b82f6">
-  <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-  <meta name="theme-color" content="#3b82f6">
+/* ── neural SVG overlay ── */
+.neural-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+@keyframes netPulse{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+.n-line{stroke-dasharray:6 18;animation:netPulse 2.4s linear infinite;stroke:rgba(34,211,238,0.18);stroke-width:1}
+.n-line-warm{stroke:rgba(251,191,36,0.18)}
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+/* ── chamfer panel ── */
+.chamfer{
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s ease;
+}
+.chamfer-sm{
+  clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+}
+/* ── card hover focus ── */
+.s-node.chamfer{
+  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;
+}
+.s-node.chamfer:hover{
+  background:rgba(34,211,238,0.10);
+  border-color:rgba(34,211,238,0.55);
+  filter:drop-shadow(0 0 18px rgba(34,211,238,0.38)) drop-shadow(0 0 6px rgba(34,211,238,0.2));
+  transform:translate(-50%,-50%) scale(1.055);
+  z-index:50;
+}
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/e31ceeedba.js" crossorigin="anonymous"></script>
+/* ── home hero ── */
+.hero-ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(34,211,238,0.1);
+  animation:ring-pulse 4s ease-in-out infinite;
+}
+@keyframes ring-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.04);opacity:.9}}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+/* ── glow text ── */
+.glow{text-shadow:0 0 20px rgba(34,211,238,0.5),0 0 40px rgba(34,211,238,0.25)}
+.grad{background:linear-gradient(135deg,#38bdf8,#22d3ee,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+/* ── chips ── */
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:20px;font-size:10px;font-weight:500;
+  background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.18);color:var(--cyan);
+  white-space:nowrap;
+}
+.chip-amber{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.2);color:#fbbf24}
+.chip-emerald{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.2);color:var(--emerald)}
+.chip-cyan{background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.2);color:var(--cyan)}
 
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+/* ── dot nav ── */
+#dot-nav{
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  z-index:100;display:flex;flex-direction:column;gap:10px;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(34,211,238,0.2);border:1px solid rgba(34,211,238,0.35);
+  cursor:pointer;transition:all .3s;
+}
+.dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan);transform:scale(1.4)}
 
-    .card-hover {
-      transition: all 0.3s ease;
-    }
+/* ── progress bar ── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;z-index:200;
+  background:linear-gradient(90deg,var(--cyan),var(--emerald));
+  width:0%;
+}
 
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+/* ── logo ── */
+#logo{
+  position:fixed;top:20px;left:24px;z-index:100;
+  font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;
+  color:var(--cyan);letter-spacing:.05em;
+  text-shadow:0 0 15px rgba(34,211,238,0.4);
+  pointer-events:none;
+}
 
-    .skill-tag {
-      transition: all 0.2s ease;
-    }
+/* ── mobile pill nav ── */
+#mob-nav{
+  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+  z-index:100;
+  background:rgba(0,4,14,0.85);border:1px solid var(--border);
+  border-radius:40px;padding:8px 16px;gap:16px;backdrop-filter:blur(16px);
+  display:none;
+}
+.mob-dot{width:7px;height:7px;border-radius:50%;background:rgba(34,211,238,0.25);cursor:pointer;transition:all .3s}
+.mob-dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
 
-    .skill-tag:hover {
-      transform: scale(1.05);
-    }
+/* ── scroll hint ── */
+@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.scroll-hint{display:inline-flex;flex-direction:column;align-items:center;gap:4px;animation:bounce-y 2s ease-in-out infinite;opacity:.5;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-top:22px}
 
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Mobile-specific improvements */
-    @media (max-width: 640px) {
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .skill-tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-      }
-
-      .card-hover:hover {
-        transform: none;
-      }
-    }
-
-    /* Tablet improvements */
-    @media (min-width: 641px) and (max-width: 1024px) {
-      .container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-    }
-
-    /* Ensure proper spacing on very small screens */
-    @media (max-width: 480px) {
-      .py-12 {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-
-      .py-16 {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-
-      .mb-8 {
-        margin-bottom: 1.5rem;
-      }
-
-      .mb-12 {
-        margin-bottom: 2rem;
-      }
-    }
-  </style>
+/* ── mobile linear fallback ── */
+@media(max-width:767px){
+  #app{position:static;perspective:none;pointer-events:auto}
+  .journey-section{position:static;transform:none!important;opacity:1!important;pointer-events:auto!important;padding:48px 20px 32px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .s-node{position:static!important;transform:none!important;margin:0!important;left:auto!important;top:auto!important;width:100%!important;max-width:400px}
+  .neural-svg{display:none}
+  #dot-nav{display:none!important}
+  #scroll-space{display:none}
+  #tunnel-canvas{opacity:.6}
+  body{background:var(--bg)}
+  h2{text-align:center;margin-bottom:8px}
+}
+@media(min-width:768px){
+  #mob-nav{display:flex!important}
+}
+</style>
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-900">
-  <!-- Header Section -->
-  <header class="gradient-bg text-white py-12 lg:py-20">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="w-full lg:w-2/3 mb-8 lg:mb-0 text-center lg:text-left">
-          <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 animate-fade-in">
-            Edson Ventura
-          </h1>
-          <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 lg:mb-6 text-blue-100">
-            Software Engineer
-          </h2>
-          <p class="text-base sm:text-lg lg:text-xl text-blue-50 mb-6 lg:mb-8 leading-relaxed">
-            Full Stack Developer with 15+ years of experience in modern web technologies, enterprise systems, and
-            AI-driven solutions. Founder and visionary behind multiple tech ventures, passionate about building scalable
-            products and leading digital innovation across industries.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <a href="#contact"
-              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center">
-              Get in Touch
+<canvas id="tunnel-canvas"></canvas>
+<div id="progress-bar"></div>
+<div id="logo">EV</div>
+<nav id="dot-nav"></nav>
+<nav id="mob-nav"></nav>
+<div id="scroll-space"></div>
+
+<div id="app">
+  <div v-if="loaded">
+
+    <!-- ════ 0  HOME ════ -->
+    <section class="journey-section" :style="sxf(0)" :class="{'is-active':activeIdx===0}">
+      <div class="hero-ring" style="width:300px;height:300px;left:50%;top:50%"></div>
+      <div class="hero-ring" style="width:500px;height:500px;left:50%;top:50%;animation-delay:1.2s;opacity:.35"></div>
+      <div class="hero-ring" style="width:700px;height:700px;left:50%;top:50%;animation-delay:2.4s;opacity:.18"></div>
+
+      <div class="s-node" style="left:50%;top:46%">
+        <div style="text-align:center">
+          <div style="width:92px;height:92px;border-radius:50%;overflow:hidden;border:2px solid var(--cyan);box-shadow:0 0 28px rgba(34,211,238,0.4);margin:0 auto 14px">
+            <img :src="data.profile.avatar" style="width:100%;height:100%;object-fit:cover" :alt="data.profile.name"/>
+          </div>
+          <h1 class="glow" style="font-size:clamp(24px,3vw,40px);font-weight:700;margin-bottom:6px">{{ data.profile.name }}</h1>
+          <p class="grad" style="font-size:clamp(13px,1.4vw,18px);font-weight:600;margin-bottom:10px">{{ data.profile.title }}</p>
+          <p style="font-size:12px;color:#94a3b8;max-width:400px;line-height:1.65;margin:0 auto">{{ data.profile.description }}</p>
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <span class="chip"><i class="fas fa-map-marker-alt"></i>{{ data.profile.location }}</span>
+            <span class="chip chip-emerald"><i class="fas fa-circle" style="font-size:7px"></i>{{ data.profile.status }}</span>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <a v-for="c in data.profile.cta" :key="c.label" :href="c.href" @click.prevent="navToHref(c.href)"
+               style="padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer"
+               :style="c.variant==='primary'?'background:var(--cyan);color:#00040e':'border:1px solid var(--cyan);color:var(--cyan);background:transparent'">
+              {{ c.label }}
             </a>
-            <a href="#projects"
-              class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors text-center">
-              View Projects
-            </a>
           </div>
-        </div>
-        <div class="w-full lg:w-1/3 flex justify-center">
-          <div class="relative">
-            <img src="https://avatars.githubusercontent.com/u/18149491?v=4" alt="Edson Ventura"
-              class="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-white shadow-2xl">
-            <div
-              class="absolute -bottom-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-              Available to collaborate
-            </div>
+          <div class="scroll-hint">
+            <i class="fas fa-chevron-down"></i>scroll to explore
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- Awards Section -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">Awards & Recognition</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <!-- ════ 1  STATS ════ -->
+    <section class="journey-section" :style="sxf(1)" :class="{'is-active':activeIdx===1}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.stats.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.stats.pos[c[0]][0]+'%'" :y1="SCATTER.stats.pos[c[0]][1]+'%'"
+          :x2="SCATTER.stats.pos[c[1]][0]+'%'" :y2="SCATTER.stats.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:14%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(34,211,238,0.7);letter-spacing:.2em;text-transform:uppercase">At a Glance</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Tabasco, 2017</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Hacksureste REDUX Sureste Mexico, 2020</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">1st Place</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Yucatán, 2022</p>
-        </div>
-        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-chalkboard-teacher text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Mentor</h4>
-          <p class="text-xs lg:text-sm">Techstars Startup Weekend Yucatán, 2023</p>
-        </div>
-        <div
-          class="bg-gradient-to-r from-green-400 to-green-500 text-white p-4 lg:p-6 rounded-xl text-center card-hover">
-          <i class="fas fa-trophy text-2xl lg:text-3xl mb-3 lg:mb-4"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Finalist</h4>
-          <p class="text-xs lg:text-sm">Startup World Cup Latinoamerica, Cancún, 2024</p>
-        </div>
+      <div v-for="(stat,i) in data.profile.stats" :key="stat.label"
+           class="s-node chamfer"
+           :style="{left:SCATTER.stats.pos[i][0]+'%',top:SCATTER.stats.pos[i][1]+'%',width:'154px',padding:'18px 14px',textAlign:'center'}">
+        <i :class="stat.icon" style="font-size:20px;color:var(--cyan);margin-bottom:6px;display:block"></i>
+        <div style="font-size:30px;font-weight:700;color:#f1f5f9;font-family:'Space Grotesk',sans-serif;line-height:1">{{ stat.value }}</div>
+        <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:.08em">{{ stat.label }}</div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <!-- ════ 2  AWARDS ════ -->
+    <section class="journey-section" :style="sxf(2)" :class="{'is-active':activeIdx===2}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.awards.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
+          :x1="SCATTER.awards.pos[c[0]][0]+'%'" :y1="SCATTER.awards.pos[c[0]][1]+'%'"
+          :x2="SCATTER.awards.pos[c[1]][0]+'%'" :y2="SCATTER.awards.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:9%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(251,191,36,0.8);letter-spacing:.2em;text-transform:uppercase">Awards & Recognition</h2>
       </div>
+      <div v-for="(aw,i) in data.awards" :key="aw.description"
+           class="s-node chamfer"
+           :style="{left:SCATTER.awards.pos[i][0]+'%',top:SCATTER.awards.pos[i][1]+'%',width:'175px',padding:'14px'}">
+        <i :class="[aw.icon,'chip-'+aw.color]" style="font-size:16px;margin-bottom:7px;display:block"></i>
+        <div style="font-size:13px;font-weight:700;color:#f1f5f9;margin-bottom:3px">{{ aw.title }}</div>
+        <div style="font-size:10px;color:#94a3b8;line-height:1.45">{{ aw.description }}</div>
+      </div>
+    </section>
 
-      <div class="space-y-6 lg:space-y-8">
-        <!-- Halsei - Newest -->
-        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-white/20 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-robot text-white text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-white">Halsei S.A. de C.V.</h4>
-                <p class="text-white/90">Founder & CEO</p>
-              </div>
-            </div>
-            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium self-start">2024 -
-              Present</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-brain mr-1"></i>Python
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-robot mr-1"></i>AI
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Nuxt 3
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-server mr-1"></i>Supabase
-            </span>
-          </div>
+    <!-- ════ 3  EXPERIENCE ════ -->
+    <section class="journey-section" :style="sxf(3)" :class="{'is-active':activeIdx===3}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.experience.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.experience.pos[c[0]][0]+'%'" :y1="SCATTER.experience.pos[c[0]][1]+'%'"
+          :x2="SCATTER.experience.pos[c[1]][0]+'%'" :y2="SCATTER.experience.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(56,189,248,0.8);letter-spacing:.2em;text-transform:uppercase">Experience</h2>
+      </div>
+      <div v-for="(ex,i) in data.experience" :key="ex.company"
+           class="s-node chamfer"
+           :style="{left:SCATTER.experience.pos[i][0]+'%',top:SCATTER.experience.pos[i][1]+'%',width:'205px',padding:'12px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px">
+          <i :class="ex.icon" style="font-size:12px;color:var(--cyan);flex-shrink:0"></i>
+          <span style="font-size:11px;font-weight:700;color:#f1f5f9;line-height:1.3">{{ ex.company }}</span>
         </div>
-
-        <!-- GigNet -->
-        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-white/20 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-wifi text-white text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-white">GigNet S.A. de C.V.</h4>
-                <p class="text-white/90">Development Lead</p>
-              </div>
-            </div>
-            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              Present</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-python mr-1"></i>Python
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue 3
-            </span>
-            <span class="skill-tag bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>PostgreSQL
-            </span>
-          </div>
-        </div>
-
-        <!-- Caribbean Digital Group -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-teal-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-rocket text-teal-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Caribbean Digital Group</h4>
-                <p class="text-gray-600">Co-founder & Software Engineer</p>
-              </div>
-            </div>
-            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              2023</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-android mr-1"></i>Android Studio
-            </span>
-          </div>
-        </div>
-
-        <!-- Behotels Corporation -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-indigo-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-hotel text-indigo-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Behotels Corporation</h4>
-                <p class="text-gray-600">Backend Developer & Technical Support</p>
-              </div>
-            </div>
-            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium self-start">2019 -
-              2020</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-vuejs mr-1"></i>Vue
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-node-js mr-1"></i>Node.js
-            </span>
-            <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fab fa-java mr-1"></i>Java
-            </span>
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>SQL Server
-            </span>
-          </div>
-        </div>
-
-        <!-- Jean Piaget College -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-purple-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Jean Piaget College</h4>
-                <p class="text-gray-600">Professor of Computer Science & Robotics</p>
-              </div>
-            </div>
-            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium self-start">2015 -
-              2019</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-            <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-rocket mr-1"></i>Arduino
-            </span>
-          </div>
-        </div>
-
-        <!-- Tabasco Government -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-green-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-city text-green-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Tabasco Government</h4>
-                <p class="text-gray-600">Web Developer & Systems Assistant</p>
-              </div>
-            </div>
-            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium self-start">2014 -
-              2015</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>PHP
-            </span>
-            <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>Firebird
-            </span>
-          </div>
-        </div>
-
-        <!-- Cárdenas Government - Oldest -->
-        <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-            <div class="flex items-start space-x-4 mb-4 lg:mb-0">
-              <div class="bg-blue-100 p-3 rounded-lg flex-shrink-0">
-                <i class="fas fa-building text-blue-600 text-xl"></i>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold text-gray-800">Cárdenas Government, Tabasco</h4>
-                <p class="text-gray-600">Web Developer & Database Administrator</p>
-              </div>
-            </div>
-            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium self-start">2013 -
-              2014</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="far fa-file-code mr-1"></i>ASP.NET
-            </span>
-            <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i class="fas fa-database mr-1"></i>MySQL
-            </span>
-          </div>
+        <div style="font-size:10px;color:var(--sky);margin-bottom:3px">{{ ex.role }}</div>
+        <div style="font-size:9px;color:#475569;margin-bottom:7px;font-variant-numeric:tabular-nums">{{ ex.period }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px">
+          <span v-for="sk in ex.skills" :key="sk.label" class="chip" style="font-size:8px;padding:2px 6px">
+            <i :class="sk.icon" style="font-size:7px"></i>{{ sk.label }}
+          </span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Featured Projects</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <!-- ════ 4  PROJECTS ════ -->
+    <section class="journey-section" :style="sxf(4)" :class="{'is-active':activeIdx===4}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.projects.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.projects.pos[c[0]][0]+'%'" :y1="SCATTER.projects.pos[c[0]][1]+'%'"
+          :x2="SCATTER.projects.pos[c[1]][0]+'%'" :y2="SCATTER.projects.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(52,211,153,0.8);letter-spacing:.2em;text-transform:uppercase">Projects</h2>
       </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        <!-- Government Projects -->
-        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-building text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Government Systems and Corporations</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Cárdenas Government Website</li>
-            <li>• Citizen Service Platform</li>
-            <li>• Transit and Road System</li>
-            <li>• School Control System</li>
-          </ul>
+      <div v-for="(proj,i) in data.projects" :key="proj.title"
+           class="s-node chamfer"
+           :style="{left:SCATTER.projects.pos[i][0]+'%',top:SCATTER.projects.pos[i][1]+'%',width:'185px',padding:'13px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+          <i :class="proj.icon" style="font-size:13px;color:var(--emerald)"></i>
+          <span style="font-size:11px;font-weight:700;color:#f1f5f9">{{ proj.title }}</span>
         </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:3px">
+          <li v-for="it in proj.items" :key="it" style="font-size:9px;color:#94a3b8;display:flex;align-items:center;gap:5px">
+            <span style="width:3px;height:3px;border-radius:50%;background:var(--emerald);flex-shrink:0;display:inline-block"></span>{{ it }}
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <!-- Hospitality Projects -->
-        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-hotel text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Hospitality Platforms</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Booking Engine API</li>
-            <li>• Human Resources Platform</li>
-            <li>• Ticket Sales Platform</li>
-            <li>• Corporation Websites</li>
-          </ul>
+    <!-- ════ 5  SKILLS ════ -->
+    <section class="journey-section" :style="sxf(5)" :class="{'is-active':activeIdx===5}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.skills.conn" :key="c[0]+'-'+c[1]" class="n-line"
+          :x1="SCATTER.skills.pos[c[0]][0]+'%'" :y1="SCATTER.skills.pos[c[0]][1]+'%'"
+          :x2="SCATTER.skills.pos[c[1]][0]+'%'" :y2="SCATTER.skills.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:7%">
+        <h2 style="font-size:clamp(13px,1.5vw,19px);font-weight:600;color:rgba(129,140,248,0.8);letter-spacing:.2em;text-transform:uppercase">Skills</h2>
+      </div>
+      <div v-for="(cat,i) in data.skills" :key="cat.category"
+           class="s-node chamfer"
+           :style="{left:SCATTER.skills.pos[i][0]+'%',top:SCATTER.skills.pos[i][1]+'%',width:'182px',padding:'13px'}">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+          <i :class="[cat.icon,cat.iconColor]" style="font-size:12px"></i>
+          <span style="font-size:10px;font-weight:600;color:#e2e8f0">{{ cat.category }}</span>
         </div>
-
-        <!-- Fintech Projects -->
-        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-credit-card text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Fintech Solutions</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• GCashless NFC App</li>
-            <li>• Reservation Platform</li>
-            <li>• Bank Integration System</li>
-            <li>• Stripe Integration</li>
-          </ul>
-        </div>
-
-        <!-- Telecommunications Software -->
-        <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-wifi text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Telecommunications Software</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Guest Portal Management</li>
-            <li>• Network Administration</li>
-            <li>• WISP Management System</li>
-            <li>• GigNet Odoo ERP</li>
-            <li>• GigNet Mobile App</li>
-          </ul>
-        </div>
-
-        <!-- Open Source Software -->
-        <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fab fa-github text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Open Source Software</h4>
-          </div>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Odoo Community Contributions</li>
-            <li>• Chrome Extensions</li>
-            <li>• Payment Integration Libraries</li>
-            <li>• Project Boilerplate Libraries</li>
-          </ul>
-        </div>
-
-        <!-- AI Platform -->
-        <div class="bg-gradient-to-br from-pink-500 to-pink-600 text-white p-4 lg:p-6 rounded-xl card-hover">
-          <div class="flex items-center mb-3 lg:mb-4">
-            <i class="fas fa-brain text-xl lg:text-2xl mr-3"></i>
-            <h4 class="text-base lg:text-lg font-bold">Halsei - AI Platform</h4>
-          </div>
-          <p class="text-xs lg:text-sm mb-3">AI-powered data analysis platform that transforms spreadsheets into clear
-            insights and
-            strategic decisions—easily and efficiently.</p>
-          <ul class="space-y-1 lg:space-y-2 text-xs lg:text-sm">
-            <li>• Data Analysis & Insights</li>
-            <li>• Strategic Decision Support</li>
-            <li>• Spreadsheet Transformation</li>
-            <li>• AI-Powered Analytics</li>
-          </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:3px">
+          <span v-for="sk in cat.items" :key="sk.label" class="chip chamfer-sm" style="font-size:8px;padding:2px 6px">{{ sk.label }}</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <!-- Programming Languages -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-code text-blue-600 mr-3"></i>
-            Programming Languages
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">JavaScript</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">TypeScript</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Node.js</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">PHP</span>
-            <span
-              class="skill-tag bg-yellow-100 text-yellow-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Python</span>
-            <span
-              class="skill-tag bg-orange-100 text-orange-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Java</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Golang</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">ASP.NET</span>
-          </div>
-        </div>
-
-        <!-- Frontend Technologies -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-palette text-green-600 mr-3"></i>
-            Frontend Technologies
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Vue.js</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Vue
-              3</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">React</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">HTML5</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">CSS3</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Tailwind
-              CSS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Bootstrap</span>
-          </div>
-        </div>
-
-        <!-- Databases -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-database text-purple-600 mr-3"></i>
-            Databases & ORMs
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">MySQL</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">PostgreSQL</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">SQL
-              Server</span>
-            <span
-              class="skill-tag bg-orange-100 text-orange-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Firebird</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">MongoDB</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">SQLite</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Sequelize</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Supabase</span>
-          </div>
-        </div>
-
-        <!-- Frameworks & Tools -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-tools text-red-600 mr-3"></i>
-            Frameworks & Tools
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Flask</span>
-            <span
-              class="skill-tag bg-green-100 text-green-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Django</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Express.js</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Odoo
-              ERP</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Odoo.sh</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">WordPress</span>
-          </div>
-        </div>
-
-        <!-- DevOps & Cloud -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-cloud text-indigo-600 mr-3"></i>
-            DevOps & Cloud
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Git</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">GitHub</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">AWS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Digital
-              Ocean</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Heroku</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Netlify</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Linux</span>
-          </div>
-        </div>
-
-        <!-- Payment & Services -->
-        <div class="bg-white p-4 lg:p-6 rounded-xl shadow-lg">
-          <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4 flex items-center">
-            <i class="fas fa-credit-card text-green-600 mr-3"></i>
-            Payment & Services
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Stripe</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Mercado
-              Pago</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">HSBC
-              RAP</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">RouterOS</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Sentry.io</span>
-            <span
-              class="skill-tag bg-blue-100 text-blue-800 px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-medium">Alestra</span>
-          </div>
+    <!-- ════ 6  CONTACT ════ -->
+    <section class="journey-section" id="contact" :style="sxf(6)" :class="{'is-active':activeIdx===6}">
+      <svg class="neural-svg">
+        <line v-for="c in SCATTER.contact.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
+          :x1="SCATTER.contact.pos[c[0]][0]+'%'" :y1="SCATTER.contact.pos[c[0]][1]+'%'"
+          :x2="SCATTER.contact.pos[c[1]][0]+'%'" :y2="SCATTER.contact.pos[c[1]][1]+'%'"/>
+      </svg>
+      <div class="s-node" style="left:50%;top:24%">
+        <div style="text-align:center">
+          <h2 class="glow" style="font-size:clamp(20px,2.5vw,34px);font-weight:700;margin-bottom:8px">Let's Connect</h2>
+          <p style="font-size:12px;color:#64748b;max-width:340px">Open to new collaborations, ventures, and conversations.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-        <p class="text-gray-600 mt-4">I'm always interested in new opportunities and exciting projects.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <a href="https://github.com/edsonfervo16mx" target="_blank"
-          class="bg-gray-900 text-white p-4 lg:p-6 rounded-xl text-center card-hover group">
-          <i class="fab fa-github text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">GitHub</h4>
-          <p class="text-gray-300 text-sm lg:text-base">edsonfervo16mx</p>
-        </a>
-
-        <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
-          class="bg-blue-600 text-white p-4 lg:p-6 rounded-xl text-center card-hover group">
-          <i class="fab fa-linkedin text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">LinkedIn</h4>
-          <p class="text-blue-100 text-sm lg:text-base">Edson Ventura</p>
-        </a>
-
-        <a href="https://twitter.com/EdsonFOropeza" target="_blank"
-          class="bg-blue-400 text-white p-4 lg:p-6 rounded-xl text-center card-hover group sm:col-span-2 lg:col-span-1">
-          <i class="fab fa-twitter text-2xl lg:text-3xl mb-3 lg:mb-4 group-hover:scale-110 transition-transform"></i>
-          <h4 class="font-bold text-base lg:text-lg mb-2">Twitter</h4>
-          <p class="text-blue-50 text-sm lg:text-base">@EdsonFOropeza</p>
+      <div v-for="(ct,i) in data.contact" :key="ct.platform"
+           class="s-node chamfer"
+           :style="{left:SCATTER.contact.pos[i][0]+'%',top:SCATTER.contact.pos[i][1]+'%',minWidth:'175px',padding:'14px 18px'}">
+        <a :href="ct.url" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#e2e8f0">
+          <i :class="ct.icon" style="font-size:18px;color:var(--cyan)"></i>
+          <div>
+            <div style="font-size:12px;font-weight:600">{{ ct.platform }}</div>
+            <div style="font-size:9px;color:#475569">{{ ct.handle }}</div>
+          </div>
+          <i class="fas fa-arrow-up-right-from-square" style="font-size:8px;margin-left:auto;opacity:.35"></i>
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-gray-300">©
-            <script>document.write(new Date().getFullYear())</script> Edson Fernando Ventura Oropeza. All rights
-            reserved.
-          </p>
-        </div>
-        <div class="flex space-x-6">
-          <a href="https://github.com/edsonfervo16mx" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-github text-xl"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-linkedin text-xl"></i>
-          </a>
-          <a href="https://twitter.com/EdsonFOropeza" target="_blank"
-            class="text-gray-300 hover:text-white transition-colors">
-            <i class="fab fa-twitter text-xl"></i>
-          </a>
-        </div>
+      <div class="s-node" style="left:50%;top:90%">
+        <p style="font-size:9px;color:#1e293b;text-align:center">© 2026 Edson Ventura · Quintana Roo, Mexico</p>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- Smooth scrolling script -->
-  <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
+  </div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────
+   CANVAS — scroll-driven spiral tunnel
+───────────────────────────────────────── */
+(function(){
+  const cv = document.getElementById('tunnel-canvas');
+  const ctx = cv.getContext('2d');
+  const RINGS = 30, STARS = 260, STREAKS = 18;
+  let W, H, cx, cy;
+  let currentScrollY = 0;
+
+  const stars = [];
+  const streaks = [];
+
+  function resize(){
+    W = cv.width = window.innerWidth;
+    H = cv.height = window.innerHeight;
+    cx = W / 2; cy = H / 2;
+    stars.length = 0;
+    for(let i = 0; i < STARS; i++) stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.3 + 0.3,
+      alpha: Math.random() * 0.6 + 0.3,
+      twinkle: Math.random() * Math.PI * 2,
     });
+    streaks.length = 0;
+    for(let i = 0; i < STREAKS; i++) streaks.push({
+      angle: Math.random() * Math.PI * 2,
+      speed: Math.random() * 1.4 + 0.5,
+      len: Math.random() * 70 + 30,
+      phase: Math.random() * 120,
+    });
+  }
 
-    // Add scroll animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+  window.addEventListener('resize', resize);
+  resize();
+  window.addEventListener('scroll', () => { currentScrollY = window.scrollY; }, { passive: true });
+
+  function draw(){
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, W, H);
+
+    const ss = document.getElementById('scroll-space');
+    const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
+    const rawScroll = Math.max(0, Math.min(currentScrollY, maxScroll));
+    const cameraZ = rawScroll * 0.55;
+    const cameraRoll = rawScroll * 0.0018;
+    const scrollFrac = rawScroll / maxScroll;
+
+    /* stars */
+    for(const s of stars){
+      s.twinkle += 0.007;
+      const a = s.alpha * (0.45 + 0.55 * Math.sin(s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(148,163,184,${a})`;
+      ctx.fill();
+    }
+
+    /* tunnel rings */
+    const TDEPTH = 2600;
+    const RSEP = TDEPTH / RINGS;
+    const hueBase = 190 + scrollFrac * 55;
+
+    for(let i = 0; i < RINGS; i++){
+      const baseZ = i * RSEP;
+      let relZ = ((baseZ - cameraZ % TDEPTH) + TDEPTH) % TDEPTH;
+      if(relZ < 40) continue;
+
+      const pf = TDEPTH / (relZ + 80);
+      const rX = pf * W * 0.42;
+      const rY = pf * H * 0.42;
+
+      const spiralA = i * (Math.PI * 0.44) + cameraRoll;
+      const spiralAmt = Math.min(rX * 0.10, 32);
+      const ringCX = cx + Math.cos(spiralA) * spiralAmt;
+      const ringCY = cy + Math.sin(spiralA) * spiralAmt * 0.52;
+
+      const hue = (hueBase + i * 16) % 360;
+      const alpha = Math.max(0, Math.min(0.6, pf * 0.85));
+
+      ctx.beginPath();
+      ctx.ellipse(ringCX, ringCY, Math.max(1, rX), Math.max(1, rY), cameraRoll * 0.25, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${hue},78%,62%,${alpha})`;
+      ctx.lineWidth = Math.max(0.5, pf * 1.1);
+      ctx.stroke();
+
+      /* faint inner ring */
+      ctx.beginPath();
+      ctx.ellipse(ringCX, ringCY, Math.max(1, rX * 0.48), Math.max(1, rY * 0.48), cameraRoll * 0.25, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${hue},90%,70%,${alpha * 0.22})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    /* vortex glow */
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.30);
+    g.addColorStop(0, `rgba(34,211,238,${0.07 + scrollFrac * 0.05})`);
+    g.addColorStop(0.6, `rgba(56,189,248,0.02)`);
+    g.addColorStop(1, `rgba(0,4,14,0)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    /* hyperspace streaks */
+    const sm = 1 + scrollFrac * 3.5;
+    ctx.save();
+    ctx.translate(cx, cy);
+    for(const s of streaks){
+      s.phase += s.speed * sm * 0.35;
+      const t = (s.phase % 120) / 120;
+      const d0 = t * Math.min(W, H) * 0.5 * 0.45;
+      const d1 = d0 + s.len * t;
+      const angle = s.angle + cameraRoll * 0.18;
+      const a = Math.sin(t * Math.PI) * 0.4;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(angle) * d0, Math.sin(angle) * d0);
+      ctx.lineTo(Math.cos(angle) * d1, Math.sin(angle) * d1);
+      ctx.strokeStyle = `rgba(34,211,238,${a})`;
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  draw();
+})();
+
+/* ─────────────────────────────────────────
+   VUE APP
+───────────────────────────────────────── */
+const { createApp, ref, onMounted, onUnmounted } = Vue;
+
+createApp({
+  setup(){
+    const data = ref(null);
+    const loaded = ref(false);
+    const scrollY = ref(0);
+    const winH = ref(window.innerHeight);
+    const activeIdx = ref(0);
+    const TOTAL = 7;
+    const DWELL = 1.35;
+
+    const SCATTER = {
+      stats:      { pos:[[20,36],[76,32],[18,70],[78,68]], conn:[[0,1],[0,2],[1,3],[2,3],[0,3],[1,2]] },
+      awards:     { pos:[[18,24],[72,20],[12,56],[85,53],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
+      experience: { pos:[[42,16],[80,26],[14,32],[70,52],[20,58],[45,74],[22,86],[75,82]], conn:[[0,1],[0,2],[1,3],[2,3],[3,4],[4,5],[5,6],[5,7],[6,7]] },
+      projects:   { pos:[[17,22],[76,20],[11,54],[85,51],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5]] },
+      skills:     { pos:[[15,26],[78,22],[11,58],[85,55],[29,84],[67,84]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
+      contact:    { pos:[[28,54],[50,38],[72,54]], conn:[[0,1],[1,2],[0,2]] }
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+    function sxf(i){
+      if(window.innerWidth < 768) return {};
+      const sp = scrollY.value / winH.value;
+      const diff = sp - i * DWELL;
+
+      // ── opacity: tight window — sections invisible outside their dwell ──
+      // Adjacent sections (DWELL=1.35 apart) can never be simultaneously visible.
+      const FADE = 0.10;
+      const dist = Math.abs(diff - 0.5);
+      let opacity;
+      if(dist >= 0.5 + FADE)  opacity = 0;
+      else if(dist >= 0.5)    opacity = 1 - (dist - 0.5) / FADE;
+      else                    opacity = 1;
+
+      // ── transform: single continuous formula — no scale jump at diff=0 ──
+      // Before dwell (diff<0) reuses the dwell equation extrapolated backward,
+      // so scale/tz are identical at the boundary and there is no visual pop.
+      let scale, tz;
+      if(diff < 1){
+        scale = Math.max(0.06, 0.22 + diff * 0.78);
+        tz    = (1 - diff) * -680;
+      } else {
+        const d = Math.min(diff - 1, 2.2);
+        scale = 1 + d * 0.85;
+        tz    = d * 600;
+      }
+
+      const hidden = opacity <= 0.005;
+      return {
+        transform:     `translateZ(${tz}px) scale(${scale})`,
+        opacity,
+        zIndex:        Math.round((1 - dist) * 100),
+        pointerEvents: hidden ? 'none' : '',
+        visibility:    hidden ? 'hidden' : 'visible',
+      };
+    }
+
+    function onScroll(){
+      scrollY.value = window.scrollY;
+      const ss = document.getElementById('scroll-space');
+      const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
+      const pct = Math.min(100, (window.scrollY / maxScroll) * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+
+      const sp = window.scrollY / window.innerHeight;
+      const ai = Math.max(0, Math.min(TOTAL - 1, Math.round(sp / DWELL)));
+      activeIdx.value = ai;
+      document.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
+      document.querySelectorAll('.mob-dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
+    }
+
+    function onResize(){ winH.value = window.innerHeight; }
+
+    function scrollToSection(i){
+      window.scrollTo({ top: i * DWELL * winH.value, behavior: 'smooth' });
+    }
+
+    function navToHref(href){
+      const map = { '#contact': 6, '#projects': 4 };
+      if(map[href] !== undefined) scrollToSection(map[href]);
+    }
+
+    function buildNav(){
+      const LABELS = ['Home','Stats','Awards','Experience','Projects','Skills','Contact'];
+      ['dot-nav','mob-nav'].forEach((id, navIdx) => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        for(let i = 0; i < TOTAL; i++){
+          const d = document.createElement('div');
+          d.className = (navIdx === 0 ? 'dot' : 'mob-dot') + (i === 0 ? ' active' : '');
+          if(navIdx === 0) d.title = LABELS[i];
+          d.addEventListener('click', () => scrollToSection(i));
+          el.appendChild(d);
         }
       });
-    }, observerOptions);
+    }
 
-    // Observe all cards and sections
-    document.querySelectorAll('.card-hover, section').forEach(el => {
-      observer.observe(el);
+    onMounted(async () => {
+      const res = await fetch('./data.json');
+      data.value = await res.json();
+      loaded.value = true;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize);
+      buildNav();
     });
-  </script>
-</body>
 
+    onUnmounted(() => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    });
+
+    return { data, loaded, scrollY, activeIdx, SCATTER, sxf, navToHref };
+  }
+}).mount('#app');
+</script>
+</body>
 </html>
