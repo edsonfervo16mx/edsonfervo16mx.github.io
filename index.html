@@ -64,9 +64,22 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
   border:1px solid var(--border);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
+  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s ease;
 }
 .chamfer-sm{
   clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+}
+/* ── card hover focus ── */
+.s-node.chamfer{
+  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;
+}
+.s-node.chamfer:hover{
+  background:rgba(34,211,238,0.10);
+  border-color:rgba(34,211,238,0.55);
+  filter:drop-shadow(0 0 18px rgba(34,211,238,0.38)) drop-shadow(0 0 6px rgba(34,211,238,0.2));
+  transform:translate(-50%,-50%) scale(1.055);
+  z-index:50;
 }
 
 /* ── home hero ── */
@@ -498,30 +511,39 @@ createApp({
       if(window.innerWidth < 768) return {};
       const sp = scrollY.value / winH.value;
       const diff = sp - i * DWELL;
-      let scale, tz, opacity;
 
+      // ── opacity: single continuous window, no discontinuities ──
+      // Full opacity from diff 0.1→0.9; 0.12-unit fades at each edge; invisible outside.
+      const FADE = 0.12;
+      const dist = Math.abs(diff - 0.5); // distance from center of dwell (0.5)
+      let opacity;
+      if(dist >= 0.5 + FADE)       opacity = 0;
+      else if(dist >= 0.5)         opacity = 1 - (dist - 0.5) / FADE;
+      else                         opacity = 1;
+
+      // ── transform: 3D journey through tunnel ──
+      let scale, tz;
       if(diff < 0){
         const d = Math.min(-diff, 3.5);
         scale = Math.max(0.07, 1 - d * 0.26);
-        tz = -d * 720;
-        opacity = Math.max(0, Math.min(1, 1 + diff * 0.75));
+        tz    = -d * 720;
       } else if(diff < 1){
-        const t = diff;
-        scale = 0.22 + t * 0.78;
-        tz = (1 - t) * -660;
-        opacity = Math.min(1, t * 1.8);
+        scale = 0.22 + diff * 0.78;
+        tz    = (1 - diff) * -660;
         if(diff > 0.45) activeIdx.value = i;
       } else {
         const d = Math.min(diff - 1, 2.2);
         scale = 1 + d * 0.85;
-        tz = d * 580;
-        opacity = Math.max(0, 1 - d * 1.1);
+        tz    = d * 580;
       }
 
+      const hidden = opacity <= 0.01;
       return {
-        transform: `translateZ(${tz}px) scale(${scale})`,
+        transform:     `translateZ(${tz}px) scale(${scale})`,
         opacity,
-        zIndex: Math.round((1 - Math.abs(diff - 0.5)) * 100)
+        zIndex:        Math.round((1 - Math.abs(diff - 0.5)) * 100),
+        pointerEvents: hidden ? 'none' : '',
+        visibility:    hidden ? 'hidden' : 'visible',
       };
     }
 
