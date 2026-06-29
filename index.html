@@ -25,563 +25,599 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cyan:#22d3ee;--sky:#38bdf8;--indigo:#818cf8;--emerald:#34d399;
-  --bg:#00040e;--glass:rgba(255,255,255,0.04);--border:rgba(34,211,238,0.15);
+  --cyan:#22d3ee;--sky:#38bdf8;--indigo:#818cf8;--emerald:#34d399;--amber:#fbbf24;
+  --bg:#00040e;--bg2:#020916;
+  --glass:rgba(255,255,255,0.035);--glass2:rgba(255,255,255,0.06);
+  --border:rgba(34,211,238,0.14);
+  --nav-h:62px;
 }
-html{scroll-behavior:auto}
-body{background:var(--bg);color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden}
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y proximity;
+  scroll-padding-top:var(--nav-h);
+}
+body{
+  background:radial-gradient(120% 120% at 50% 0%,#04101f 0%,var(--bg) 55%);
+  color:#e2e8f0;font-family:'Inter',sans-serif;overflow-x:hidden;
+}
 h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
-#tunnel-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-#scroll-space{height:1000vh;position:relative;z-index:1;pointer-events:none}
-#app{position:fixed;inset:0;z-index:2;pointer-events:none;perspective:1400px;perspective-origin:50% 50%}
+a{color:inherit}
+img{display:block}
 
-/* ── section shells ── */
-.journey-section{
-  position:absolute;inset:0;
-  transform-style:preserve-3d;
-  pointer-events:none;
-  will-change:transform,opacity;
-}
-.journey-section.is-active{pointer-events:auto}
+/* ── animated constellation background ── */
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
-/* ── scattered node ── */
-.s-node{
-  position:absolute;
-  transform:translate(-50%,-50%);
-  pointer-events:auto;
+/* ── scroll progress ── */
+#progress{
+  position:fixed;top:0;left:0;height:2px;z-index:300;
+  background:linear-gradient(90deg,var(--sky),var(--cyan),var(--emerald));
+  width:0;box-shadow:0 0 10px rgba(34,211,238,.6);transition:width .12s linear;
 }
 
-/* ── neural SVG overlay ── */
-.neural-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-@keyframes netPulse{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
-.n-line{stroke-dasharray:6 18;animation:netPulse 2.4s linear infinite;stroke:rgba(34,211,238,0.18);stroke-width:1}
-.n-line-warm{stroke:rgba(251,191,36,0.18)}
-
-/* ── chamfer panel ── */
-.chamfer{
-  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
-  background:var(--glass);
-  border:1px solid var(--border);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s ease;
+/* ════ TOP NAV ════ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(16px,4vw,40px);
+  background:rgba(2,6,18,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(34,211,238,.10);
 }
-.chamfer-sm{
-  clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+.brand{
+  font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;
+  letter-spacing:.08em;color:var(--cyan);text-decoration:none;
+  text-shadow:0 0 16px rgba(34,211,238,.45);cursor:pointer;
 }
-/* ── card hover focus ── */
-.s-node.chamfer{
-  transition:background .25s ease, border-color .25s ease, filter .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
-  cursor:default;
+.brand span{color:#e2e8f0}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{
+  position:relative;text-decoration:none;font-size:13px;font-weight:500;
+  color:#94a3b8;padding:8px 14px;border-radius:8px;cursor:pointer;
+  transition:color .25s,background .25s;
 }
-.s-node.chamfer:hover{
-  background:rgba(34,211,238,0.10);
-  border-color:rgba(34,211,238,0.55);
-  filter:drop-shadow(0 0 18px rgba(34,211,238,0.38)) drop-shadow(0 0 6px rgba(34,211,238,0.2));
-  transform:translate(-50%,-50%) scale(1.055);
-  z-index:50;
+.nav-links a:hover{color:#e2e8f0;background:rgba(255,255,255,.04)}
+.nav-links a.active{color:var(--cyan)}
+.nav-links a.active::after{
+  content:'';position:absolute;left:14px;right:14px;bottom:2px;height:2px;
+  background:var(--cyan);border-radius:2px;box-shadow:0 0 8px var(--cyan);
 }
 
-/* ── home hero ── */
-.hero-ring{
-  position:absolute;border-radius:50%;
-  border:1px solid rgba(34,211,238,0.1);
-  animation:ring-pulse 4s ease-in-out infinite;
+/* hamburger */
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--cyan);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* mobile overlay menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:150;
+  background:rgba(2,6,18,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  opacity:0;visibility:hidden;transform:scale(1.04);
+  transition:opacity .35s ease,transform .35s ease,visibility .35s;
 }
-@keyframes ring-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.04);opacity:.9}}
+.mobile-menu.open{opacity:1;visibility:visible;transform:scale(1)}
+.mobile-menu a{
+  display:flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;
+  font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#94a3b8;
+  padding:12px 24px;border-radius:12px;transition:color .25s,background .25s;
+}
+.mobile-menu a i{font-size:18px;width:26px;text-align:center;color:var(--cyan);opacity:.7}
+.mobile-menu a.active{color:#fff;background:rgba(34,211,238,.08)}
+.mobile-menu a.active i{opacity:1}
 
-/* ── glow text ── */
-.glow{text-shadow:0 0 20px rgba(34,211,238,0.5),0 0 40px rgba(34,211,238,0.25)}
-.grad{background:linear-gradient(135deg,#38bdf8,#22d3ee,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ── desktop dot rail ── */
+.dotrail{
+  position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:120;
+  display:flex;flex-direction:column;gap:12px;
+}
+.dotrail .dot{
+  width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:rgba(34,211,238,.22);transition:all .3s;position:relative;
+}
+.dotrail .dot::before{
+  content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-size:11px;color:var(--cyan);white-space:nowrap;opacity:0;transition:opacity .25s;pointer-events:none;
+}
+.dotrail .dot:hover::before{opacity:.85}
+.dotrail .dot.active{background:var(--cyan);box-shadow:0 0 10px var(--cyan);transform:scale(1.5)}
 
-/* ── chips ── */
+/* ════ SECTIONS ════ */
+main{position:relative;z-index:2}
+.section{
+  min-height:100vh;scroll-snap-align:start;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:calc(var(--nav-h) + 40px) clamp(18px,5vw,40px) 70px;
+}
+.wrap{width:100%;max-width:1140px;margin:0 auto}
+
+/* section heading */
+.sec-head{text-align:center;margin-bottom:46px}
+.eyebrow{
+  display:inline-block;font-size:12px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ac,var(--cyan));margin-bottom:12px;
+}
+.sec-title{font-size:clamp(28px,4.4vw,46px);font-weight:700;color:#f1f5f9;line-height:1.1}
+.sec-title::after{
+  content:'';display:block;width:54px;height:3px;margin:16px auto 0;border-radius:3px;
+  background:var(--ac,var(--cyan));box-shadow:0 0 12px var(--ac,var(--cyan));
+}
+
+/* card */
+.card{
+  background:var(--glass);border:1px solid var(--border);border-radius:16px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s,background .35s;
+}
+.card:hover{
+  transform:translateY(-7px);
+  border-color:color-mix(in srgb,var(--ac,var(--cyan)) 55%,transparent);
+  background:var(--glass2);
+  box-shadow:0 18px 50px -18px color-mix(in srgb,var(--ac,var(--cyan)) 60%,transparent);
+}
+
+/* grids */
+.grid{display:grid;gap:22px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-auto{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+
+/* chips */
 .chip{
   display:inline-flex;align-items:center;gap:6px;
   padding:5px 11px;border-radius:20px;font-size:11px;font-weight:500;
   background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.18);color:var(--cyan);
   white-space:nowrap;
 }
-.chip-amber{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.2);color:#fbbf24}
-.chip-emerald{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.2);color:var(--emerald)}
-.chip-cyan{background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.2);color:var(--cyan)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip-amber{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.22);color:var(--amber)}
+.chip-emerald{background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.22);color:var(--emerald)}
+.chip-cyan{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.22);color:var(--cyan)}
 
-/* ── dot nav ── */
-#dot-nav{
-  position:fixed;right:20px;top:50%;transform:translateY(-50%);
-  z-index:100;display:flex;flex-direction:column;gap:10px;
+/* ════ HERO ════ */
+.hero{position:relative;overflow:hidden}
+.hero-ring{
+  position:absolute;border-radius:50%;border:1px solid rgba(34,211,238,.10);
+  left:50%;top:50%;animation:ring-pulse 4s ease-in-out infinite;pointer-events:none;
 }
-.dot{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(34,211,238,0.2);border:1px solid rgba(34,211,238,0.35);
-  cursor:pointer;transition:all .3s;
+@keyframes ring-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.05);opacity:.9}}
+.hero-inner{text-align:center;position:relative;z-index:2;max-width:640px}
+.avatar{
+  width:118px;height:118px;border-radius:50%;overflow:hidden;margin:0 auto 22px;
+  border:2px solid var(--cyan);box-shadow:0 0 32px rgba(34,211,238,.45);
 }
-.dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan);transform:scale(1.4)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.name{
+  font-size:clamp(34px,6vw,62px);font-weight:700;line-height:1.05;margin-bottom:10px;
+  background:linear-gradient(90deg,#38bdf8,#22d3ee,#34d399,#22d3ee,#38bdf8);
+  background-size:300% auto;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;animation:shine 7s linear infinite;
+}
+@keyframes shine{to{background-position:300% center}}
+.role{font-size:clamp(15px,2vw,21px);font-weight:600;color:var(--cyan);margin-bottom:18px;letter-spacing:.02em}
+.lead{font-size:14px;color:#94a3b8;line-height:1.7;margin:0 auto 22px}
+.hero-chips{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:12px 26px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;
+  cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;display:inline-block;
+}
+.btn-primary{background:var(--cyan);color:#00040e;box-shadow:0 0 24px rgba(34,211,238,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(34,211,238,.55)}
+.btn-ghost{border:1px solid var(--cyan);color:var(--cyan);background:transparent}
+.btn-ghost:hover{transform:translateY(-3px);background:rgba(34,211,238,.08)}
+.scroll-hint{
+  margin-top:46px;display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);opacity:.55;
+  animation:bounce-y 2s ease-in-out infinite;
+}
+@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-/* ── progress bar ── */
-#progress-bar{
-  position:fixed;top:0;left:0;height:2px;z-index:200;
-  background:linear-gradient(90deg,var(--cyan),var(--emerald));
-  width:0%;
+/* ════ STATS ════ */
+.stat{padding:32px 22px;text-align:center}
+.stat i{font-size:30px;color:var(--ac);margin-bottom:14px;display:block;filter:drop-shadow(0 0 10px color-mix(in srgb,var(--ac) 60%,transparent))}
+.stat .num{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:#f1f5f9;line-height:1}
+.stat .lbl{font-size:12px;color:#64748b;margin-top:10px;text-transform:uppercase;letter-spacing:.12em}
+
+/* ════ AWARDS ════ */
+.award{padding:26px 22px}
+.award i{font-size:24px;margin-bottom:12px;display:block}
+.award .t{font-size:17px;font-weight:700;color:#f1f5f9;margin-bottom:6px}
+.award .d{font-size:13px;color:#94a3b8;line-height:1.55}
+
+/* ════ TIMELINE (experience) ════ */
+.timeline{position:relative;max-width:900px;margin:0 auto;padding:6px 0}
+.timeline::before{
+  content:'';position:absolute;top:6px;bottom:6px;left:50%;width:2px;transform:translateX(-50%);
+  background:linear-gradient(180deg,var(--ac),transparent);opacity:.35;
+}
+.tl-item{position:relative;width:50%;padding:14px 40px;box-sizing:border-box}
+.tl-item.left{left:0}
+.tl-item.right{left:50%}
+.dot-node{
+  position:absolute;top:30px;width:15px;height:15px;border-radius:50%;
+  background:var(--ac);box-shadow:0 0 14px var(--ac);border:3px solid var(--bg);z-index:2;
+}
+.tl-item.left .dot-node{right:-7px}
+.tl-item.right .dot-node{left:-8px}
+.tl-card{padding:20px 22px}
+.ex-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.ex-head>i{font-size:18px;color:var(--ac);flex-shrink:0}
+.ex-co{font-size:16px;font-weight:700;color:#f1f5f9;line-height:1.25}
+.ex-role{font-size:13px;color:var(--sky);margin-top:2px}
+.ex-period{font-size:11px;color:#64748b;margin-bottom:12px;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.ex-period i{margin-right:6px;opacity:.7}
+
+/* ════ PROJECTS ════ */
+.proj{padding:24px 22px}
+.proj-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.proj-head i{font-size:20px;color:var(--ac)}
+.proj-head .t{font-size:16px;font-weight:700;color:#f1f5f9}
+.proj-desc{font-size:12px;color:#64748b;line-height:1.55;margin-bottom:12px}
+.proj ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.proj li{font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:9px}
+.proj li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ac);flex-shrink:0;box-shadow:0 0 6px var(--ac)}
+
+/* ════ SKILLS ════ */
+.skillcat{padding:24px 22px}
+.skillcat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.skillcat-head i{font-size:18px;color:var(--ac)}
+.skillcat-head .t{font-size:14px;font-weight:600;color:#e2e8f0}
+
+/* ════ CONTACT ════ */
+.contact-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:8px}
+.contact-card{padding:22px 26px;min-width:250px}
+.contact-card a{display:flex;align-items:center;gap:16px;text-decoration:none;color:#e2e8f0}
+.contact-card i.lead-ic{font-size:28px;color:var(--ac)}
+.contact-card .p{font-size:15px;font-weight:600}
+.contact-card .h{font-size:12px;color:#64748b;margin-top:2px}
+.contact-card .ext{font-size:11px;margin-left:auto;opacity:.4}
+.footer{margin-top:48px;text-align:center;font-size:12px;color:#334155}
+
+/* ════ REVEAL TRANSITIONS ════ */
+.reveal,.reveal-l,.reveal-r{opacity:0;transition:opacity .7s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
+.reveal{transform:translateY(42px)}
+.reveal-l{transform:translateX(-60px)}
+.reveal-r{transform:translateX(60px)}
+.in{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-l,.reveal-r{opacity:1!important;transform:none!important;transition:none}
+  html{scroll-behavior:auto}
+  .name,.hero-ring,.scroll-hint{animation:none!important}
 }
 
-/* ── logo ── */
-#logo{
-  position:fixed;top:20px;left:24px;z-index:100;
-  font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;
-  color:var(--cyan);letter-spacing:.05em;
-  text-shadow:0 0 15px rgba(34,211,238,0.4);
-  pointer-events:none;
+/* ════ RESPONSIVE ════ */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .dotrail{display:none}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{left:18px}
+  .tl-item{width:100%!important;left:0!important;padding:12px 0 12px 46px}
+  .tl-item .dot-node{left:11px!important;right:auto!important}
 }
-
-/* ── mobile pill nav ── */
-#mob-nav{
-  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
-  z-index:100;
-  background:rgba(0,4,14,0.85);border:1px solid var(--border);
-  border-radius:40px;padding:8px 16px;gap:16px;backdrop-filter:blur(16px);
-  display:none;
-}
-.mob-dot{width:7px;height:7px;border-radius:50%;background:rgba(34,211,238,0.25);cursor:pointer;transition:all .3s}
-.mob-dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-
-/* ── scroll hint ── */
-@keyframes bounce-y{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
-.scroll-hint{display:inline-flex;flex-direction:column;align-items:center;gap:4px;animation:bounce-y 2s ease-in-out infinite;opacity:.5;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-top:22px}
-
-/* ── mobile linear fallback ── */
-@media(max-width:767px){
-  #app{position:static;perspective:none;pointer-events:auto}
-  .journey-section{position:static;transform:none!important;opacity:1!important;pointer-events:auto!important;padding:48px 20px 32px;display:flex;flex-direction:column;align-items:center;gap:16px}
-  .s-node{position:static!important;transform:none!important;margin:0!important;left:auto!important;top:auto!important;width:100%!important;max-width:400px}
-  .neural-svg{display:none}
-  #dot-nav{display:none!important}
-  #scroll-space{display:none}
-  #tunnel-canvas{opacity:.6}
-  body{background:var(--bg)}
-  h2{text-align:center;margin-bottom:8px}
-}
-@media(min-width:768px){
-  #mob-nav{display:flex!important}
+@media(max-width:480px){
+  .contact-card{min-width:100%}
 }
 </style>
 </head>
 <body>
 
-<canvas id="tunnel-canvas"></canvas>
-<div id="progress-bar"></div>
-<div id="logo">EV</div>
-<nav id="dot-nav"></nav>
-<nav id="mob-nav"></nav>
-<div id="scroll-space"></div>
+<canvas id="bg"></canvas>
 
 <div id="app">
-  <div v-if="loaded">
+<div v-if="loaded">
 
-    <!-- ════ 0  HOME ════ -->
-    <section class="journey-section" :style="sxf(0)" :class="{'is-active':activeIdx===0}">
-      <div class="hero-ring" style="width:300px;height:300px;left:50%;top:50%"></div>
-      <div class="hero-ring" style="width:500px;height:500px;left:50%;top:50%;animation-delay:1.2s;opacity:.35"></div>
-      <div class="hero-ring" style="width:700px;height:700px;left:50%;top:50%;animation-delay:2.4s;opacity:.18"></div>
+  <div id="progress" :style="{width:progress+'%'}"></div>
 
-      <div class="s-node" style="left:50%;top:46%">
-        <div style="text-align:center">
-          <div style="width:92px;height:92px;border-radius:50%;overflow:hidden;border:2px solid var(--cyan);box-shadow:0 0 28px rgba(34,211,238,0.4);margin:0 auto 14px">
-            <img :src="data.profile.avatar" style="width:100%;height:100%;object-fit:cover" :alt="data.profile.name"/>
+  <!-- ════ TOP NAV ════ -->
+  <header class="topbar">
+    <a class="brand" @click="go('home')">E<span>V</span></a>
+    <nav class="nav-links">
+      <a v-for="s in sections" :key="s.id" :class="{active:active===s.id}"
+         :href="'#'+s.id" @click.prevent="go(s.id)">{{ s.label }}</a>
+    </nav>
+    <button class="burger" :class="{open:menuOpen}" @click="menuOpen=!menuOpen" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- mobile overlay menu -->
+  <nav class="mobile-menu" :class="{open:menuOpen}">
+    <a v-for="s in sections" :key="s.id" :class="{active:active===s.id}" @click="go(s.id)">
+      <i :class="s.icon"></i>{{ s.label }}
+    </a>
+  </nav>
+
+  <!-- desktop dot rail -->
+  <div class="dotrail">
+    <button v-for="s in sections" :key="s.id" class="dot" :class="{active:active===s.id}"
+            :data-label="s.label" @click="go(s.id)" :aria-label="s.label"></button>
+  </div>
+
+  <main>
+
+    <!-- ════ HOME ════ -->
+    <section id="home" class="section hero" style="--ac:#22d3ee">
+      <div class="hero-ring" style="width:320px;height:320px"></div>
+      <div class="hero-ring" style="width:540px;height:540px;animation-delay:1.2s;opacity:.35"></div>
+      <div class="hero-ring" style="width:760px;height:760px;animation-delay:2.4s;opacity:.18"></div>
+      <div class="hero-inner reveal">
+        <div class="avatar"><img :src="data.profile.avatar" :alt="data.profile.name"/></div>
+        <h1 class="name">{{ data.profile.name }}</h1>
+        <p class="role">{{ data.profile.title }}</p>
+        <p class="lead">{{ data.profile.description }}</p>
+        <div class="hero-chips">
+          <span class="chip"><i class="fas fa-map-marker-alt"></i>{{ data.profile.location }}</span>
+          <span class="chip chip-emerald"><i class="fas fa-circle" style="font-size:7px"></i>{{ data.profile.status }}</span>
+        </div>
+        <div class="cta">
+          <a v-for="c in data.profile.cta" :key="c.label"
+             :href="c.href" @click.prevent="go(c.href.replace('#',''))"
+             class="btn" :class="c.variant==='primary'?'btn-primary':'btn-ghost'">{{ c.label }}</a>
+        </div>
+        <div class="scroll-hint"><i class="fas fa-chevron-down"></i>scroll to explore</div>
+      </div>
+    </section>
+
+    <!-- ════ STATS ════ -->
+    <section id="stats" class="section" style="--ac:#22d3ee">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">At a Glance</div>
+          <h2 class="sec-title">By the Numbers</h2>
+        </div>
+        <div class="grid grid-4">
+          <div v-for="(stat,i) in data.profile.stats" :key="stat.label"
+               class="card stat reveal" :style="{transitionDelay:(i*0.08)+'s'}">
+            <i :class="stat.icon"></i>
+            <div class="num">{{ stat.value }}</div>
+            <div class="lbl">{{ stat.label }}</div>
           </div>
-          <h1 class="glow" style="font-size:clamp(24px,3vw,40px);font-weight:700;margin-bottom:6px">{{ data.profile.name }}</h1>
-          <p class="grad" style="font-size:clamp(13px,1.4vw,18px);font-weight:600;margin-bottom:10px">{{ data.profile.title }}</p>
-          <p style="font-size:12px;color:#94a3b8;max-width:400px;line-height:1.65;margin:0 auto">{{ data.profile.description }}</p>
-          <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-            <span class="chip"><i class="fas fa-map-marker-alt"></i>{{ data.profile.location }}</span>
-            <span class="chip chip-emerald"><i class="fas fa-circle" style="font-size:7px"></i>{{ data.profile.status }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ AWARDS ════ -->
+    <section id="awards" class="section" style="--ac:#fbbf24">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">Recognition</div>
+          <h2 class="sec-title">Awards &amp; Honors</h2>
+        </div>
+        <div class="grid grid-auto">
+          <div v-for="(aw,i) in data.awards" :key="aw.description"
+               class="card award reveal" :style="{transitionDelay:(i*0.07)+'s'}">
+            <i :class="[aw.icon,'chip-'+aw.color]" style="background:none;border:none;padding:0"></i>
+            <div class="t">{{ aw.title }}</div>
+            <div class="d">{{ aw.description }}</div>
           </div>
-          <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <a v-for="c in data.profile.cta" :key="c.label" :href="c.href" @click.prevent="navToHref(c.href)"
-               style="padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer"
-               :style="c.variant==='primary'?'background:var(--cyan);color:#00040e':'border:1px solid var(--cyan);color:var(--cyan);background:transparent'">
-              {{ c.label }}
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ EXPERIENCE ════ -->
+    <section id="experience" class="section" style="--ac:#38bdf8">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">Career Journey</div>
+          <h2 class="sec-title">Experience</h2>
+        </div>
+        <div class="timeline">
+          <div v-for="(ex,i) in data.experience" :key="ex.company"
+               class="tl-item" :class="i%2===0?'left':'right'">
+            <span class="dot-node"></span>
+            <div class="card tl-card" :class="i%2===0?'reveal-l':'reveal-r'" :style="{transitionDelay:(i*0.04)+'s'}">
+              <div class="ex-head">
+                <i :class="ex.icon"></i>
+                <div>
+                  <div class="ex-co">{{ ex.company }}</div>
+                  <div class="ex-role">{{ ex.role }}</div>
+                </div>
+              </div>
+              <div class="ex-period"><i class="far fa-calendar"></i>{{ ex.period }}</div>
+              <div class="chips">
+                <span v-for="sk in ex.skills" :key="sk.label" class="chip">
+                  <i :class="sk.icon"></i>{{ sk.label }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ PROJECTS ════ -->
+    <section id="projects" class="section" style="--ac:#34d399">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">Selected Work</div>
+          <h2 class="sec-title">Projects</h2>
+        </div>
+        <div class="grid grid-auto">
+          <div v-for="(proj,i) in data.projects" :key="proj.title"
+               class="card proj reveal" :style="{transitionDelay:(i*0.06)+'s'}">
+            <div class="proj-head">
+              <i :class="proj.icon"></i><span class="t">{{ proj.title }}</span>
+            </div>
+            <p v-if="proj.description" class="proj-desc">{{ proj.description }}</p>
+            <ul>
+              <li v-for="it in proj.items" :key="it">{{ it }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SKILLS ════ -->
+    <section id="skills" class="section" style="--ac:#818cf8">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">Toolbox</div>
+          <h2 class="sec-title">Skills &amp; Technologies</h2>
+        </div>
+        <div class="grid grid-auto">
+          <div v-for="(cat,i) in data.skills" :key="cat.category"
+               class="card skillcat reveal" :style="{transitionDelay:(i*0.06)+'s'}">
+            <div class="skillcat-head">
+              <i :class="cat.icon"></i><span class="t">{{ cat.category }}</span>
+            </div>
+            <div class="chips">
+              <span v-for="sk in cat.items" :key="sk.label" class="chip">{{ sk.label }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ CONTACT ════ -->
+    <section id="contact" class="section" style="--ac:#22d3ee">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="eyebrow">Get in Touch</div>
+          <h2 class="sec-title">Let's Connect</h2>
+          <p class="lead" style="max-width:420px;margin-top:18px">Open to new collaborations, ventures, and conversations.</p>
+        </div>
+        <div class="contact-grid">
+          <div v-for="(ct,i) in data.contact" :key="ct.platform"
+               class="card contact-card reveal" :style="{transitionDelay:(i*0.08)+'s'}">
+            <a :href="ct.url" target="_blank" rel="noopener">
+              <i :class="ct.icon" class="lead-ic"></i>
+              <div>
+                <div class="p">{{ ct.platform }}</div>
+                <div class="h">{{ ct.handle }}</div>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square ext"></i>
             </a>
           </div>
-          <div class="scroll-hint">
-            <i class="fas fa-chevron-down"></i>scroll to explore
-          </div>
         </div>
+        <div class="footer reveal">© 2026 Edson Ventura · Quintana Roo, Mexico</div>
       </div>
     </section>
 
-    <!-- ════ 1  STATS ════ -->
-    <section class="journey-section" :style="sxf(1)" :class="{'is-active':activeIdx===1}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.stats.conn" :key="c[0]+'-'+c[1]" class="n-line"
-          :x1="SCATTER.stats.pos[c[0]][0]+'%'" :y1="SCATTER.stats.pos[c[0]][1]+'%'"
-          :x2="SCATTER.stats.pos[c[1]][0]+'%'" :y2="SCATTER.stats.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:12%">
-        <h2 style="font-size:clamp(15px,1.8vw,22px);font-weight:600;color:rgba(34,211,238,0.7);letter-spacing:.2em;text-transform:uppercase">At a Glance</h2>
-      </div>
-      <div v-for="(stat,i) in data.profile.stats" :key="stat.label"
-           class="s-node chamfer"
-           :style="{left:SCATTER.stats.pos[i][0]+'%',top:SCATTER.stats.pos[i][1]+'%',width:'220px',padding:'28px 22px',textAlign:'center'}">
-        <i :class="stat.icon" style="font-size:30px;color:var(--cyan);margin-bottom:12px;display:block"></i>
-        <div style="font-size:46px;font-weight:700;color:#f1f5f9;font-family:'Space Grotesk',sans-serif;line-height:1">{{ stat.value }}</div>
-        <div style="font-size:13px;color:#64748b;margin-top:8px;text-transform:uppercase;letter-spacing:.1em">{{ stat.label }}</div>
-      </div>
-    </section>
-
-    <!-- ════ 2  AWARDS ════ -->
-    <section class="journey-section" :style="sxf(2)" :class="{'is-active':activeIdx===2}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.awards.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
-          :x1="SCATTER.awards.pos[c[0]][0]+'%'" :y1="SCATTER.awards.pos[c[0]][1]+'%'"
-          :x2="SCATTER.awards.pos[c[1]][0]+'%'" :y2="SCATTER.awards.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:8%">
-        <h2 style="font-size:clamp(15px,1.8vw,22px);font-weight:600;color:rgba(251,191,36,0.8);letter-spacing:.2em;text-transform:uppercase">Awards & Recognition</h2>
-      </div>
-      <div v-for="(aw,i) in data.awards" :key="aw.description"
-           class="s-node chamfer"
-           :style="{left:SCATTER.awards.pos[i][0]+'%',top:SCATTER.awards.pos[i][1]+'%',width:'240px',padding:'20px 18px'}">
-        <i :class="[aw.icon,'chip-'+aw.color]" style="font-size:22px;margin-bottom:10px;display:block"></i>
-        <div style="font-size:16px;font-weight:700;color:#f1f5f9;margin-bottom:5px">{{ aw.title }}</div>
-        <div style="font-size:12px;color:#94a3b8;line-height:1.5">{{ aw.description }}</div>
-      </div>
-    </section>
-
-    <!-- ════ 3  EXPERIENCE ════ -->
-    <section class="journey-section" :style="sxf(3)" :class="{'is-active':activeIdx===3}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.experience.conn" :key="c[0]+'-'+c[1]" class="n-line"
-          :x1="SCATTER.experience.pos[c[0]][0]+'%'" :y1="SCATTER.experience.pos[c[0]][1]+'%'"
-          :x2="SCATTER.experience.pos[c[1]][0]+'%'" :y2="SCATTER.experience.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:6%">
-        <h2 style="font-size:clamp(15px,1.8vw,22px);font-weight:600;color:rgba(56,189,248,0.8);letter-spacing:.2em;text-transform:uppercase">Experience</h2>
-      </div>
-      <div v-for="(ex,i) in data.experience" :key="ex.company"
-           class="s-node chamfer"
-           :style="{left:SCATTER.experience.pos[i][0]+'%',top:SCATTER.experience.pos[i][1]+'%',width:'270px',padding:'18px 16px'}">
-        <div style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
-          <i :class="ex.icon" style="font-size:16px;color:var(--cyan);flex-shrink:0"></i>
-          <span style="font-size:14px;font-weight:700;color:#f1f5f9;line-height:1.3">{{ ex.company }}</span>
-        </div>
-        <div style="font-size:12px;color:var(--sky);margin-bottom:4px">{{ ex.role }}</div>
-        <div style="font-size:11px;color:#475569;margin-bottom:10px;font-variant-numeric:tabular-nums">{{ ex.period }}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:5px">
-          <span v-for="sk in ex.skills" :key="sk.label" class="chip" style="font-size:10px;padding:3px 8px">
-            <i :class="sk.icon" style="font-size:9px"></i>{{ sk.label }}
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════ 4  PROJECTS ════ -->
-    <section class="journey-section" :style="sxf(4)" :class="{'is-active':activeIdx===4}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.projects.conn" :key="c[0]+'-'+c[1]" class="n-line"
-          :x1="SCATTER.projects.pos[c[0]][0]+'%'" :y1="SCATTER.projects.pos[c[0]][1]+'%'"
-          :x2="SCATTER.projects.pos[c[1]][0]+'%'" :y2="SCATTER.projects.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:6%">
-        <h2 style="font-size:clamp(15px,1.8vw,22px);font-weight:600;color:rgba(52,211,153,0.8);letter-spacing:.2em;text-transform:uppercase">Projects</h2>
-      </div>
-      <div v-for="(proj,i) in data.projects" :key="proj.title"
-           class="s-node chamfer"
-           :style="{left:SCATTER.projects.pos[i][0]+'%',top:SCATTER.projects.pos[i][1]+'%',width:'245px',padding:'18px 16px'}">
-        <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
-          <i :class="proj.icon" style="font-size:16px;color:var(--emerald)"></i>
-          <span style="font-size:14px;font-weight:700;color:#f1f5f9">{{ proj.title }}</span>
-        </div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px">
-          <li v-for="it in proj.items" :key="it" style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:7px">
-            <span style="width:4px;height:4px;border-radius:50%;background:var(--emerald);flex-shrink:0;display:inline-block"></span>{{ it }}
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ════ 5  SKILLS ════ -->
-    <section class="journey-section" :style="sxf(5)" :class="{'is-active':activeIdx===5}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.skills.conn" :key="c[0]+'-'+c[1]" class="n-line"
-          :x1="SCATTER.skills.pos[c[0]][0]+'%'" :y1="SCATTER.skills.pos[c[0]][1]+'%'"
-          :x2="SCATTER.skills.pos[c[1]][0]+'%'" :y2="SCATTER.skills.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:6%">
-        <h2 style="font-size:clamp(15px,1.8vw,22px);font-weight:600;color:rgba(129,140,248,0.8);letter-spacing:.2em;text-transform:uppercase">Skills</h2>
-      </div>
-      <div v-for="(cat,i) in data.skills" :key="cat.category"
-           class="s-node chamfer"
-           :style="{left:SCATTER.skills.pos[i][0]+'%',top:SCATTER.skills.pos[i][1]+'%',width:'245px',padding:'18px 16px'}">
-        <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
-          <i :class="[cat.icon,cat.iconColor]" style="font-size:16px"></i>
-          <span style="font-size:13px;font-weight:600;color:#e2e8f0">{{ cat.category }}</span>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:5px">
-          <span v-for="sk in cat.items" :key="sk.label" class="chip chamfer-sm" style="font-size:11px;padding:4px 9px">{{ sk.label }}</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════ 6  CONTACT ════ -->
-    <section class="journey-section" id="contact" :style="sxf(6)" :class="{'is-active':activeIdx===6}">
-      <svg class="neural-svg">
-        <line v-for="c in SCATTER.contact.conn" :key="c[0]+'-'+c[1]" class="n-line n-line-warm"
-          :x1="SCATTER.contact.pos[c[0]][0]+'%'" :y1="SCATTER.contact.pos[c[0]][1]+'%'"
-          :x2="SCATTER.contact.pos[c[1]][0]+'%'" :y2="SCATTER.contact.pos[c[1]][1]+'%'"/>
-      </svg>
-      <div class="s-node" style="left:50%;top:22%">
-        <div style="text-align:center">
-          <h2 class="glow" style="font-size:clamp(24px,3vw,42px);font-weight:700;margin-bottom:10px">Let's Connect</h2>
-          <p style="font-size:14px;color:#64748b;max-width:380px">Open to new collaborations, ventures, and conversations.</p>
-        </div>
-      </div>
-      <div v-for="(ct,i) in data.contact" :key="ct.platform"
-           class="s-node chamfer"
-           :style="{left:SCATTER.contact.pos[i][0]+'%',top:SCATTER.contact.pos[i][1]+'%',minWidth:'230px',padding:'20px 24px'}">
-        <a :href="ct.url" target="_blank" rel="noopener"
-           style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#e2e8f0">
-          <i :class="ct.icon" style="font-size:26px;color:var(--cyan)"></i>
-          <div>
-            <div style="font-size:15px;font-weight:600">{{ ct.platform }}</div>
-            <div style="font-size:12px;color:#475569;margin-top:2px">{{ ct.handle }}</div>
-          </div>
-          <i class="fas fa-arrow-up-right-from-square" style="font-size:10px;margin-left:auto;opacity:.35"></i>
-        </a>
-      </div>
-      <div class="s-node" style="left:50%;top:90%">
-        <p style="font-size:11px;color:#1e293b;text-align:center">© 2026 Edson Ventura · Quintana Roo, Mexico</p>
-      </div>
-    </section>
-
-  </div>
+  </main>
+</div>
 </div>
 
 <script>
 /* ─────────────────────────────────────────
-   CANVAS — scroll-driven spiral tunnel
+   BACKGROUND — drifting particle constellation
 ───────────────────────────────────────── */
 (function(){
-  const cv = document.getElementById('tunnel-canvas');
+  const cv = document.getElementById('bg');
   const ctx = cv.getContext('2d');
-  const RINGS = 30, STARS = 260, STREAKS = 18;
-  let W, H, cx, cy;
-  let currentScrollY = 0;
+  let W, H, nodes = [];
+  const mouse = { x: -9999, y: -9999 };
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-  const stars = [];
-  const streaks = [];
+  function count(){ return Math.min(90, Math.round(window.innerWidth * window.innerHeight / 16000)); }
 
   function resize(){
     W = cv.width = window.innerWidth;
     H = cv.height = window.innerHeight;
-    cx = W / 2; cy = H / 2;
-    stars.length = 0;
-    for(let i = 0; i < STARS; i++) stars.push({
+    nodes = [];
+    const n = count();
+    for(let i = 0; i < n; i++) nodes.push({
       x: Math.random() * W, y: Math.random() * H,
-      r: Math.random() * 1.3 + 0.3,
-      alpha: Math.random() * 0.6 + 0.3,
-      twinkle: Math.random() * Math.PI * 2,
-    });
-    streaks.length = 0;
-    for(let i = 0; i < STREAKS; i++) streaks.push({
-      angle: Math.random() * Math.PI * 2,
-      speed: Math.random() * 1.4 + 0.5,
-      len: Math.random() * 70 + 30,
-      phase: Math.random() * 120,
+      vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+      r: Math.random() * 1.6 + 0.5,
     });
   }
 
   window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  window.addEventListener('mouseout', () => { mouse.x = mouse.y = -9999; });
   resize();
-  window.addEventListener('scroll', () => { currentScrollY = window.scrollY; }, { passive: true });
 
+  const LINK = 130;
   function draw(){
     requestAnimationFrame(draw);
     ctx.clearRect(0, 0, W, H);
 
-    const ss = document.getElementById('scroll-space');
-    const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
-    const rawScroll = Math.max(0, Math.min(currentScrollY, maxScroll));
-    const cameraZ = rawScroll * 0.55;
-    const cameraRoll = rawScroll * 0.0018;
-    const scrollFrac = rawScroll / maxScroll;
+    for(const p of nodes){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0 || p.x > W) p.vx *= -1;
+      if(p.y < 0 || p.y > H) p.vy *= -1;
 
-    /* stars */
-    for(const s of stars){
-      s.twinkle += 0.007;
-      const a = s.alpha * (0.45 + 0.55 * Math.sin(s.twinkle));
+      // subtle attraction to cursor
+      const dx = mouse.x - p.x, dy = mouse.y - p.y;
+      const d2 = dx * dx + dy * dy;
+      if(d2 < 26000){ p.x += dx * 0.0009; p.y += dy * 0.0009; }
+
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(148,163,184,${a})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(56,189,248,0.55)';
       ctx.fill();
     }
 
-    /* tunnel rings */
-    const TDEPTH = 2600;
-    const RSEP = TDEPTH / RINGS;
-    const hueBase = 190 + scrollFrac * 55;
-
-    for(let i = 0; i < RINGS; i++){
-      const baseZ = i * RSEP;
-      let relZ = ((baseZ - cameraZ % TDEPTH) + TDEPTH) % TDEPTH;
-      if(relZ < 40) continue;
-
-      const pf = TDEPTH / (relZ + 80);
-      const rX = pf * W * 0.42;
-      const rY = pf * H * 0.42;
-
-      const spiralA = i * (Math.PI * 0.44) + cameraRoll;
-      const spiralAmt = Math.min(rX * 0.10, 32);
-      const ringCX = cx + Math.cos(spiralA) * spiralAmt;
-      const ringCY = cy + Math.sin(spiralA) * spiralAmt * 0.52;
-
-      const hue = (hueBase + i * 16) % 360;
-      const alpha = Math.max(0, Math.min(0.6, pf * 0.85));
-
-      ctx.beginPath();
-      ctx.ellipse(ringCX, ringCY, Math.max(1, rX), Math.max(1, rY), cameraRoll * 0.25, 0, Math.PI * 2);
-      ctx.strokeStyle = `hsla(${hue},78%,62%,${alpha})`;
-      ctx.lineWidth = Math.max(0.5, pf * 1.1);
-      ctx.stroke();
-
-      /* faint inner ring */
-      ctx.beginPath();
-      ctx.ellipse(ringCX, ringCY, Math.max(1, rX * 0.48), Math.max(1, rY * 0.48), cameraRoll * 0.25, 0, Math.PI * 2);
-      ctx.strokeStyle = `hsla(${hue},90%,70%,${alpha * 0.22})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
+    for(let i = 0; i < nodes.length; i++){
+      for(let j = i + 1; j < nodes.length; j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+        if(dist < LINK){
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(34,211,238,${0.16 * (1 - dist / LINK)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
     }
-
-    /* vortex glow */
-    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.30);
-    g.addColorStop(0, `rgba(34,211,238,${0.07 + scrollFrac * 0.05})`);
-    g.addColorStop(0.6, `rgba(56,189,248,0.02)`);
-    g.addColorStop(1, `rgba(0,4,14,0)`);
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, W, H);
-
-    /* hyperspace streaks */
-    const sm = 1 + scrollFrac * 3.5;
-    ctx.save();
-    ctx.translate(cx, cy);
-    for(const s of streaks){
-      s.phase += s.speed * sm * 0.35;
-      const t = (s.phase % 120) / 120;
-      const d0 = t * Math.min(W, H) * 0.5 * 0.45;
-      const d1 = d0 + s.len * t;
-      const angle = s.angle + cameraRoll * 0.18;
-      const a = Math.sin(t * Math.PI) * 0.4;
-      ctx.beginPath();
-      ctx.moveTo(Math.cos(angle) * d0, Math.sin(angle) * d0);
-      ctx.lineTo(Math.cos(angle) * d1, Math.sin(angle) * d1);
-      ctx.strokeStyle = `rgba(34,211,238,${a})`;
-      ctx.lineWidth = 0.7;
-      ctx.stroke();
-    }
-    ctx.restore();
   }
-
-  draw();
+  if(!reduce) draw();
 })();
 
 /* ─────────────────────────────────────────
-   VUE APP
+   VUE APP — intuitive navigation + reveals
 ───────────────────────────────────────── */
-const { createApp, ref, onMounted, onUnmounted } = Vue;
+const { createApp, ref, onMounted, onUnmounted, nextTick } = Vue;
 
 createApp({
   setup(){
     const data = ref(null);
     const loaded = ref(false);
-    const scrollY = ref(0);
-    const winH = ref(window.innerHeight);
-    const activeIdx = ref(0);
-    const TOTAL = 7;
-    const DWELL = 1.35;
+    const active = ref('home');
+    const menuOpen = ref(false);
+    const progress = ref(0);
 
-    const SCATTER = {
-      stats:      { pos:[[20,36],[76,32],[18,70],[78,68]], conn:[[0,1],[0,2],[1,3],[2,3],[0,3],[1,2]] },
-      awards:     { pos:[[18,24],[72,20],[12,56],[85,53],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
-      experience: { pos:[[42,16],[80,26],[14,32],[70,52],[20,58],[45,74],[22,86],[75,82]], conn:[[0,1],[0,2],[1,3],[2,3],[3,4],[4,5],[5,6],[5,7],[6,7]] },
-      projects:   { pos:[[17,22],[76,20],[11,54],[85,51],[28,82],[68,82]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5]] },
-      skills:     { pos:[[15,26],[78,22],[11,58],[85,55],[29,84],[67,84]], conn:[[0,1],[0,2],[1,3],[2,3],[2,4],[3,5],[4,5],[0,3]] },
-      contact:    { pos:[[28,54],[50,38],[72,54]], conn:[[0,1],[1,2],[0,2]] }
-    };
+    const sections = [
+      { id: 'home',       label: 'Home',       icon: 'fas fa-house' },
+      { id: 'stats',      label: 'Stats',      icon: 'fas fa-chart-simple' },
+      { id: 'awards',     label: 'Awards',     icon: 'fas fa-trophy' },
+      { id: 'experience', label: 'Experience', icon: 'fas fa-briefcase' },
+      { id: 'projects',   label: 'Projects',   icon: 'fas fa-diagram-project' },
+      { id: 'skills',     label: 'Skills',     icon: 'fas fa-layer-group' },
+      { id: 'contact',    label: 'Contact',    icon: 'fas fa-paper-plane' },
+    ];
 
-    function sxf(i){
-      if(window.innerWidth < 768) return {};
-      const sp = scrollY.value / winH.value;
-      const diff = sp - i * DWELL;
+    let secObs = null, revObs = null;
 
-      // ── opacity: tight window — sections invisible outside their dwell ──
-      // Adjacent sections (DWELL=1.35 apart) can never be simultaneously visible.
-      const FADE = 0.10;
-      const dist = Math.abs(diff - 0.5);
-      let opacity;
-      if(dist >= 0.5 + FADE)  opacity = 0;
-      else if(dist >= 0.5)    opacity = 1 - (dist - 0.5) / FADE;
-      else                    opacity = 1;
-
-      // ── transform: single continuous formula — no scale jump at diff=0 ──
-      // Before dwell (diff<0) reuses the dwell equation extrapolated backward,
-      // so scale/tz are identical at the boundary and there is no visual pop.
-      let scale, tz;
-      if(diff < 1){
-        scale = Math.max(0.06, 0.22 + diff * 0.78);
-        tz    = (1 - diff) * -680;
-      } else {
-        const d = Math.min(diff - 1, 2.2);
-        scale = 1 + d * 0.85;
-        tz    = d * 600;
-      }
-
-      const hidden = opacity <= 0.005;
-      return {
-        transform:     `translateZ(${tz}px) scale(${scale})`,
-        opacity,
-        zIndex:        Math.round((1 - dist) * 100),
-        pointerEvents: hidden ? 'none' : '',
-        visibility:    hidden ? 'hidden' : 'visible',
-      };
+    function go(id){
+      menuOpen.value = false;
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function onScroll(){
-      scrollY.value = window.scrollY;
-      const ss = document.getElementById('scroll-space');
-      const maxScroll = ss ? Math.max(1, ss.offsetHeight - window.innerHeight) : 1;
-      const pct = Math.min(100, (window.scrollY / maxScroll) * 100);
-      document.getElementById('progress-bar').style.width = pct + '%';
-
-      const sp = window.scrollY / window.innerHeight;
-      const ai = Math.max(0, Math.min(TOTAL - 1, Math.round(sp / DWELL)));
-      activeIdx.value = ai;
-      document.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
-      document.querySelectorAll('.mob-dot').forEach((d, idx) => d.classList.toggle('active', idx === ai));
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.value = max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0;
     }
 
-    function onResize(){ winH.value = window.innerHeight; }
+    function setupObservers(){
+      // active section: whichever crosses viewport center
+      secObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) active.value = e.target.id; });
+      }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+      document.querySelectorAll('main section').forEach(s => secObs.observe(s));
 
-    function scrollToSection(i){
-      window.scrollTo({ top: i * DWELL * winH.value, behavior: 'smooth' });
-    }
-
-    function navToHref(href){
-      const map = { '#contact': 6, '#projects': 4 };
-      if(map[href] !== undefined) scrollToSection(map[href]);
-    }
-
-    function buildNav(){
-      const LABELS = ['Home','Stats','Awards','Experience','Projects','Skills','Contact'];
-      ['dot-nav','mob-nav'].forEach((id, navIdx) => {
-        const el = document.getElementById(id);
-        el.innerHTML = '';
-        for(let i = 0; i < TOTAL; i++){
-          const d = document.createElement('div');
-          d.className = (navIdx === 0 ? 'dot' : 'mob-dot') + (i === 0 ? ' active' : '');
-          if(navIdx === 0) d.title = LABELS[i];
-          d.addEventListener('click', () => scrollToSection(i));
-          el.appendChild(d);
-        }
-      });
+      // reveal-on-enter (one-shot)
+      revObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revObs.observe(el));
     }
 
     onMounted(async () => {
@@ -589,16 +625,18 @@ createApp({
       data.value = await res.json();
       loaded.value = true;
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onResize);
-      buildNav();
+      await nextTick();
+      setupObservers();
+      onScroll();
     });
 
     onUnmounted(() => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
+      if(secObs) secObs.disconnect();
+      if(revObs) revObs.disconnect();
     });
 
-    return { data, loaded, scrollY, activeIdx, SCATTER, sxf, navToHref };
+    return { data, loaded, active, menuOpen, progress, sections, go };
   }
 }).mount('#app');
 </script>
