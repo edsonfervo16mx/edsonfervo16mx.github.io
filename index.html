@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Edson Ventura — Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations</title>
-<meta name="description" content="Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations with 20+ years building enterprise systems across fintech, telecom, hospitality, and government. Three-time Techstars Startup Weekend winner, Startup World Cup LATAM finalist, and serial tech founder. Currently leading engineering at Flowbit Software and GigNet, and building CortexVerify, a KYC, OCR, and e-signature platform for Mexico. 50+ projects shipped, from Odoo and payment integrations to AI agents and MCP servers. I also teach applied AI with Claude and Claude Code"/>
-<meta name="keywords" content="Edson Ventura, Software Engineer, CTO,AI Engineer, Developer Lead, Full Stack Developer, Vue.js, Node.js, Python, Mexico"/>
+<title>Edson Ventura — CTO & AI Engineer</title>
+<meta name="description" content="Edson Ventura, CTO & AI Engineer in Mexico. 13+ years building production systems for fintech, telecom, hospitality, and government. AI agents, MCP servers, Claude integrations, Odoo 17/19, and payment integrations (Stripe, Mercado Pago)."/>
+<meta name="keywords" content="Edson Ventura, AI Engineer, CTO, Engineering Lead, MCP servers, AI agents, Claude, Claude Code, LLM integrations, Odoo developer, Odoo consultant, Stripe, Mercado Pago, Node.js, Python, TypeScript, Nuxt, Vue, Mexico, LatAm, remote"/>
 <meta name="author" content="Edson Fernando Ventura Oropeza"/>
-<meta property="og:title" content="Edson Ventura — Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations"/>
-<meta property="og:description" content="Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations with 20+ years building enterprise systems across fintech, telecom, hospitality, and government. Three-time Techstars Startup Weekend winner, Startup World Cup LATAM finalist, and serial tech founder. Currently leading engineering at Flowbit Software and GigNet, and building CortexVerify, a KYC, OCR, and e-signature platform for Mexico. 50+ projects shipped, from Odoo and payment integrations to AI agents and MCP servers. I also teach applied AI with Claude and Claude Code"/>
+<meta property="og:title" content="Edson Ventura — CTO & AI Engineer"/>
+<meta property="og:description" content="CTO & AI Engineer in Mexico. AI agents, MCP servers, Claude integrations, Odoo 17/19, and payment integrations. 13+ years across fintech, telecom, hospitality, and government."/>
 <meta property="og:url" content="https://edsonfervo16mx.github.io/"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary"/>
@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="apple-icon-180x180.png"/>
 <link rel="manifest" href="manifest.json"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Edson Fernando Ventura Oropeza","jobTitle":"Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations","url":"https://edsonfervo16mx.github.io/","sameAs":["https://github.com/edsonfervo16mx","https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/","https://twitter.com/EdsonFOropeza"],"address":{"@type":"PostalAddress","addressRegion":"Quintana Roo","addressCountry":"MX"}}
+{"@context":"https://schema.org","@type":"Person","name":"Edson Fernando Ventura Oropeza","jobTitle":"CTO & AI Engineer","url":"https://edsonfervo16mx.github.io/","sameAs":["https://github.com/edsonfervo16mx","https://www.linkedin.com/in/edson-fernando-ventura-oropeza-88162653/","https://twitter.com/EdsonFOropeza"],"address":{"@type":"PostalAddress","addressRegion":"Quintana Roo","addressCountry":"MX"}}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -154,6 +154,10 @@ section.block{padding:56px 0;border-top:1px solid var(--line)}
 .row-title{font-weight:500;letter-spacing:-.01em}
 .row-title .sep{color:var(--faint);margin:0 6px;font-weight:400}
 .row-sub{color:var(--muted);font-size:15px}
+.hl{margin-top:8px}
+.hl li{position:relative;padding-left:16px;font-size:15px;line-height:1.55;margin-top:4px}
+.hl li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--faint)}
+.project p.aud{margin-top:12px;font-size:13px;color:var(--faint)}
 .tags{margin-top:8px;font-family:var(--mono);font-size:12.5px;color:var(--muted);line-height:1.7}
 .tags span + span::before{content:'·';margin:0 7px;color:var(--faint)}
 .now{
@@ -268,6 +272,7 @@ footer{padding:40px 0 56px;color:var(--faint);font-size:13px;display:flex;justif
   const DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14"/></svg>';
 
   const SECTIONS = [
+    { id:'services',   label:'Services'   },
     { id:'experience', label:'Experience' },
     { id:'projects',   label:'Projects'   },
     { id:'awards',     label:'Awards'     },
@@ -309,9 +314,26 @@ footer{padding:40px 0 56px;color:var(--faint);font-size:13px;display:flex;justif
           <div>
             <div class="row-title">${esc(e.company)}${isCurrent(e.period) ? '<span class="now">Now</span>' : ''}</div>
             <div class="row-sub">${esc(e.role)}</div>
+            ${e.highlights && e.highlights.length ? `<ul class="hl">${e.highlights.map(h => `<li>${esc(h)}</li>`).join('')}</ul>` : ''}
             ${e.skills && e.skills.length ? tags(e.skills.map(s => s.label)) : ''}
           </div>
         </div>`).join('')}
+    </section>`;
+  }
+
+  function services(list){
+    if (!list.length) return '';
+    return `
+    <section class="block fade" id="services" style="animation-delay:.05s">
+      <h2 class="sec-label">Services</h2>
+      <div class="projects">
+        ${list.map(s => `
+          <article class="project">
+            <h3>${esc(s.title)}</h3>
+            <p>${esc(s.description)}</p>
+            ${s.audience ? `<p class="aud">${esc(s.audience)}</p>` : ''}
+          </article>`).join('')}
+      </div>
     </section>`;
   }
 
@@ -395,6 +417,7 @@ footer{padding:40px 0 56px;color:var(--faint);font-size:13px;display:flex;justif
 
     app.innerHTML =
       hero(p) +
+      services(data.services || []) +
       experience(data.experience || []) +
       projects(data.projects || []) +
       awards(data.awards || []) +

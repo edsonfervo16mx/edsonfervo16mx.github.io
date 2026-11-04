@@ -1,22 +1,44 @@
 {
   "profile": {
     "name": "Edson Ventura",
-    "title": "Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations",
-    "description": "Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations with 20+ years building enterprise systems across fintech, telecom, hospitality, and government. Three-time Techstars Startup Weekend winner, Startup World Cup LATAM finalist, and serial tech founder. Currently leading engineering at Flowbit Software and GigNet, and building CortexVerify, a KYC, OCR, and e-signature platform for Mexico. 50+ projects shipped, from Odoo and payment integrations to AI agents and MCP servers. I also teach applied AI with Claude and Claude Code.",
+    "title": "CTO & AI Engineer — AI agents, MCP servers, Odoo and payment integrations",
+    "description": "Software engineer and CTO with 13+ years building production systems for fintech, telecom, hospitality, and government. I lead engineering at GigNet (since 2019) and Flowbit Software, and I'm building CortexVerify, a KYC, OCR, and e-signature platform for Mexico. My focus today is connecting AI to real business systems: AI agents, MCP servers, and Claude integrations on top of ERPs, payments, and internal tools. Tech founder, 3× first place in startup and hackathon competitions, and Startup World Cup LATAM finalist. I also teach applied AI with Claude and Claude Code.",
     "avatar": "https://avatars.githubusercontent.com/u/18149491?v=4",
-    "status": "Available to collaborate",
+    "status": "Open to consulting projects and remote engineering leadership roles",
     "location": "Quintana Roo, Mexico",
     "stats": [
-      { "value": "20+", "label": "Years Experience", "icon": "fas fa-calendar-alt" },
-      { "value": "50+", "label": "Projects Delivered", "icon": "fas fa-rocket" },
-      { "value": "3",   "label": "Ventures Founded",  "icon": "fas fa-building" },
-      { "value": "6",   "label": "Awards & Honors",   "icon": "fas fa-trophy" }
+      { "value": "13+", "label": "Years building software", "icon": "fas fa-calendar-alt" },
+      { "value": "7+",  "label": "Years leading engineering at GigNet", "icon": "fas fa-users" },
+      { "value": "4",   "label": "Industries: fintech, telecom, hospitality, government", "icon": "fas fa-layer-group" },
+      { "value": "3×",  "label": "1st place in startup & hackathon competitions", "icon": "fas fa-trophy" }
     ],
     "cta": [
       { "label": "Get in Touch",  "href": "#contact",  "variant": "primary" },
       { "label": "View Projects", "href": "#projects", "variant": "secondary" }
     ]
   },
+  "services": [
+    {
+      "title": "AI agents & MCP servers",
+      "description": "Custom MCP servers and AI agents that let Claude work with your systems: ERP, CRM, payments, databases, and internal APIs.",
+      "audience": "Companies that want AI working on their own data and tools, not a generic chatbot."
+    },
+    {
+      "title": "Odoo consulting & development",
+      "description": "Implementation, custom modules, integrations, and migrations on Odoo 17 and 19, including payment and bank integrations.",
+      "audience": "SMBs and mid-size companies running or adopting Odoo."
+    },
+    {
+      "title": "Technical advisory",
+      "description": "Architecture reviews, technology selection, and hands-on technical leadership for product and platform decisions.",
+      "audience": "Founders and teams without a full-time CTO, or needing a second opinion."
+    },
+    {
+      "title": "Applied AI training",
+      "description": "Practical course on using Claude and Claude Code in day-to-day engineering and business work.",
+      "audience": "Development teams and professionals adopting AI in their workflow."
+    }
+  ],
   "awards": [
     {
       "icon": "fas fa-trophy",
@@ -45,7 +67,7 @@
     {
       "icon": "fas fa-trophy",
       "title": "Finalist",
-      "description": "Startup World Cup Latinoamerica, Cancún, 2024",
+      "description": "Startup World Cup Latin America, Cancún, 2024",
       "color": "emerald"
     },
     {
@@ -57,11 +79,32 @@
   ],
   "experience": [
     {
+      "company": "GigNet S.A. de C.V.",
+      "role": "Development Lead",
+      "period": "2019 - Present",
+      "icon": "fas fa-wifi",
+      "variant": "gradient",
+      "highlights": [
+        "Lead development of GigNet's internal platforms, including the company's Odoo ERP and mobile app.",
+        "Build and maintain telecom software for ISP operations: WISP management and guest portal systems (Python, Node.js, Vue 3, PostgreSQL)."
+      ],
+      "skills": [
+        { "icon": "fab fa-python",  "label": "Python" },
+        { "icon": "fab fa-node-js", "label": "Node.js" },
+        { "icon": "fab fa-vuejs",   "label": "Vue 3" },
+        { "icon": "fas fa-database","label": "PostgreSQL" },
+        { "icon": "fas fa-cubes",   "label": "Odoo" }
+      ]
+    },
+    {
       "company": "Flowbit Software",
       "role": "CTO",
       "period": "2026 - Present",
       "icon": "fas fa-code",
       "variant": "gradient",
+      "highlights": [
+        "Own technical direction and architecture for Flowbit's products, including the Flowbit ERP system (Node.js, Nuxt 3, Supabase)."
+      ],
       "skills": [
         { "icon": "fab fa-node-js", "label": "Node.js" },
         { "icon": "fab fa-vuejs",   "label": "Nuxt 3" },
@@ -74,27 +117,13 @@
       "period": "2026 - Present",
       "icon": "fas fa-shield-alt",
       "variant": "gradient",
+      "highlights": [
+        "Founded and am building a KYC, OCR, and e-signature platform for the Mexican market (Node.js, Nuxt 3, Supabase)."
+      ],
       "skills": [
-        { "icon": "fas fa-brain",   "label": "Python",   "theme": "blue" },
-        { "icon": "fas fa-robot",   "label": "AI",       "theme": "cyan" },
         { "icon": "fab fa-node-js", "label": "Node.js" },
         { "icon": "fab fa-vuejs",   "label": "Nuxt 3" },
         { "icon": "fas fa-database","label": "Supabase" }
-      ]
-    },
-    {
-      "company": "GigNet S.A. de C.V.",
-      "role": "Development Lead",
-      "period": "2019 - Present",
-      "icon": "fas fa-wifi",
-      "variant": "gradient",
-      "skills": [
-        { "icon": "fab fa-python",  "label": "Python" },
-        { "icon": "fab fa-node-js", "label": "Node.js" },
-        { "icon": "fab fa-vuejs",   "label": "Vue 3" },
-        { "icon": "fas fa-database","label": "PostgreSQL" },
-        { "icon": "fas fa-server",  "label": "MCP Server", "theme": "blue" },
-        { "icon": "fas fa-robot",  "label": "AI Agent", "theme": "cyan" }
       ]
     },
     {
@@ -104,9 +133,12 @@
       "icon": "fas fa-robot",
       "variant": "card",
       "theme": "teal",
+      "highlights": [
+        "Founded and built an AI data-analysis platform that turns spreadsheets into insights for business decisions (Python, Nuxt 3, Supabase)."
+      ],
       "skills": [
-        { "icon": "fas fa-brain",   "label": "Python",   "theme": "blue" },
-        { "icon": "fas fa-robot",   "label": "AI",       "theme": "cyan" },
+        { "icon": "fab fa-python",  "label": "Python",   "theme": "blue" },
+        { "icon": "fas fa-robot",   "label": "AI / LLMs","theme": "cyan" },
         { "icon": "fab fa-vuejs",   "label": "Nuxt 3",   "theme": "green" },
         { "icon": "fas fa-server",  "label": "Supabase", "theme": "blue" }
       ]
@@ -118,6 +150,9 @@
       "icon": "fas fa-rocket",
       "variant": "card",
       "theme": "teal",
+      "highlights": [
+        "Co-founded the company and built web and Android applications for clients (Vue, Node.js, MySQL, Android Studio)."
+      ],
       "skills": [
         { "icon": "fab fa-vuejs",   "label": "Vue",            "theme": "green" },
         { "icon": "fab fa-node-js", "label": "Node.js",        "theme": "green" },
@@ -132,12 +167,15 @@
       "icon": "fas fa-hotel",
       "variant": "card",
       "theme": "indigo",
+      "highlights": [
+        "Built backend services for hospitality platforms: booking engine API, HR platform, and ticket sales (Node.js, Java, PHP, SQL Server)."
+      ],
       "skills": [
-        { "icon": "fab fa-vuejs",      "label": "Vue",        "theme": "green" },
         { "icon": "fab fa-node-js",    "label": "Node.js",    "theme": "green" },
         { "icon": "fab fa-java",       "label": "Java",       "theme": "orange" },
         { "icon": "far fa-file-code",  "label": "PHP",        "theme": "blue" },
-        { "icon": "fas fa-database",   "label": "SQL Server", "theme": "blue" }
+        { "icon": "fas fa-database",   "label": "SQL Server", "theme": "blue" },
+        { "icon": "fab fa-vuejs",      "label": "Vue",        "theme": "green" }
       ]
     },
     {
@@ -147,6 +185,9 @@
       "icon": "fas fa-graduation-cap",
       "variant": "card",
       "theme": "blue",
+      "highlights": [
+        "Taught computer science and robotics courses (web development with PHP and MySQL, Arduino)."
+      ],
       "skills": [
         { "icon": "far fa-file-code", "label": "PHP",    "theme": "blue" },
         { "icon": "fas fa-database",  "label": "MySQL",  "theme": "green" },
@@ -160,6 +201,9 @@
       "icon": "fas fa-city",
       "variant": "card",
       "theme": "green",
+      "highlights": [
+        "Developed and maintained government web systems (PHP, Firebird)."
+      ],
       "skills": [
         { "icon": "far fa-file-code", "label": "PHP",     "theme": "blue" },
         { "icon": "fas fa-database",  "label": "Firebird","theme": "orange" }
@@ -172,6 +216,9 @@
       "icon": "fas fa-building",
       "variant": "card",
       "theme": "blue",
+      "highlights": [
+        "Built the municipal government website and administered its databases (ASP.NET, MySQL)."
+      ],
       "skills": [
         { "icon": "far fa-file-code", "label": "ASP.NET","theme": "blue" },
         { "icon": "fas fa-database",  "label": "MySQL",  "theme": "green" }
@@ -180,171 +227,174 @@
   ],
   "projects": [
     {
-      "title": "Government Systems",
-      "icon": "fas fa-building",
-      "accent": "blue",
+      "title": "CortexVerify — KYC & e-signature",
+      "icon": "fas fa-shield-alt",
+      "accent": "cyan",
+      "description": "Identity verification, document OCR, and electronic signatures built for Mexican companies.",
       "items": [
-        "Cárdenas Government Website",
-        "Citizen Service Platform",
-        "Transit and Road System",
-        "School Control System"
+        "KYC identity verification",
+        "Document OCR",
+        "Electronic signatures"
+      ]
+    },
+    {
+      "title": "Halsei — AI data analysis",
+      "icon": "fas fa-brain",
+      "accent": "cyan",
+      "description": "AI platform that turned spreadsheets into clear insights and decision support for business users.",
+      "items": [
+        "AI-powered analytics",
+        "Spreadsheet-to-insight transformation",
+        "Strategic decision support"
+      ]
+    },
+    {
+      "title": "Fintech & Payments",
+      "icon": "fas fa-credit-card",
+      "accent": "rose",
+      "description": "Payment flows and bank integrations for production systems.",
+      "items": [
+        "Stripe integration",
+        "Bank integration system (HSBC RAP)",
+        "GCashless NFC payments app",
+        "Reservation platform"
+      ]
+    },
+    {
+      "title": "Telecom — GigNet",
+      "icon": "fas fa-wifi",
+      "accent": "indigo",
+      "description": "Software that runs ISP operations, from ERP to customer-facing apps.",
+      "items": [
+        "GigNet Odoo ERP",
+        "WISP management system",
+        "Guest portal management",
+        "GigNet mobile app"
+      ]
+    },
+    {
+      "title": "Odoo & Open Source",
+      "icon": "fab fa-github",
+      "accent": "orange",
+      "description": "ERP work and reusable libraries published for other developers.",
+      "items": [
+        "Flowbit ERP system",
+        "Odoo Community contributions",
+        "Payment integration libraries",
+        "Project boilerplate libraries",
+        "Chrome extensions"
       ]
     },
     {
       "title": "Hospitality Platforms",
       "icon": "fas fa-hotel",
       "accent": "emerald",
+      "description": "Booking, operations, and sales systems for hotel groups.",
       "items": [
-        "Booking Engine API",
-        "Human Resources Platform",
-        "Ticket Sales Platform",
-        "Corporation Websites"
+        "Booking engine API",
+        "Human resources platform",
+        "Ticket sales platform",
+        "Corporate websites"
       ]
     },
     {
-      "title": "Fintech Solutions",
-      "icon": "fas fa-credit-card",
-      "accent": "rose",
+      "title": "Government Systems",
+      "icon": "fas fa-building",
+      "accent": "blue",
+      "description": "Public-sector systems for municipal and state government in Tabasco.",
       "items": [
-        "GCashless NFC App",
-        "Reservation Platform",
-        "Bank Integration System",
-        "Stripe Integration"
-      ]
-    },
-    {
-      "title": "Telecommunications",
-      "icon": "fas fa-wifi",
-      "accent": "indigo",
-      "items": [
-        "Guest Portal Management",
-        "Network Administration",
-        "WISP Management System",
-        "GigNet Odoo ERP",
-        "GigNet Mobile App"
-      ]
-    },
-    {
-      "title": "Open Source",
-      "icon": "fab fa-github",
-      "accent": "orange",
-      "items": [
-        "Odoo Community Contributions",
-        "Chrome Extensions",
-        "Payment Integration Libraries",
-        "Project Boilerplate Libraries",
-        "Flowbit ERP System"
-      ]
-    },
-    {
-      "title": "MCP & AI Engineering",
-      "icon": "fas fa-robot",
-      "accent": "cyan",
-      "description": "Custom MCP servers and AI agents that connect Claude with your ERP, databases, and business processes, so your team can query data and automate tasks in natural language.",
-      "items": [
-        "MCP Server Development",
-        "AI Agents & Automation",
-        "Odoo & Enterprise Integrations",
-        "Claude & Claude Code Workflows"
+        "Cárdenas government website",
+        "Citizen service platform",
+        "Transit and road system",
+        "School control system"
       ]
     }
   ],
   "skills": [
     {
-      "category": "Programming Languages",
+      "category": "AI & Agents",
+      "icon": "fas fa-robot",
+      "iconColor": "text-cyan-500",
+      "items": [
+        { "label": "MCP servers",      "theme": "blue" },
+        { "label": "AI agents",        "theme": "blue" },
+        { "label": "Claude API",       "theme": "blue" },
+        { "label": "Claude Code",      "theme": "blue" },
+        { "label": "LLM integrations", "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Languages & Backend",
       "icon": "fas fa-code",
       "iconColor": "text-blue-500",
       "items": [
-        { "label": "JavaScript", "theme": "blue" },
         { "label": "TypeScript", "theme": "blue" },
+        { "label": "JavaScript", "theme": "blue" },
         { "label": "Node.js",    "theme": "green" },
-        { "label": "PHP",        "theme": "blue" },
         { "label": "Python",     "theme": "yellow" },
-        { "label": "Java",       "theme": "orange" },
-        { "label": "Golang",     "theme": "blue" },
-        { "label": "ASP.NET",    "theme": "blue" }
-      ]
-    },
-    {
-      "category": "Frontend Technologies",
-      "icon": "fas fa-palette",
-      "iconColor": "text-emerald-500",
-      "items": [
-        { "label": "Vue.js",       "theme": "green" },
-        { "label": "Vue 3",        "theme": "green" },
-        { "label": "Nuxt 3",       "theme": "green" },
-        { "label": "React",        "theme": "blue" },
-        { "label": "HTML5",        "theme": "blue" },
-        { "label": "CSS3",         "theme": "blue" },
-        { "label": "Tailwind CSS", "theme": "blue" },
-        { "label": "Bootstrap",    "theme": "blue" }
-      ]
-    },
-    {
-      "category": "Databases & ORMs",
-      "icon": "fas fa-database",
-      "iconColor": "text-indigo-500",
-      "items": [
-        { "label": "MySQL",      "theme": "green" },
-        { "label": "PostgreSQL", "theme": "blue" },
-        { "label": "SQL Server", "theme": "blue" },
-        { "label": "Firebird",   "theme": "orange" },
-        { "label": "MongoDB",    "theme": "green" },
-        { "label": "SQLite",     "theme": "blue" },
-        { "label": "Sequelize",  "theme": "blue" },
-        { "label": "Supabase",   "theme": "blue" }
-      ]
-    },
-    {
-      "category": "Frameworks & Tools",
-      "icon": "fas fa-tools",
-      "iconColor": "text-rose-500",
-      "items": [
+        { "label": "Express.js", "theme": "blue" },
         { "label": "Flask",      "theme": "blue" },
         { "label": "Django",     "theme": "green" },
-        { "label": "Express.js", "theme": "blue" },
-        { "label": "Odoo ERP",   "theme": "blue" },
-        { "label": "Odoo.sh",    "theme": "blue" },
-        { "label": "WordPress",  "theme": "blue" }
+        { "label": "BFF architecture", "theme": "blue" },
+        { "label": "PHP",        "theme": "blue" },
+        { "label": "Java",       "theme": "orange" },
+        { "label": "Golang",     "theme": "blue" }
       ]
     },
     {
-      "category": "DevOps & Cloud",
-      "icon": "fas fa-cloud",
-      "iconColor": "text-sky-500",
-      "items": [
-        { "label": "Git",          "theme": "blue" },
-        { "label": "GitHub",       "theme": "blue" },
-        { "label": "AWS",          "theme": "orange" },
-        { "label": "Digital Ocean","theme": "blue" },
-        { "label": "Heroku",       "theme": "blue" },
-        { "label": "Netlify",      "theme": "blue" },
-        { "label": "Linux",        "theme": "blue" }
-      ]
-    },
-    {
-      "category": "Payment & Services",
+      "category": "ERP & Payments",
       "icon": "fas fa-credit-card",
       "iconColor": "text-emerald-500",
       "items": [
-        { "label": "Stripe",      "theme": "blue" },
-        { "label": "Mercado Pago","theme": "blue" },
-        { "label": "HSBC RAP",    "theme": "blue" },
-        { "label": "RouterOS",    "theme": "blue" },
-        { "label": "Sentry.io",   "theme": "blue" },
-        { "label": "Alestra",     "theme": "blue" }
+        { "label": "Odoo 17 / 19", "theme": "blue" },
+        { "label": "Odoo.sh",      "theme": "blue" },
+        { "label": "Stripe",       "theme": "blue" },
+        { "label": "Mercado Pago", "theme": "blue" },
+        { "label": "HSBC RAP",     "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Frontend & Mobile",
+      "icon": "fas fa-palette",
+      "iconColor": "text-emerald-500",
+      "items": [
+        { "label": "Vue 3",          "theme": "green" },
+        { "label": "Nuxt 3",         "theme": "green" },
+        { "label": "React",          "theme": "blue" },
+        { "label": "Tailwind CSS",   "theme": "blue" },
+        { "label": "Android",        "theme": "green" }
+      ]
+    },
+    {
+      "category": "Data",
+      "icon": "fas fa-database",
+      "iconColor": "text-indigo-500",
+      "items": [
+        { "label": "PostgreSQL", "theme": "blue" },
+        { "label": "Supabase",   "theme": "blue" },
+        { "label": "MySQL",      "theme": "green" },
+        { "label": "SQL Server", "theme": "blue" },
+        { "label": "MongoDB",    "theme": "green" },
+        { "label": "SQLite",     "theme": "blue" },
+        { "label": "Sequelize",  "theme": "blue" }
+      ]
+    },
+    {
+      "category": "Cloud & Ops",
+      "icon": "fas fa-cloud",
+      "iconColor": "text-sky-500",
+      "items": [
+        { "label": "AWS",           "theme": "orange" },
+        { "label": "DigitalOcean",  "theme": "blue" },
+        { "label": "Linux",         "theme": "blue" },
+        { "label": "Git / GitHub",  "theme": "blue" },
+        { "label": "Netlify",       "theme": "blue" },
+        { "label": "Sentry",        "theme": "blue" },
+        { "label": "MikroTik RouterOS", "theme": "blue" }
       ]
     }
   ],
   "contact": [
-    {
-      "platform": "GitHub",
-      "handle": "edsonfervo16mx",
-      "url": "https://github.com/edsonfervo16mx",
-      "icon": "fab fa-github",
-      "bg": "bg-slate-800 hover:bg-slate-700",
-      "text": "text-slate-300"
-    },
     {
       "platform": "LinkedIn",
       "handle": "Edson Ventura",
@@ -354,10 +404,18 @@
       "text": "text-blue-200"
     },
     {
-      "platform": "Twitter / X",
+      "platform": "GitHub",
+      "handle": "edsonfervo16mx",
+      "url": "https://github.com/edsonfervo16mx",
+      "icon": "fab fa-github",
+      "bg": "bg-slate-800 hover:bg-slate-700",
+      "text": "text-slate-300"
+    },
+    {
+      "platform": "X",
       "handle": "@EdsonFOropeza",
-      "url": "https://twitter.com/EdsonFOropeza",
-      "icon": "fab fa-twitter",
+      "url": "https://x.com/EdsonFOropeza",
+      "icon": "fab fa-x-twitter",
       "bg": "bg-sky-600 hover:bg-sky-500",
       "text": "text-sky-100"
     },
@@ -367,7 +425,7 @@
       "url": "https://tryflowbit.netlify.app/sites/edsonferlabs",
       "icon": "fab fa-weebly",
       "bg": "bg-blue-700 hover:bg-blue-600",
-      "text": "text-blue-200"
+      "text": "text-sky-100"
     }
   ]
 }
