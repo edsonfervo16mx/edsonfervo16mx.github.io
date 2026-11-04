@@ -1,8 +1,8 @@
 {
   "profile": {
     "name": "Edson Ventura",
-    "title": "Software Engineer & CTO",
-    "description": "Software Engineer & CTO with 20+ years building enterprise systems across fintech, telecom, hospitality, and government. Three-time Techstars champion, Startup World Cup LATAM finalist, and founder of 3 tech ventures. Currently driving engineering at Flowbit Software and GigNet, with 50+ projects shipped and a passion for teaching, building, and innovating from Mexico's Caribbean coast.",
+    "title": "Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations",
+    "description": "Developer Lead | AI Engineer — Agentic Systems, MCP & AI Integrations with 20+ years building enterprise systems across fintech, telecom, hospitality, and government. Three-time Techstars Startup Weekend winner, Startup World Cup LATAM finalist, and serial tech founder. Currently leading engineering at Flowbit Software and GigNet, and building CortexVerify, a KYC, OCR, and e-signature platform for Mexico. 50+ projects shipped, from Odoo and payment integrations to AI agents and MCP servers. I also teach applied AI with Claude and Claude Code.",
     "avatar": "https://avatars.githubusercontent.com/u/18149491?v=4",
     "status": "Available to collaborate",
     "location": "Quintana Roo, Mexico",
@@ -69,6 +69,20 @@
       ]
     },
     {
+      "company": "CortexVerify",
+      "role": "Founder & CEO",
+      "period": "2026 - Present",
+      "icon": "fas fa-shield-alt",
+      "variant": "gradient",
+      "skills": [
+        { "icon": "fas fa-brain",   "label": "Python",   "theme": "blue" },
+        { "icon": "fas fa-robot",   "label": "AI",       "theme": "cyan" },
+        { "icon": "fab fa-node-js", "label": "Node.js" },
+        { "icon": "fab fa-vuejs",   "label": "Nuxt 3" },
+        { "icon": "fas fa-database","label": "Supabase" }
+      ]
+    },
+    {
       "company": "GigNet S.A. de C.V.",
       "role": "Development Lead",
       "period": "2019 - Present",
@@ -78,7 +92,9 @@
         { "icon": "fab fa-python",  "label": "Python" },
         { "icon": "fab fa-node-js", "label": "Node.js" },
         { "icon": "fab fa-vuejs",   "label": "Vue 3" },
-        { "icon": "fas fa-database","label": "PostgreSQL" }
+        { "icon": "fas fa-database","label": "PostgreSQL" },
+        { "icon": "fas fa-server",  "label": "MCP Server", "theme": "blue" },
+        { "icon": "fas fa-robot",  "label": "AI Agent", "theme": "cyan" }
       ]
     },
     {
@@ -221,15 +237,15 @@
       ]
     },
     {
-      "title": "Halsei — AI Platform",
-      "icon": "fas fa-brain",
+      "title": "MCP & AI Engineering",
+      "icon": "fas fa-robot",
       "accent": "cyan",
-      "description": "AI-powered data analysis platform that transforms spreadsheets into clear insights and strategic decisions—easily and efficiently.",
+      "description": "Custom MCP servers and AI agents that connect Claude with your ERP, databases, and business processes, so your team can query data and automate tasks in natural language.",
       "items": [
-        "Data Analysis & Insights",
-        "Strategic Decision Support",
-        "Spreadsheet Transformation",
-        "AI-Powered Analytics"
+        "MCP Server Development",
+        "AI Agents & Automation",
+        "Odoo & Enterprise Integrations",
+        "Claude & Claude Code Workflows"
       ]
     }
   ],
@@ -344,6 +360,14 @@
       "icon": "fab fa-twitter",
       "bg": "bg-sky-600 hover:bg-sky-500",
       "text": "text-sky-100"
+    },
+    {
+      "platform": "Flowbit",
+      "handle": "edsonferlabs",
+      "url": "https://tryflowbit.netlify.app/sites/edsonferlabs",
+      "icon": "fab fa-weebly",
+      "bg": "bg-blue-700 hover:bg-blue-600",
+      "text": "text-blue-200"
     }
   ]
 }
